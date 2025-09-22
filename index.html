@@ -99,9 +99,11 @@
   </style>
 </head>
 <body>
-  <div id="welcomeBox" style="position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#0078d4; color:white; padding:15px 20px; border-radius:8px; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.3); font-family:sans-serif;">
-    Welcome to <strong>PromptBuilder.Xp</strong> — your modular prompt toolkit for Piclumen. 🎨
-  </div>
+  <div id="welcomeModal" style="...">
+  <button onclick="closeWelcome()">✖</button>
+  <h2>Welcome to PromptBuilder.Xp</h2>
+  <p>...</p>
+</div>
   <div class="container">
     <h1>PromptBuilder.Xp</h1>
     <div class="dark-mode-toggle">
@@ -602,12 +604,10 @@
     document.getElementById("darkModeToggle").checked = true;
   }
 
-  // Hide welcome box after 5 seconds
-  setTimeout(() => {
-    const box = document.getElementById("welcomeBox");
-    if (box) box.style.display = "none";
-  }, 5000);
-};
+  function closeWelcome() {
+  const modal = document.getElementById("welcomeModal");
+  if (modal) modal.style.display = "none";
+}
 
   function isAdvancedPrompt(text) {
     const advancedKeywords = ["neural", "fractal", "32K", "bioluminescent", "cinematic", "style transfer"];
@@ -630,6 +630,7 @@
 </script>
 </body>
 </html>
+
 
 
 
