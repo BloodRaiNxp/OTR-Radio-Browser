@@ -15,12 +15,6 @@
       transition: background-color 0.3s, color 0.3s;
       color: #333;
     }
-    /* Fallback background (already working, kept for robustness) */
-    @supports not (background-image: url("https://via.placeholder.com/1000x2000?text=Subtle+Pattern")) {
-      body {
-        background-color: #f0f0f0;
-      }
-    }
 
     .container {
       max-width: 900px;
@@ -33,14 +27,12 @@
 
     .header {
       text-align: center;
-      position: relative;
       margin-bottom: 20px;
     }
 
     .logo {
       max-width: 150px;
       height: auto;
-      vertical-align: middle;
     }
 
     textarea, select, input[type="text"] {
@@ -134,10 +126,6 @@
     }
 
     .dark-mode-toggle {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
       margin: 0;
       padding: 5px 10px;
     }
@@ -270,8 +258,8 @@
   </div>
   <div class="container">
     <div class="header">
-      <img src="https://i.ibb.co/4R5C7Ry/Blood-Rai-NLOGO.jpg" alt="BloodRaiN Logo" class="logo">
-      <div class="dark-mode-toggle">
+      <img src="https://via.placeholder.com/150x50?text=PromptBuilder.Xp+Logo" alt="PromptBuilder.Xp Logo" class="logo">
+      <div class="dark-mode-toggle" style="float: right; margin-top: 10px;">
         <label>
           <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()" />
           Dark Mode
@@ -359,8 +347,6 @@
 
     <label for="prompt">Main Prompt <span class="help-icon" onclick="showHelp('prompt')">?</span></label>
     <textarea id="prompt" rows="4" placeholder="Describe your image..."></textarea>
-    <button onclick="generatePreview()">Preview</button>
-    <img id="preview" style="max-width: 200px; margin-top: 10px; display: block;">
 
     <label for="qualityPackOptions">Quality Pack Modifiers <span class="help-icon" onclick="showHelp('qualityPackOptions')">?</span> <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
     <select id="qualityPackOptions" multiple size="15">
@@ -691,36 +677,6 @@
       localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
     }
 
-    async function generatePreview() {
-      const prompt = document.getElementById("prompt").value.trim();
-      if (!prompt) {
-        alert("Please enter a prompt.");
-        return;
-      }
-
-      const flaggedWords = ["underage", "minor", "child", "children", "nsfw", "naked", "topless", "explicit", "porn", "nude", "sex"];
-      const normalizedPrompt = prompt.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s+/g, " ");
-      const detected = flaggedWords.filter(word => normalizedPrompt.includes(word));
-      if (document.getElementById("safeMode").checked && detected.length > 0) {
-        document.getElementById('preview').src = '';
-        alert(`Preview blocked due to flagged terms: ${detected.join(", ")}.`);
-        return;
-      }
-
-      console.log("Sending prompt:", prompt);
-      const response = await fetch(`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`, { method: 'GET' });
-      const text = await response.text();
-      console.log("Raw response:", text);
-      const imgUrl = text.match(/https?:\/\/[^\s]+\.(jpg|png|jpeg)/i)?.[0];
-      if (imgUrl) {
-        console.log("Found image URL:", imgUrl);
-        document.getElementById('preview').src = imgUrl;
-      } else {
-        document.getElementById('preview').src = '';
-        alert("Failed to generate preview. Check console for details or try adjusting your prompt.");
-      }
-    }
-
     function generatePrompt() {
       const model = document.getElementById("model").value;
       const style = document.getElementById("style").value;
@@ -738,7 +694,10 @@
 
       let prompt = rawPrompt;
       if (qualityPack.length > 0) prompt += ", " + qualityPack.join(", ");
+      console.log("Weights checked:", weights);
+      console.log("Prompt before weights:", prompt);
       if (weights && prompt) prompt = applyWeights(prompt);
+      console.log("Prompt after weights:", prompt);
       if (!preserveCase) prompt = prompt.toLowerCase();
 
       const flaggedWords = [
@@ -785,6 +744,7 @@
         "bioluminescent", "ancient", "eldritch", "ocean", "flowing", "phoenix", "chaos", "gilded", "halls",
         "moss", "sigil"
       ];
+      console.log("Applying weights to:", text);
       return text.replace(new RegExp(`\\b(${keyTerms.join("|")})\\b`, "gi"), match => `(${match})`);
     }
 
@@ -857,12 +817,13 @@
       tooltip.innerText = tooltipText;
       document.body.appendChild(tooltip);
 
-      const helpIcon = event.target;
+      const helpIcon = event.target; // Use the clicked question mark
       const rect = helpIcon.getBoundingClientRect();
-      const tooltipWidth = 200;
+      const tooltipWidth = 200; // Approximate width of tooltip
       let leftPos = rect.left + window.scrollX - (tooltipWidth / 2) + (rect.width / 2);
       let topPos = rect.bottom + window.scrollY + 5;
 
+      // Adjust if tooltip would go off-screen
       if (leftPos + tooltipWidth > window.innerWidth) {
         leftPos = window.innerWidth - tooltipWidth - 10;
       } else if (leftPos < 0) {
@@ -870,7 +831,7 @@
       }
 
       if (topPos + 100 > window.innerHeight + window.scrollY) {
-        topPos = rect.top + window.scrollY - 105;
+        topPos = rect.top + window.scrollY - 105; // Move above if too low
       }
 
       tooltip.style.top = topPos + "px";
