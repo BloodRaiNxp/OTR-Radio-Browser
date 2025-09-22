@@ -190,7 +190,7 @@
 
     <label for="qualityPackOptions">Quality Pack Modifiers</label>
     <select id="qualityPackOptions" multiple size="15">
-      <optgroup label="Lighting & Atmosphere">
+      <optgroup label="LIGHTING & ATMOSPHERE">
         <option value="ethereal glow">Ethereal glow</option>
         <option value="bioluminescent">Bioluminescent</option>
         <option value="moonlit haze">Moonlit haze</option>
@@ -218,7 +218,7 @@
         <option value="twilight infused fog">Twilight infused fog</option>
         <option value="prism-like reflections">Prism-like reflections</option>
       </optgroup>
-      <optgroup label="Textures & Surfaces">
+      <optgroup label="TEXTURES & SURFACES">
         <option value="crystalline structures">Crystalline structures</option>
         <option value="veined marble">Veined marble</option>
         <option value="ancient runes">Ancient runes</option>
@@ -246,7 +246,7 @@
         <option value="obsidian reflections">Obsidian reflections</option>
         <option value="meteoric ore">Meteoric ore</option>
       </optgroup>
-      <optgroup label="Magical & Mystical Elements">
+      <optgroup label="MAGICAL & MYSTICAL ELEMENTS">
         <option value="arcane sigils">Arcane sigils</option>
         <option value="floating islands">Floating islands</option>
         <option value="ghostly apparitions">Ghostly apparitions</option>
@@ -274,7 +274,7 @@
         <option value="prismatic beams">Prismatic beams</option>
         <option value="infinite reflections">Infinite reflections</option>
       </optgroup>
-      <optgroup label="Nature & Environment">
+      <optgroup label="NATURE & ENVIRONMENT">
         <option value="otherworldly flora">Otherworldly flora</option>
         <option value="luminescent mushrooms">Luminescent mushrooms</option>
         <option value="dark enchanted forest">Dark enchanted forest</option>
@@ -303,7 +303,7 @@
         <option value="fire-lit valley">Fire-lit valley</option>
         <option value="echoing canyons">Echoing canyons</option>
       </optgroup>
-      <optgroup label="Character Enhancements">
+      <optgroup label="CHARACTER ENHANCEMENTS">
         <option value="fiery eyes">Fiery eyes</option>
         <option value="glowing tattoos">Glowing tattoos</option>
         <option value="shadowy cloak">Shadowy cloak</option>
@@ -332,7 +332,7 @@
         <option value="spirit-bound armor">Spirit-bound armor</option>
         <option value="crown of thorns">Crown of thorns</option>
       </optgroup>
-      <optgroup label="Creatures & Beasts">
+      <optgroup label="CREATURES & BEASTS">
         <option value="eldritch horrors">Eldritch horrors</option>
         <option value="phantom wolves">Phantom wolves</option>
         <option value="crystal golems">Crystal golems</option>
@@ -361,7 +361,7 @@
         <option value="infernal hellhounds">Infernal hellhounds</option>
         <option value="twilight griffins">Twilight griffins</option>
       </optgroup>
-      <optgroup label="Weapons & Artifacts">
+      <optgroup label="WEAPONS & ARTIFACTS">
         <option value="enchanted blade">Enchanted blade</option>
         <option value="shadowforged dagger">Shadowforged dagger</option>
         <option value="staff of endless wisdom">Staff of endless wisdom</option>
@@ -389,7 +389,7 @@
         <option value="song-infused flute">Song-infused flute</option>
         <option value="astral-infused necklace">Astral-infused necklace</option>
       </optgroup>
-      <optgroup label="Structures & Locations">
+      <optgroup label="STRUCTURES & LOCATIONS">
         <option value="ancient floating citadel">Ancient floating citadel</option>
         <option value="bioluminescent caves">Bioluminescent caves</option>
         <option value="timeworn spire">Timeworn spire</option>
@@ -538,7 +538,21 @@
     console.log("Prompt after weights:", prompt);
     if (!preserveCase) prompt = prompt.toLowerCase();
 
-    const flaggedWords = ["nsfw", "underage", "child", "young girl", "schoolgirl", "little girl", "naked", "bare breast"];
+   const flaggedWords = [
+  // Age-related
+  "underage", "minor", "child", "children", "young girl", "young boy", "little girl", "little boy", "schoolgirl", "schoolboy",
+
+  // Nudity / explicit
+  "nsfw", "naked", "bare breast", "titts", "topless", "bottomless", "explicit", "lewd", "erotic", "sexual", "sensual", "revealing",
+  "provocative", "suggestive pose", "see-through", "exposed", "fetish",
+
+  // Violence / harm
+  "violence", "torture", "self-harm", "suicide", "abuse", "blood", "gore", "injury", "dead body", "corpse", "mutilated", "decapitated",
+
+  // Exploitation / coercion
+  "non-consensual", "forced", "coerced", "trafficking", "slave", "abduction", "captivity", "hostage", "grooming"
+];
+
     const lowerPrompt = prompt.toLowerCase().replace(/\([^)]+\)/g, match => match.toLowerCase());
     const detected = flaggedWords.filter(word => lowerPrompt.includes(word));
 
@@ -603,3 +617,4 @@
 </script>
 </body>
 </html>
+
