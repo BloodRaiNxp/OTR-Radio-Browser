@@ -49,7 +49,7 @@ Focused on precision, transparency, and empowering others through robust systems
 
 ## 📄 License
 
-This project is released under the [MIT License](https://opensource.org/licenses/MIT).  
+This project is not licensed for reuse, redistribution, or modification without explicit permission.  
 
 ---
 
