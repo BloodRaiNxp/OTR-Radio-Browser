@@ -592,12 +592,20 @@
   }
 
   window.onload = () => {
-    checkModel();
-    if (localStorage.getItem("darkMode") === "enabled") {
-      document.body.classList.add("dark-mode");
-      document.getElementById("darkModeToggle").checked = true;
-    }
-  };
+  checkModel();
+
+  // Apply dark mode if previously enabled
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("darkModeToggle").checked = true;
+  }
+
+  // Hide welcome box after 5 seconds
+  setTimeout(() => {
+    const box = document.getElementById("welcomeBox");
+    if (box) box.style.display = "none";
+  }, 5000);
+};
 
   function isAdvancedPrompt(text) {
     const advancedKeywords = ["neural", "fractal", "32K", "bioluminescent", "cinematic", "style transfer"];
@@ -620,6 +628,7 @@
 </script>
 </body>
 </html>
+
 
 
 
