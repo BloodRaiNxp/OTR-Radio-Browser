@@ -99,6 +99,9 @@
   </style>
 </head>
 <body>
+  <div id="welcomeBox" style="position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#0078d4; color:white; padding:15px 20px; border-radius:8px; z-index:1000; box-shadow:0 2px 8px rgba(0,0,0,0.3); font-family:sans-serif;">
+    Welcome to <strong>PromptBuilder.Xp</strong> — your modular prompt toolkit for Piclumen. 🎨
+  </div>
   <div class="container">
     <h1>PromptBuilder.Xp</h1>
     <div class="dark-mode-toggle">
@@ -594,7 +597,6 @@
   window.onload = () => {
   checkModel();
 
-  // Apply dark mode if previously enabled
   if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
     document.getElementById("darkModeToggle").checked = true;
@@ -628,6 +630,7 @@
 </script>
 </body>
 </html>
+
 
 
 
