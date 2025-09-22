@@ -553,8 +553,13 @@
   "non-consensual", "forced", "coerced", "trafficking", "slave", "abduction", "captivity", "hostage", "grooming"
 ];
 
-    const lowerPrompt = prompt.toLowerCase().replace(/\([^)]+\)/g, match => match.toLowerCase());
-    const detected = flaggedWords.filter(word => lowerPrompt.includes(word));
+   const normalizedPrompt = prompt
+  .toLowerCase()
+  .replace(/\([^)]+\)/g, match => match.toLowerCase()) // normalize weights
+  .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")          // strip punctuation
+  .replace(/\s+/g, " ");                               // collapse extra spaces
+
+    const detected = flaggedWords.filter(word => normalizedPrompt.includes(word));
 
     const output = document.getElementById("output");
     if (safeMode && detected.length > 0) {
@@ -617,4 +622,5 @@
 </script>
 </body>
 </html>
+
 
