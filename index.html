@@ -126,13 +126,8 @@
     }
 
     .dark-mode-toggle {
-      margin: 15px 0;
-      padding: 8px 12px;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      display: inline-flex;
-      align-items: center;
+      margin: 0;
+      padding: 5px 10px;
     }
 
     .dark-mode .dark-mode-toggle {
@@ -264,14 +259,14 @@
   <div class="container">
     <div class="header">
       <img src="https://via.placeholder.com/150x50?text=PromptBuilder.Xp+Logo" alt="PromptBuilder.Xp Logo" class="logo">
+      <div class="dark-mode-toggle" style="float: right; margin-top: 10px;">
+        <label>
+          <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()" />
+          Dark Mode
+        </label>
+      </div>
     </div>
     <h1>PromptBuilder.Xp</h1>
-    <div class="dark-mode-toggle">
-      <label>
-        <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()" />
-        Dark Mode
-      </label>
-    </div>
 
     <label for="model">Piclumen Model <span class="help-icon" onclick="showHelp('model')">?</span></label>
     <select id="model" onchange="checkModel()">
