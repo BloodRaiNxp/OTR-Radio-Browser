@@ -188,7 +188,7 @@
     <label for="prompt">Main Prompt</label>
     <textarea id="prompt" rows="4" placeholder="Describe your image..."></textarea>
 
-    <label for="qualityPackOptions">Quality Pack Modifiers</label>
+    <label for="qualityPackOptions">Quality Pack Modifiers <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
     <select id="qualityPackOptions" multiple size="15">
       <optgroup label="LIGHTING & ATMOSPHERE">
         <option value="ethereal glow">Ethereal glow</option>
@@ -417,7 +417,6 @@
         <option value="oceanic abyss kingdom">Oceanic abyss kingdom</option>
       </optgroup>
     </select>
-    <div class="helper-text">Hold Ctrl (or Cmd) to select multiple modifiers.</div>
 
     <div class="checkbox-group">
       <input type="checkbox" id="weights" />
@@ -437,7 +436,7 @@
     </div>
     <div class="helper-text">Blocks prompts with sensitive or banned terms.</div>
 
-    <label for="negativePackOptions">Recommended Negative Terms</label>
+    <label for="negativePackOptions">Recommended Negative Terms <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
     <select id="negativePackOptions" multiple size="10">
       <option value="(((worst quality:1.5)))">(((worst quality:1.5)))</option>
       <option value="(((low quality:1.5)))">(((low quality:1.5)))</option>
@@ -468,7 +467,6 @@
       <option value="shattered">Shattered</option>
       <option value="chaotic">Chaotic</option>
     </select>
-    <div class="helper-text">Hold Ctrl (or Cmd) to select multiple modifiers.</div>
 
     <label for="negativePrompt">Custom Negative Prompt</label>
     <textarea id="negativePrompt" rows="2"></textarea>
@@ -622,5 +620,6 @@
 </script>
 </body>
 </html>
+
 
 
