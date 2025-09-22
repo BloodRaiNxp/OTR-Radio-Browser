@@ -6,116 +6,265 @@
   <title>PromptBuilder.Xp</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 20px;
-      background-color: #f4f4f4;
+      background-image: url('https://via.placeholder.com/1000x2000?text=Subtle+Pattern');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
       transition: background-color 0.3s, color 0.3s;
+      color: #333;
     }
+
     .container {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      max-width: 150px;
+      height: auto;
+    }
+
     textarea, select, input[type="text"] {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: border-color 0.3s;
     }
+
+    textarea:focus, select:focus, input[type="text"]:focus {
+      border-color: #0078d4;
+      outline: none;
+    }
+
     .checkbox-group {
-      margin-bottom: 10px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
     }
+
+    .checkbox-group label {
+      margin-left: 8px;
+      font-size: 1em;
+    }
+
     .helper-text {
-      font-size: 0.9em;
+      font-size: 0.85em;
       color: #666;
       margin-bottom: 20px;
     }
+
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       background-color: #0078d4;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s, transform 0.1s;
     }
+
     button:hover {
       background-color: #005fa3;
+      transform: translateY(-1px);
     }
+
+    button:active {
+      transform: translateY(0);
+    }
+
     #output {
       white-space: pre-wrap;
       background: #f9f9f9;
       padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
       margin-top: 20px;
       color: #333;
+      font-size: 0.95em;
     }
+
     .dark-mode {
       background-color: #1e1e1e;
       color: #ddd;
     }
+
     .dark-mode .container {
       background-color: #2c2c2c;
     }
+
     .dark-mode textarea,
     .dark-mode select,
     .dark-mode input[type="text"] {
       background-color: #3a3a3a;
       color: #eee;
-      border: 1px solid #555;
+      border-color: #555;
     }
+
     .dark-mode .helper-text {
       color: #aaa;
     }
+
     .dark-mode #output {
       background: #2c2c2c;
       color: #fff;
       border-color: #555;
     }
+
     .dark-mode-toggle {
-      margin-bottom: 15px;
-      padding: 5px 10px;
+      margin: 15px 0;
+      padding: 8px 12px;
       background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
     }
+
     .dark-mode .dark-mode-toggle {
       background-color: #2c2c2c;
       border-color: #555;
     }
+
     select option {
       color: #000;
     }
+
     .dark-mode select option {
       color: #eee;
     }
+
     select:disabled option {
       color: #888;
     }
-    #welcomeBox {
+
+    .modal {
+      display: block;
       position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: #000;
+      text-decoration: none;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.5em;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #0078d4;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .help-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
       background: #0078d4;
       color: white;
-      padding: 15px 20px;
-      border-radius: 8px;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      font-family: sans-serif;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 16px;
+      cursor: pointer;
+      margin-left: 5px;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+
+    .help-icon:hover {
+      background: #005fa3;
+    }
+
+    .help-tooltip {
+      display: none;
+      position: absolute;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      max-width: 200px;
+      font-size: 0.9em;
+      color: #333;
+    }
+
+    .dark-mode .help-tooltip {
+      background: #2c2c2c;
+      border-color: #555;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
-  <div id="welcomeBox">
-    Welcome to <strong>PromptBuilder.Xp</strong> — your modular prompt toolkit for Piclumen. 🎨
+  <div id="welcomeBox" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="document.getElementById('welcomeBox').style.display='none'">&times;</span>
+      <h2>Welcome to PromptBuilder.Xp</h2>
+      <p>Your modular prompt toolkit for Piclumen. 🎨</p>
+    </div>
   </div>
   <div class="container">
+    <div class="header">
+      <img src="https://via.placeholder.com/150x50?text=PromptBuilder.Xp+Logo" alt="PromptBuilder.Xp Logo" class="logo">
+    </div>
     <h1>PromptBuilder.Xp</h1>
     <div class="dark-mode-toggle">
       <label>
@@ -124,7 +273,7 @@
       </label>
     </div>
 
-    <label for="model">Piclumen Model</label>
+    <label for="model">Piclumen Model <span class="help-icon" onclick="showHelp('model')">?</span></label>
     <select id="model" onchange="checkModel()">
       <option value="ART V1">ART V1</option>
       <option value="Realistic V2">Realistic V2</option>
@@ -141,7 +290,7 @@
       <option value="Picflow">Picflow</option>
     </select>
 
-    <label for="style">Style</label>
+    <label for="style">Style <span class="help-icon" onclick="showHelp('style')">?</span></label>
     <select id="style">
       <option value="" disabled selected>Select a style</option>
       <option value="Neon">Neon</option>
@@ -178,7 +327,7 @@
       <option value="Tilt Shift">Tilt Shift</option>
     </select>
 
-    <label for="aspect">Aspect Ratio</label>
+    <label for="aspect">Aspect Ratio <span class="help-icon" onclick="showHelp('aspect')">?</span></label>
     <select id="aspect">
       <option value="1:1">1:1</option>
       <option value="5:6">5:6</option>
@@ -201,10 +350,10 @@
       <option value="21:9">21:9</option>
     </select>
 
-    <label for="prompt">Main Prompt</label>
+    <label for="prompt">Main Prompt <span class="help-icon" onclick="showHelp('prompt')">?</span></label>
     <textarea id="prompt" rows="4" placeholder="Describe your image..."></textarea>
 
-    <label for="qualityPackOptions">Quality Pack Modifiers <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
+    <label for="qualityPackOptions">Quality Pack Modifiers <span class="help-icon" onclick="showHelp('qualityPackOptions')">?</span> <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
     <select id="qualityPackOptions" multiple size="15">
       <optgroup label="LIGHTING & ATMOSPHERE">
         <option value="ethereal glow">Ethereal glow</option>
@@ -436,23 +585,23 @@
 
     <div class="checkbox-group">
       <input type="checkbox" id="weights" />
-      <label for="weights">Apply weighting logic</label>
+      <label for="weights">Apply weighting logic <span class="help-icon" onclick="showHelp('weights')">?</span></label>
     </div>
     <div class="helper-text">Wraps key terms in parentheses for emphasis.</div>
 
     <div class="checkbox-group">
       <input type="checkbox" id="preserveCase" />
-      <label for="preserveCase">Preserve original casing</label>
+      <label for="preserveCase">Preserve original casing <span class="help-icon" onclick="showHelp('preserveCase')">?</span></label>
     </div>
     <div class="helper-text">Keeps capitalization as entered.</div>
 
     <div class="checkbox-group">
       <input type="checkbox" id="safeMode" />
-      <label for="safeMode">Safe mode (hide flagged prompts)</label>
+      <label for="safeMode">Safe mode (hide flagged prompts) <span class="help-icon" onclick="showHelp('safeMode')">?</span></label>
     </div>
     <div class="helper-text">Blocks prompts with sensitive or banned terms.</div>
 
-    <label for="negativePackOptions">Recommended Negative Terms <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
+    <label for="negativePackOptions">Recommended Negative Terms <span class="help-icon" onclick="showHelp('negativePackOptions')">?</span> <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
     <select id="negativePackOptions" multiple size="10">
       <option value="(((worst quality:1.5)))">(((worst quality:1.5)))</option>
       <option value="(((low quality:1.5)))">(((low quality:1.5)))</option>
@@ -484,7 +633,7 @@
       <option value="chaotic">Chaotic</option>
     </select>
 
-    <label for="negativePrompt">Custom Negative Prompt</label>
+    <label for="negativePrompt">Custom Negative Prompt <span class="help-icon" onclick="showHelp('negativePrompt')">?</span></label>
     <textarea id="negativePrompt" rows="2"></textarea>
     <div class="helper-text" id="negativeHelper">Optional: things to avoid...</div>
 
@@ -494,7 +643,7 @@
     <div id="output"></div>
   </div>
 
-  <footer style="text-align:center; margin-top:20px; color:#666;">
+  <footer style="text-align:center; margin-top:30px; color:#666;">
     Created by BloodRaiNxp
   </footer>
 
@@ -557,22 +706,18 @@
       if (!preserveCase) prompt = prompt.toLowerCase();
 
       const flaggedWords = [
-        // Age-related
         "underage", "minor", "child", "children", "young girl", "young boy", "little girl", "little boy", "schoolgirl", "schoolboy",
-        // Nudity / explicit
         "nsfw", "naked", "bare breast", "titts", "topless", "bottomless", "explicit", "lewd", "erotic", "sexual", "sensual", "revealing",
         "provocative", "suggestive pose", "see-through", "exposed", "fetish",
-        // Violence / harm
         "violence", "torture", "self-harm", "suicide", "abuse", "blood", "gore", "injury", "dead body", "corpse", "mutilated", "decapitated",
-        // Exploitation / coercion
         "non-consensual", "forced", "coerced", "trafficking", "slave", "abduction", "captivity", "hostage", "grooming"
       ];
 
       const normalizedPrompt = prompt
         .toLowerCase()
-        .replace(/\([^)]+\)/g, match => match.toLowerCase()) // normalize weights
-        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")          // strip punctuation
-        .replace(/\s+/g, " ");                               // collapse extra spaces
+        .replace(/\([^)]+\)/g, match => match.toLowerCase())
+        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+        .replace(/\s+/g, " ");
 
       const detected = flaggedWords.filter(word => normalizedPrompt.includes(word));
 
@@ -610,18 +755,10 @@
 
     window.onload = () => {
       checkModel();
-
-      // Apply dark mode if previously enabled
       if (localStorage.getItem("darkMode") === "enabled") {
         document.body.classList.add("dark-mode");
         document.getElementById("darkModeToggle").checked = true;
       }
-
-      // Hide welcome box after 5 seconds
-      setTimeout(() => {
-        const box = document.getElementById("welcomeBox");
-        if (box) box.style.display = "none";
-      }, 5000);
     };
 
     function isAdvancedPrompt(text) {
@@ -641,6 +778,80 @@
         alert("Failed to copy. Try manually: Ctrl+C");
         console.error("Clipboard error:", err);
       });
+    }
+
+    function showHelp(fieldId) {
+      let tooltipText;
+      switch (fieldId) {
+        case 'model':
+          tooltipText = "Select the Piclumen model that best suits your desired output style.";
+          break;
+        case 'style':
+          tooltipText = "Choose a visual style to apply (e.g., Fantasy, Sci-Fi). This shapes the artistic tone of your prompt.";
+          break;
+        case 'aspect':
+          tooltipText = "Pick an aspect ratio to define the image's proportions (e.g., 1:1 for square).";
+          break;
+        case 'prompt':
+          tooltipText = "Enter a detailed description of the image you want to create. Be specific about subjects, settings, and moods!";
+          break;
+        case 'qualityPackOptions':
+          tooltipText = "Select multiple modifiers to enhance your prompt with lighting, textures, or magical elements.";
+          break;
+        case 'weights':
+          tooltipText = "Enable to emphasize key terms by wrapping them in parentheses for the AI to prioritize.";
+          break;
+        case 'preserveCase':
+          tooltipText = "Check to keep the original capitalization of your input text.";
+          break;
+        case 'safeMode':
+          tooltipText = "Enable to block prompts with sensitive or banned terms for safer content.";
+          break;
+        case 'negativePackOptions':
+          tooltipText = "Select negative terms to exclude from the generated image (e.g., low quality, blurry).";
+          break;
+        case 'negativePrompt':
+          tooltipText = "Add custom terms to avoid in the image output.";
+          break;
+        default:
+          tooltipText = "Click for help on this section.";
+      }
+
+      let tooltip = document.createElement("div");
+      tooltip.className = "help-tooltip";
+      tooltip.innerText = tooltipText;
+      document.body.appendChild(tooltip);
+
+      const helpIcon = event.target; // Use the clicked question mark
+      const rect = helpIcon.getBoundingClientRect();
+      const tooltipWidth = 200; // Approximate width of tooltip
+      let leftPos = rect.left + window.scrollX - (tooltipWidth / 2) + (rect.width / 2);
+      let topPos = rect.bottom + window.scrollY + 5;
+
+      // Adjust if tooltip would go off-screen
+      if (leftPos + tooltipWidth > window.innerWidth) {
+        leftPos = window.innerWidth - tooltipWidth - 10;
+      } else if (leftPos < 0) {
+        leftPos = 10;
+      }
+
+      if (topPos + 100 > window.innerHeight + window.scrollY) {
+        topPos = rect.top + window.scrollY - 105; // Move above if too low
+      }
+
+      tooltip.style.top = topPos + "px";
+      tooltip.style.left = leftPos + "px";
+      tooltip.style.display = "block";
+
+      setTimeout(() => {
+        tooltip.onclick = () => tooltip.style.display = "none";
+        document.addEventListener("click", function hide(e) {
+          if (!tooltip.contains(e.target) && e.target.className !== "help-icon") {
+            tooltip.style.display = "none";
+            document.removeEventListener("click", hide);
+          }
+        });
+      }, 0);
     }
   </script>
 </body>
