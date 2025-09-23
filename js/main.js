@@ -1,79 +1,80 @@
+/*
+  PromptBuilder.Xp
+  Copyright (c) 2025 BloodRaiNxp
+  Version: 1.0.0
+  Created: September 23, 2025
+  Description: A platform-agnostic AI art and video prompt generator
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
-  const bubbleContainer = document.getElementById('bubbleContainer');
-  const addBubbleBtn = document.getElementById('addBubbleBtn');
+  const manualToggle = document.getElementById('manualToggle');
+  const manualPromptSection = document.getElementById('manualPromptSection');
+  const blockPromptSection = document.getElementById('blockPromptSection');
   const generatePromptBtn = document.getElementById('generatePromptBtn');
   const promptOutput = document.getElementById('promptOutput');
   const safeModeCheckbox = document.getElementById('safeMode');
+  const negativePrompt = document.getElementById('negativePrompt');
+  const negativeHelper = document.getElementById('negativeHelper');
 
-  addBubbleBtn?.addEventListener('click', () => addBubble());
-  generatePromptBtn?.addEventListener('click', () => generatePrompt());
-  safeModeCheckbox?.addEventListener('change', () => checkModel());
+  // Toggle between manual and block mode
+  manualToggle?.addEventListener('change', () => {
+    const useManual = manualToggle.checked;
+    manualPromptSection.style.display = useManual ? 'block' : 'none';
+    blockPromptSection.style.display = useManual ? 'none' : 'block';
+  });
 
+  // Generate prompt
+  generatePromptBtn?.addEventListener('click', () => {
+    let prompt = '';
+
+    if (manualToggle.checked) {
+      prompt = document.getElementById('manualPrompt')?.value || '';
+    } else {
+      const blocks = [
+        'imageType',
+        'subject',
+        'action',
+        'descriptors',
+        'quality',
+        'environment'
+      ];
+      const parts = blocks.map(id => {
+        const el = document.getElementById(id);
+        return el?.value || '';
+      }).filter(Boolean);
+      prompt = parts.join(', ');
+    }
+
+    // Safe mode scan
+    if (safeModeCheckbox?.checked && negativePrompt && negativeHelper) {
+      const flaggedWords = [
+        "nsfw", "gore", "nudity", "violence", "explicit", "titts", "blood", "kill", "rape"
+      ];
+      const input = negativePrompt.value.toLowerCase();
+      const detected = flaggedWords.filter(word => input.includes(word));
+      if (detected.length > 0) {
+        negativeHelper.textContent = `⚠️ Prompt hidden due to flagged terms: ${detected.join(", ")}`;
+        promptOutput.textContent = '';
+        return;
+      } else {
+        negativeHelper.textContent = '';
+      }
+    }
+
+    promptOutput.textContent = prompt;
+  });
+
+  // Welcome box close
   const closeBtn = document.querySelector('#welcomeBox .close-btn');
   closeBtn?.addEventListener('click', () => {
     document.getElementById('welcomeBox').style.display = 'none';
   });
 
-  populateSelect(document.getElementById('platform'), 'platforms.json');
-  populateSelect(document.getElementById('style'), 'styles.json');
-  populateSelect(document.getElementById('aspect'), 'aspect-ratios.json');
-  populateSelect(document.getElementById('qualityPackOptions'), 'quality-packs.json');
-  populateSelect(document.getElementById('negativePackOptions'), 'negative-terms.json');
-
-  function addBubble() {
-    if (!bubbleContainer) return;
-
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-
-    const typeSelect = document.createElement('select');
-    typeSelect.className = 'type-select';
-    populateSelect(typeSelect, 'bubble-types.json');
-
-    const valueSelect = document.createElement('select');
-    valueSelect.className = 'value-select';
-
-    typeSelect.addEventListener('change', () => {
-      updateBubbleOptions(bubble, typeSelect.value);
-    });
-
-    const lockBtn = document.createElement('button');
-    lockBtn.className = 'lock-btn';
-    lockBtn.textContent = '🔓';
-    lockBtn.setAttribute('aria-label', 'Lock bubble');
-    lockBtn.addEventListener('click', () => {
-      const isLocked = lockBtn.textContent === '🔒';
-      lockBtn.textContent = isLocked ? '🔓' : '🔒';
-      lockBtn.setAttribute('aria-label', isLocked ? 'Lock bubble' : 'Unlock bubble');
-      bubble.classList.toggle('locked');
-    });
-
-    const removeBtn = document.createElement('button');
-    removeBtn.className = 'remove-btn';
-    removeBtn.textContent = '✖';
-    removeBtn.setAttribute('aria-label', 'Remove bubble');
-    removeBtn.addEventListener('click', () => bubble.remove());
-
-    bubble.appendChild(typeSelect);
-    bubble.appendChild(valueSelect);
-    bubble.appendChild(lockBtn);
-    bubble.appendChild(removeBtn);
-    bubbleContainer.appendChild(bubble);
-  }
-
-  function generatePrompt() {
-    const bubbles = document.querySelectorAll('.bubble');
-    const promptParts = [];
-
-    bubbles.forEach(bubble => {
-      const type = bubble.querySelector('.type-select')?.value;
-      const value = bubble.querySelector('.value-select')?.value;
-      const locked = bubble.classList.contains('locked');
-      if (type && value) {
-        promptParts.push(locked ? `(${value})` : value);
-      }
-    });
-
-    promptOutput.textContent = promptParts.join(', ');
-  }
+  // Populate dropdowns
+  populateSelect(document.getElementById('imageType'), 'image-types.json');
+  populateSelect(document.getElementById('subject'), 'subjects.json');
+  populateSelect(document.getElementById('action'), 'actions.json');
+  populateSelect(document.getElementById('descriptors'), 'descriptors.json');
+  populateSelect(document.getElementById('quality'), 'quality-packs.json');
+  populateSelect(document.getElementById('environment'), 'environments.json');
 });
