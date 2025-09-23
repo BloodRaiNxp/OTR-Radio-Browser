@@ -166,4 +166,39 @@ button:hover {
   background: #3a3a3a;
 }
 
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  max-width: 500px;
+  text-align: center;
+  cursor: default;
+}
+.modal-content {
+  position: relative;
+}
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+.dark-mode .modal {
+  background: #333;
+  color: #fff;
+  border-color: #555;
+}
+.dark-mode .modal .close-btn {
+  color: #fff;
+}
+
 /* Modal and tooltip styles unchanged */
