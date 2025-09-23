@@ -15,12 +15,12 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <header class="header">
       <img src="assets/logo.png" alt="PromptBuilder Logo" class="logo" />
       <h1>PromptBuilder.Xp</h1>
-    </div>
+    </header>
 
-    <div class="input-section">
+    <section class="input-section">
       <label for="platform">Platform</label>
       <select id="platform"></select>
 
@@ -49,9 +49,9 @@
         <input type="checkbox" id="darkModeToggle" />
         <label for="darkModeToggle">Dark Mode</label>
       </div>
-    </div>
+    </section>
 
-    <div class="output-section">
+    <section class="output-section">
       <h3>Prompt Bubbles</h3>
       <div id="bubbleContainer" class="bubble-container"></div>
 
@@ -61,8 +61,8 @@
       </div>
 
       <h3>Generated Prompt</h3>
-      <div id="promptOutput"></div>
-    </div>
+      <div id="promptOutput" class="prompt-output"></div>
+    </section>
   </div>
 
   <div id="welcomeBox" class="modal">
@@ -72,7 +72,9 @@
     </div>
   </div>
 
-  <footer>Copyright &copy; 2025 BloodRaiNxp. All rights reserved.</footer>
+  <footer>
+    Copyright &copy; 2025 BloodRaiNxp. All rights reserved.
+  </footer>
 
   <script src="js/utils.js" defer></script>
   <script src="js/tooltip.js" defer></script>
