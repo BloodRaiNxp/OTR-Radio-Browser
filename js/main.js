@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     checkModel();
   });
 
+  const closeBtn = document.querySelector('.close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      document.getElementById('welcomeBox').style.display = 'none';
+    });
+  }
+
   function addBubble() {
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
