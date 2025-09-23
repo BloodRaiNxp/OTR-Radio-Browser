@@ -1,0 +1,11 @@
+[
+  { "value": "photo", "label": "Photograph" },
+  { "value": "painting", "label": "Painting" },
+  { "value": "digital-art", "label": "Digital Art" },
+  { "value": "3d-render", "label": "3D Render" },
+  { "value": "sketch", "label": "Sketch" },
+  { "value": "illustration", "label": "Illustration" },
+  { "value": "anime-style", "label": "Anime Style" },
+  { "value": "pixel-art", "label": "Pixel Art" },
+  { "value": "isometric", "label": "Isometric View" }
+]
