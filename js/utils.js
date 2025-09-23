@@ -24,7 +24,7 @@ function toggleDarkMode() {
 function checkModel() {
   const safeMode = document.getElementById('safeMode').checked;
   const negativePrompt = document.getElementById('negativePrompt').value.toLowerCase();
-  const flaggedWords = ['nsfw', 'gore', 'nudity', 'violence', 'explicit']; // You can load this from JSON if needed
+  const flaggedWords = ['nsfw', 'gore', 'nudity', 'violence', 'explicit'];
   const negativeHelper = document.getElementById('negativeHelper');
 
   if (safeMode) {
