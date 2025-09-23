@@ -60,7 +60,16 @@ select:disabled {
   background: #f0f0f0;
   cursor: not-allowed;
 }
-
+.tooltip {
+  cursor: pointer;
+  color: #007bff;
+  margin-left: 5px;
+}
+.tooltip-box {
+  max-width: 200px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 .bubble-container {
   display: flex;
   flex-wrap: wrap;
