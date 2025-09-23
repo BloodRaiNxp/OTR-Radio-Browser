@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   populateSelect('style', styles, true);
   populateSelect('aspect', aspects);
   populateSelect('qualityPackOptions', qualityPacks, false, true);
-  populateSelect('negativePackOptions', negativeTerms, false, true);
+  populateSelect('negativePackOptions', negativeTerms, false, false); // Set isGrouped = false
 
   // Initialize bubble system with one default bubble
   const bubbleContainer = document.getElementById('promptBuilder');
