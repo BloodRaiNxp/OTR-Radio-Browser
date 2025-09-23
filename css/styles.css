@@ -56,20 +56,32 @@ textarea, select, input[type="text"] {
   font-size: 1em;
 }
 
+textarea::placeholder {
+  color: #555;
+  opacity: 1; /* Ensures full visibility */
+}
+
+.dark-mode textarea::placeholder {
+  color: #aaa;
+}
+
 select:disabled {
   background: #f0f0f0;
   cursor: not-allowed;
 }
+
 .tooltip {
   cursor: pointer;
   color: #007bff;
   margin-left: 5px;
 }
+
 .tooltip-box {
   max-width: 200px;
   font-size: 14px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .bubble-container {
   display: flex;
   flex-wrap: wrap;
@@ -181,9 +193,11 @@ button:hover {
   text-align: center;
   cursor: default;
 }
+
 .modal-content {
   position: relative;
 }
+
 .modal .close-btn {
   position: absolute;
   top: 10px;
@@ -192,13 +206,29 @@ button:hover {
   font-size: 18px;
   color: #333;
 }
+
 .dark-mode .modal {
   background: #333;
   color: #fff;
   border-color: #555;
 }
+
 .dark-mode .modal .close-btn {
   color: #fff;
 }
 
-/* Modal and tooltip styles unchanged */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox-group label {
+  margin-bottom: 0; /* Override default label margin */
+}
