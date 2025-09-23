@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const addBubbleBtn = document.getElementById('addBubbleBtn');
   const generatePromptBtn = document.getElementById('generatePromptBtn');
   const promptOutput = document.getElementById('promptOutput');
-  const safeModeToggle = document.getElementById('safeModeToggle');
+  const safeModeCheckbox = document.getElementById('safeMode');
 
   addBubbleBtn.addEventListener('click', () => {
     addBubble();
@@ -13,16 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
     generatePrompt();
   });
 
-  safeModeToggle.addEventListener('change', () => {
-    checkModel();
-  });
+  if (safeModeCheckbox) {
+    safeModeCheckbox.addEventListener('change', () => {
+      checkModel();
+    });
+  }
 
-  const closeBtn = document.querySelector('.close-btn');
+  const closeBtn = document.querySelector('#welcomeBox .close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
       document.getElementById('welcomeBox').style.display = 'none';
     });
   }
+
+  // Populate dropdowns on load
+  populateSelect(document.getElementById('platform'), 'platforms.json');
+  populateSelect(document.getElementById('style'), 'styles.json');
+  populateSelect(document.getElementById('aspect'), 'aspect-ratios.json');
+  populateSelect(document.getElementById('qualityPackOptions'), 'quality-packs.json');
+  populateSelect(document.getElementById('negativePackOptions'), 'negative-terms.json');
 
   function addBubble() {
     const bubble = document.createElement('div');
