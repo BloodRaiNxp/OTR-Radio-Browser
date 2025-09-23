@@ -1,42 +1,45 @@
+
 # PromptBuilder.Xp
 
-**PromptBuilder.Xp** is a modular, browser-based prompt builder designed for Piclumen models.  
-It helps artists, prompt engineers, and creators build high-quality, reproducible prompts with precision and style.
+**Version:** 1.0.0  
+**Created:** September 23, 2025  
+**Author:** BloodRaiNxp  
+**License:** MIT
 
+## 🧠 Overview
+
+PromptBuilder.Xp is a platform-agnostic AI art and video prompt generator designed for modularity, contributor safety, and sleek UI. It supports dynamic dropdowns, bubble-based prompt construction, safe mode filtering, and dark mode.
+
+## 🚀 Features
+
+- Dynamic dropdowns powered by JSON configs
+- Bubble-based prompt builder with lock/remove logic
+- Flagged word filtering and safe mode toggle
+- Dark mode with localStorage persistence
+- Tooltip guidance and responsive layout
+- Modular architecture for easy expansion
 🔗 **Live demo**: [https://bloodrainxp.github.io/PromptBuilder.Xp/](https://bloodrainxp.github.io/PromptBuilder.Xp/)
 
 ---
 
-## ✨ Features
 
-- ✅ Piclumen-only model selector
-- 🎨 Full style dropdown with 30+ presets
-- 📐 19 aspect ratio options for print and screen
-- 🧠 Modular quality pack with curated enhancements
-- 🚫 Negative prompt builder with safety filters
-- 🌓 Dark mode toggle with localStorage persistence
-- 📋 Clipboard copy with error handling
-- 🧪 Advanced prompt detection (preserves syntax)
-- 🔒 Safe mode to block flagged terms
+## 🛡️ Contributor-Safe Philosophy
 
----
+All logic is modular and JSON-driven. No external dependencies or runtime calls. Flagged terms are filtered before prompt generation. UI is designed for clarity, accessibility, and reproducibility.
 
-## 🧰 How to Use
+## 📦 How to Use
 
-1. Open the [live demo](https://bloodrainxp.github.io/PromptBuilder.Xp/)
-2. Choose your model, style, and aspect ratio
-3. Write your main prompt
-4. Select quality and negative modifiers
-5. Click **Generate Prompt**
-6. Copy it to your clipboard and paste into Piclumen
+1. Open `index.html` in any modern browser.
+2. Select platform, model, style, and aspect ratio.
+3. Add bubbles to build your prompt.
+4. Toggle safe mode or apply quality modifiers.
+5. Click **Generate Prompt** and copy the result.
 
----
+## 🔧 Future Enhancements
 
-## 🧠 Philosophy
-
-PromptBuilder.Xp was built with fidelity, modularity, and user empowerment in mind.  
-It respects your original logic, avoids regressions, and gives you full control over every modifier.
-
+- Optional AI-powered prompt suggestions
+- Style preview panel using Colormind or Google Fonts
+- Export to platform-specific formats
 ---
 
 ## 🛠 Built By
