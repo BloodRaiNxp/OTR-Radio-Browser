@@ -1,0 +1,7 @@
+[
+  { "value": "(((worst quality:1.5)))", "label": "(((worst quality:1.5)))" },
+  { "value": "(((low quality:1.5)))", "label": "(((low quality:1.5)))" },
+  { "value": "(((bad anatomy:3.0)))", "label": "(((bad anatomy:3.0)))" },
+  { "value": "blurry", "label": "Blurry" },
+  { "value": "distorted", "label": "Distorted" }
+]
