@@ -1,0 +1,22 @@
+{
+  "Physical Actions": [
+    { "value": "running", "label": "Running" },
+    { "value": "jumping", "label": "Jumping" },
+    { "value": "floating", "label": "Floating" },
+    { "value": "dancing", "label": "Dancing" },
+    { "value": "fighting", "label": "Fighting" }
+  ],
+  "Gestures & Poses": [
+    { "value": "gazing", "label": "Gazing" },
+    { "value": "kneeling", "label": "Kneeling" },
+    { "value": "reaching", "label": "Reaching" },
+    { "value": "standing still", "label": "Standing Still" },
+    { "value": "arms crossed", "label": "Arms Crossed" }
+  ],
+  "Magical / Abstract": [
+    { "value": "casting spell", "label": "Casting Spell" },
+    { "value": "summoning", "label": "Summoning" },
+    { "value": "teleporting", "label": "Teleporting" },
+    { "value": "transforming", "label": "Transforming" }
+  ]
+}
