@@ -16,12 +16,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const negativePrompt = document.getElementById('negativePrompt');
   const negativeHelper = document.getElementById('negativeHelper');
 
+  const applyWeighting = document.getElementById('applyWeighting');
+  const preserveCasing = document.getElementById('preserveCasing');
+
   // Toggle between manual and block mode
   manualToggle?.addEventListener('change', () => {
     const useManual = manualToggle.checked;
     manualPromptSection.style.display = useManual ? 'block' : 'none';
     blockPromptSection.style.display = useManual ? 'none' : 'block';
   });
+
+  // Format modifiers with weighting and casing
+  function formatModifiers(modifiers, applyWeighting, preserveCasing) {
+    return modifiers.map(mod => {
+      let term = preserveCasing ? mod : mod.toLowerCase();
+      return applyWeighting ? `(${term})` : term;
+    });
+  }
+
+  // Get selected enhancement modifiers
+  function getSelectedModifiers() {
+    const qualitySelect = document.getElementById('quality');
+    const selected = Array.from(qualitySelect?.selectedOptions || []).map(opt => opt.value);
+    return formatModifiers(selected, applyWeighting?.checked, preserveCasing?.checked);
+  }
 
   // Generate prompt
   generatePromptBtn?.addEventListener('click', () => {
@@ -35,14 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
         'subject',
         'action',
         'descriptors',
-        'quality',
         'environment'
       ];
       const parts = blocks.map(id => {
         const el = document.getElementById(id);
         return el?.value || '';
       }).filter(Boolean);
-      prompt = parts.join(', ');
+
+      const modifiers = getSelectedModifiers();
+      const fullPrompt = [...parts, ...modifiers].join(', ');
+      prompt = fullPrompt;
     }
 
     // Safe mode scan
