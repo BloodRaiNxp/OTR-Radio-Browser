@@ -1,0 +1,35 @@
+{
+  "types": [
+    { "id": "imageType", "label": "Image Type" },
+    { "id": "subject", "label": "Subject" },
+    { "id": "action", "label": "Action" },
+    { "id": "descriptors", "label": "Descriptors" },
+    { "id": "environment", "label": "Environment" },
+    { "id": "camera", "label": "Camera (Video)" }
+  ],
+  "imageType": [
+    { "value": "photo", "label": "Photo" },
+    { "value": "painting", "label": "Painting" },
+    { "value": "sketch", "label": "Sketch" }
+  ],
+  "subject": [
+    { "value": "astronaut", "label": "Astronaut" },
+    { "value": "fox", "label": "Fox" },
+    { "value": "warrior", "label": "Warrior" }
+  ],
+  "action": [
+    { "value": "dancing", "label": "Dancing" },
+    { "value": "flying", "label": "Flying" },
+    { "value": "running", "label": "Running" }
+  ],
+  "descriptors": [
+    { "value": "glowing", "label": "Glowing" },
+    { "value": "surreal", "label": "Surreal" },
+    { "value": "ethereal", "label": "Ethereal" }
+  ],
+  "environment": [
+    { "value": "forest", "label": "Forest" },
+    { "value": "cityscape", "label": "Cityscape" },
+    { "value": "cosmic", "label": "Cosmic" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "camera": [
+    { "value": "panning left", "label": "Panning Left" },
+    { "value": "zoom in", "label": "Zoom In" },
+    { "value": "tracking shot", "label": "Tracking Shot" },
+    { "value": "aerial view", "label": "Aerial View" }
+  ]
+}
