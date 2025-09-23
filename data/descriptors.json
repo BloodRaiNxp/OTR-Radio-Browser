@@ -1,0 +1,30 @@
+{
+  "Physical Traits": [
+    { "value": "young", "label": "Young" },
+    { "value": "elderly", "label": "Elderly" },
+    { "value": "muscular", "label": "Muscular" },
+    { "value": "slim", "label": "Slim" },
+    { "value": "scarred", "label": "Scarred" }
+  ],
+  "Clothing & Accessories": [
+    { "value": "hooded cloak", "label": "Hooded Cloak" },
+    { "value": "armor", "label": "Armor" },
+    { "value": "robes", "label": "Robes" },
+    { "value": "goggles", "label": "Goggles" },
+    { "value": "jewelry", "label": "Jewelry" }
+  ],
+  "Mood & Expression": [
+    { "value": "serene", "label": "Serene" },
+    { "value": "angry", "label": "Angry" },
+    { "value": "mysterious", "label": "Mysterious" },
+    { "value": "joyful", "label": "Joyful" },
+    { "value": "determined", "label": "Determined" }
+  ],
+  "Style & Influence": [
+    { "value": "cyberpunk", "label": "Cyberpunk" },
+    { "value": "steampunk", "label": "Steampunk" },
+    { "value": "fantasy", "label": "Fantasy" },
+    { "value": "gothic", "label": "Gothic" },
+    { "value": "tribal", "label": "Tribal" }
+  ]
+}
