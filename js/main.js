@@ -5,13 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const promptOutput = document.getElementById('promptOutput');
   const safeModeCheckbox = document.getElementById('safeMode');
 
-  addBubbleBtn.addEventListener('click', () => {
-    addBubble();
-  });
+  if (addBubbleBtn) {
+    addBubbleBtn.addEventListener('click', () => {
+      addBubble();
+    });
+  }
 
-  generatePromptBtn.addEventListener('click', () => {
-    generatePrompt();
-  });
+  if (generatePromptBtn) {
+    generatePromptBtn.addEventListener('click', () => {
+      generatePrompt();
+    });
+  }
 
   if (safeModeCheckbox) {
     safeModeCheckbox.addEventListener('change', () => {
