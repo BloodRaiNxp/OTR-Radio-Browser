@@ -7,8 +7,8 @@ function populateSelect(selectElement, jsonFile) {
       if (Array.isArray(data)) {
         data.forEach(item => {
           const option = document.createElement('option');
-          option.value = item.value;
-          option.textContent = item.label;
+          option.value = item.value || item;
+          option.textContent = item.label || item;
           selectElement.appendChild(option);
         });
       } else if (typeof data === 'object') {
@@ -16,10 +16,10 @@ function populateSelect(selectElement, jsonFile) {
           const optgroup = document.createElement('optgroup');
           optgroup.label = key;
 
-          values.forEach(value => {
+          values.forEach(item => {
             const option = document.createElement('option');
-            option.value = value;
-            option.textContent = value;
+            option.value = item.value || item;
+            option.textContent = item.label || item;
             optgroup.appendChild(option);
           });
 
@@ -37,7 +37,7 @@ function populateSelect(selectElement, jsonFile) {
 }
 
 function toggleDarkMode() {
-  const isDarkMode = document.getElementById('darkModeToggle').checked;
+  const isDarkMode = document.getElementById('darkModeToggle')?.checked;
   document.body.classList.toggle('dark-mode', isDarkMode);
   localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
 }
@@ -49,16 +49,14 @@ function checkModel() {
 
   if (!safeMode || !negativePrompt || !negativeHelper) return;
 
-  const flaggedWords = ['nsfw', 'gore', 'nudity', 'violence', 'explicit'];
+  const flaggedWords = ["nsfw", "gore", "nudity", "violence", "explicit"];
   const input = negativePrompt.value.toLowerCase();
 
   if (safeMode.checked) {
     const flagged = flaggedWords.filter(word => input.includes(word));
-    if (flagged.length > 0) {
-      negativeHelper.textContent = `⚠️ Contains flagged terms: ${flagged.join(', ')}`;
-    } else {
-      negativeHelper.textContent = '';
-    }
+    negativeHelper.textContent = flagged.length > 0
+      ? `⚠️ Contains flagged terms: ${flagged.join(', ')}`
+      : '';
   } else {
     negativeHelper.textContent = '';
   }
@@ -71,7 +69,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (darkToggle) darkToggle.checked = true;
   }
 
-  if (darkToggle) {
-    darkToggle.addEventListener('change', toggleDarkMode);
-  }
+  darkToggle?.addEventListener('change', toggleDarkMode);
 });
