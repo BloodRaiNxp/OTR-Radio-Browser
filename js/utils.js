@@ -1,3 +1,11 @@
+/*
+  PromptBuilder.Xp
+  Copyright (c) 2025 BloodRaiNxp
+  Version: 1.0.0
+  Created: September 23, 2025
+  Description: A platform-agnostic AI art and video prompt generator
+*/
+
 function populateSelect(selectElement, jsonFile) {
   fetch(`data/${jsonFile}`)
     .then(response => response.json())
@@ -49,13 +57,15 @@ function checkModel() {
 
   if (!safeMode || !negativePrompt || !negativeHelper) return;
 
-  const flaggedWords = ["nsfw", "gore", "nudity", "violence", "explicit"];
+  const flaggedWords = [
+    "nsfw", "gore", "nudity", "violence", "explicit", "titts", "blood", "kill", "rape"
+  ];
   const input = negativePrompt.value.toLowerCase();
 
   if (safeMode.checked) {
-    const flagged = flaggedWords.filter(word => input.includes(word));
-    negativeHelper.textContent = flagged.length > 0
-      ? `⚠️ Contains flagged terms: ${flagged.join(', ')}`
+    const detected = flaggedWords.filter(word => input.includes(word));
+    negativeHelper.textContent = detected.length > 0
+      ? `⚠️ Prompt hidden due to flagged terms: ${detected.join(", ")}`
       : '';
   } else {
     negativeHelper.textContent = '';
