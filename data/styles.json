@@ -1,0 +1,10 @@
+[
+  { "value": "Neon", "label": "Neon" },
+  { "value": "Fantasy", "label": "Fantasy" },
+  { "value": "Van Gogh", "label": "Van Gogh" },
+  { "value": "Sci-Fi", "label": "Sci-Fi" },
+  { "value": "Comic", "label": "Comic" },
+  { "value": "Pop Art", "label": "Pop Art" },
+  { "value": "1980s anime", "label": "1980's anime" },
+  { "value": "3D animation", "label": "3D animation" }
+]
