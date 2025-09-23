@@ -8,112 +8,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="BloodRaiNxp">
-  <meta name="description" content="PromptBuilder.Xp: A tool for generating AI art and video prompts across multiple platforms">
-  <meta name="copyright" content="Copyright (c) 2025 BloodRaiNxp">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PromptBuilder.Xp</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div id="welcomeBox" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2>Welcome to PromptBuilder.Xp</h2>
-      <p>Your toolkit for crafting AI art and video prompts for multiple platforms.</p>
-    </div>
-  </div>
   <div class="container">
     <div class="header">
-      <img src="assets/logo.png" alt="PromptBuilder.Xp Logo" class="logo">
-      <div class="dark-mode-toggle">
-        <label>
-          <input type="checkbox" id="darkModeToggle"> Dark Mode
-        </label>
-      </div>
+      <img src="assets/logo.png" alt="PromptBuilder Logo" class="logo" />
+      <h1>PromptBuilder.Xp</h1>
     </div>
-    <h1>PromptBuilder.Xp</h1>
 
     <div class="input-section">
-      <label for="platform">Platform <span class="tooltip" data-tooltip="Select the AI platform to generate the prompt for">?</span></label>
-      <select id="platform">
-        <option value="" disabled selected>Select a platform</option>
-      </select>
+      <label for="platform">Platform</label>
+      <select id="platform"></select>
 
-      <label for="model">Model <span class="tooltip" data-tooltip="Select the model for the chosen platform">?</span></label>
-      <select id="model" disabled>
-        <option value="" disabled selected>Select a platform first</option>
-      </select>
+      <label for="style">Style</label>
+      <select id="style"></select>
 
-      <label for="style">Style <span class="tooltip" data-tooltip="Choose an artistic style for the prompt">?</span></label>
-      <select id="style">
-        <option value="" disabled selected>Select a style</option>
-      </select>
-
-      <label for="aspect">Aspect Ratio <span class="tooltip" data-tooltip="Select the aspect ratio for the output">?</span></label>
+      <label for="aspect">Aspect Ratio</label>
       <select id="aspect"></select>
 
-      <label for="promptType">Prompt Type <span class="tooltip" data-tooltip="Choose between Image or Video prompt">?</span></label>
-      <select id="promptType">
-        <option value="image">Image</option>
-        <option value="video">Video</option>
-      </select>
+      <label for="qualityPackOptions">Enhancement Packs</label>
+      <select id="qualityPackOptions"></select>
 
-      <label for="promptBuilder">Prompt Builder <span class="tooltip" data-tooltip="Select categories (e.g., Subject, Action) and values (e.g., Warrior, Running) to build your prompt. Add bubbles for more components.">?</span></label>
-      <div id="promptBuilder" class="bubble-container">
-        <!-- Bubbles will be dynamically inserted here -->
-      </div>
-      <button id="randomPromptBtn">Randomize Prompt</button>
-      <button id="addBubbleBtn">Add Bubble</button>
+      <label for="negativePackOptions">Negative Prompt</label>
+      <select id="negativePackOptions"></select>
 
-      <label for="qualityPackOptions">Quality Modifiers <span class="tooltip" data-tooltip="Select multiple modifiers to enhance the prompt (Ctrl/Cmd for multiple)">?</span>
-        <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
-      </label>
-      <select id="qualityPackOptions" multiple size="10"></select>
+      <label for="negativePrompt">Negative Prompt Text</label>
+      <textarea id="negativePrompt" placeholder="Enter negative terms..."></textarea>
+      <span id="negativeHelper" class="helper-text"></span>
 
       <div class="checkbox-group">
-        <input type="checkbox" id="weights">
-        <label for="weights">Apply weighting logic <span class="tooltip" data-tooltip="Wraps key terms in parentheses for emphasis">?</span></label>
+        <input type="checkbox" id="safeMode" />
+        <label for="safeMode">Safe Mode</label>
       </div>
 
       <div class="checkbox-group">
-        <input type="checkbox" id="preserveCase">
-        <label for="preserveCase">Preserve original casing <span class="tooltip" data-tooltip="Keeps capitalization as entered">?</span></label>
+        <input type="checkbox" id="darkModeToggle" />
+        <label for="darkModeToggle">Dark Mode</label>
       </div>
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="safeMode">
-        <label for="safeMode">Safe mode <span class="tooltip" data-tooltip="Blocks prompts with sensitive terms">?</span></label>
-      </div>
-       <span id="negativeHelper" class="helper-text"></span>
-      <label for="negativePackOptions">Negative Prompt <span class="tooltip" data-tooltip="Select terms to avoid in the output (Ctrl/Cmd for multiple)">?</span>
-        <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
-      </label>
-      <select id="negativePackOptions" multiple size="8"></select>
-
-      <label for="negativePrompt">Custom Negative Prompt <span class="tooltip" data-tooltip="Enter custom terms to avoid in the output">?</span></label>
-      <textarea id="negativePrompt" rows="2" placeholder="Optional: things to avoid..."></textarea>
-
-    </div>
-
-    <div class="button-section">
-      <button id="generateBtn">Generate Prompt</button>
-      <button id="copyBtn">Copy to Clipboard</button>
     </div>
 
     <div class="output-section">
-      <h2>Generated Prompt</h2>
-      <div id="output"></div>
+      <h3>Prompt Bubbles</h3>
+      <div id="bubbleContainer" class="bubble-container"></div>
+
+      <div class="button-section">
+        <button id="addBubbleBtn">Add Bubble</button>
+        <button id="generatePromptBtn">Generate Prompt</button>
+      </div>
+
+      <h3>Generated Prompt</h3>
+      <div id="promptOutput"></div>
+    </div>
+  </div>
+
+  <div id="welcomeBox" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">✖</span>
+      <p>Welcome to PromptBuilder.Xp! Start by selecting a platform and style.</p>
     </div>
   </div>
 
   <footer>Copyright &copy; 2025 BloodRaiNxp. All rights reserved.</footer>
 
-  <script src="js/utils.js"></script>
-  <script src="js/tooltip.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/tooltip.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
-
-
