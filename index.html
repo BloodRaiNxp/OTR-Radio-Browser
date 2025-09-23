@@ -36,62 +36,62 @@
     <h1>PromptBuilder.Xp</h1>
 
     <div class="input-section">
-      <label for="platform">Platform <span class="help-icon" data-help="platform">?</span></label>
+      <label for="platform">Platform <span class="tooltip" data-tooltip="Select the AI platform to generate the prompt for">?</span></label>
       <select id="platform">
         <option value="" disabled selected>Select a platform</option>
       </select>
 
-      <label for="model">Model <span class="help-icon" data-help="model">?</span></label>
+      <label for="model">Model <span class="tooltip" data-tooltip="Select the model for the chosen platform">?</span></label>
       <select id="model" disabled>
         <option value="" disabled selected>Select a platform first</option>
       </select>
 
-      <label for="style">Style <span class="help-icon" data-help="style">?</span></label>
+      <label for="style">Style <span class="tooltip" data-tooltip="Choose an artistic style for the prompt">?</span></label>
       <select id="style">
         <option value="" disabled selected>Select a style</option>
       </select>
 
-      <label for="aspect">Aspect Ratio <span class="help-icon" data-help="aspect">?</span></label>
+      <label for="aspect">Aspect Ratio <span class="tooltip" data-tooltip="Select the aspect ratio for the output">?</span></label>
       <select id="aspect"></select>
 
-      <label for="promptType">Prompt Type <span class="help-icon" data-help="promptType">?</span></label>
+      <label for="promptType">Prompt Type <span class="tooltip" data-tooltip="Choose between Image or Video prompt">?</span></label>
       <select id="promptType">
         <option value="image">Image</option>
         <option value="video">Video</option>
       </select>
 
-      <label>Prompt Builder <span class="help-icon" data-help="promptBuilder">?</span></label>
+      <label for="promptBuilder">Prompt Builder <span class="tooltip" data-tooltip="Select categories (e.g., Subject, Action) and values (e.g., Warrior, Running) to build your prompt. Add bubbles for more components.">?</span></label>
       <div id="promptBuilder" class="bubble-container">
         <!-- Bubbles will be dynamically inserted here -->
       </div>
       <button id="randomPromptBtn">Randomize Prompt</button>
       <button id="addBubbleBtn">Add Bubble</button>
 
-      <label for="qualityPackOptions">Quality Modifiers <span class="help-icon" data-help="qualityPackOptions">?</span>
-        <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
-      </label>
+      <label for="qualityPackOptions">Quality Modifiers <span class="tooltip" data-tooltip="Select multiple modifiers to enhance the prompt (Ctrl/Cmd for multiple)">?</span>
+      <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
+     </label>
       <select id="qualityPackOptions" multiple size="10"></select>
 
       <div class="checkbox-group">
         <input type="checkbox" id="weights">
-        <label for="weights">Apply weighting logic <span class="help-icon" data-help="weights">?</span></label>
+        <label for="weights">Apply weighting logic <span class="tooltip" data-tooltip="Wraps key terms in parentheses for emphasis">?</span></label>
       </div>
       <div class="helper-text">Wraps key terms in parentheses for emphasis.</div>
 
       <div class="checkbox-group">
         <input type="checkbox" id="preserveCase">
-        <label for="preserveCase">Preserve original casing <span class="help-icon" data-help="preserveCase">?</span></label>
+        <label for="preserveCase">Preserve original casing <span class="tooltip" data-tooltip="Keeps capitalization as entered">?</span></label>
       </div>
       <div class="helper-text">Keeps capitalization as entered.</div>
 
       <div class="checkbox-group">
         <input type="checkbox" id="safeMode">
-        <label for="safeMode">Safe mode <span class="help-icon" data-help="safeMode">?</span></label>
+        <label for="safeMode">Safe mode <span class="tooltip" data-tooltip="Blocks prompts with sensitive terms">?</span></label>
       </div>
       <div class="helper-text">Blocks prompts with sensitive terms.</div>
 
-      <label for="negativePackOptions">Negative Terms <span class="help-icon" data-help="negativePackOptions">?</span>
-        <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
+      <label for="negativePackOptions">Negative Terms <span class="tooltip" data-tooltip="Select terms to avoid in the output (Ctrl/Cmd for multiple)">?</span>
+       <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
       </label>
       <select id="negativePackOptions" multiple size="8"></select>
 
@@ -118,3 +118,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
