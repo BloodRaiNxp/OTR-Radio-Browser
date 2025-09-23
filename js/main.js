@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   populateSelect('style', styles, true);
   populateSelect('aspect', aspects);
   populateSelect('qualityPackOptions', qualityPacks, false, true);
-  populateSelect('negativePackOptions', negativeTerms, false, false); // Set isGrouped = false
+  populateSelect('negativePackOptions', negativeTerms, false, false);
 
   // Initialize bubble system with one default bubble
   const bubbleContainer = document.getElementById('promptBuilder');
   addBubble(bubbleContainer, bubbleTypes);
 
   // Event listeners
-  document.getElementById('platform').addEventListener('change', () => {
+  document.getElementById('platform').addEventListener('change', async () => {
     const platformId = document.getElementById('platform').value;
     const platform = platforms.find(p => p.id === platformId);
     const modelSelect = document.getElementById('model');
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       modelSelect.innerHTML = '<option value="" disabled selected>Select a platform first</option>';
       modelSelect.disabled = true;
     }
-    checkModel();
+    await checkModel();
   });
 
   document.getElementById('model').addEventListener('change', checkModel);
@@ -133,6 +133,7 @@ function addBubble(container, bubbleTypes) {
   bubble.appendChild(removeBtn);
   bubble.appendChild(lockBtn);
   container.appendChild(bubble);
+  updateBubbleOptions(container, bubbleTypes); // Ensure values populate
 }
 
 async function updateBubbleOptions(container, bubbleTypes) {
@@ -154,4 +155,30 @@ async function updateBubbleOptions(container, bubbleTypes) {
       });
     }
   });
+}
+
+async function modelSupportsNegative(platformId, modelId) {
+  const platforms = await fetch('data/platforms.json').then(res => res.json());
+  const platform = platforms.find(p => p.id === platformId);
+  if (!platform) return false;
+  const model = platform.models.find(m => m.value === modelId);
+  return model ? model.supportsNegative : false;
+}
+
+async function checkModel() {
+  const platformId = document.getElementById('platform').value;
+  const model = document.getElementById('model').value;
+  const negativePrompt = document.getElementById('negativePrompt');
+  const negativePack = document.getElementById('negativePackOptions');
+
+  if (await modelSupportsNegative(platformId, model)) {
+    negativePrompt.disabled = false;
+    negativePack.disabled = false;
+    negativePrompt.placeholder = 'Optional: things to avoid...';
+  } else {
+    negativePrompt.disabled = true;
+    negativePack.disabled = true;
+    negativePrompt.placeholder = 'This model does not support negative prompts';
+    negativePrompt.value = '';
+  }
 }
