@@ -5,32 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const promptOutput = document.getElementById('promptOutput');
   const safeModeCheckbox = document.getElementById('safeMode');
 
-  if (addBubbleBtn) {
-    addBubbleBtn.addEventListener('click', () => {
-      addBubble();
-    });
-  }
-
-  if (generatePromptBtn) {
-    generatePromptBtn.addEventListener('click', () => {
-      generatePrompt();
-    });
-  }
-
-  if (safeModeCheckbox) {
-    safeModeCheckbox.addEventListener('change', () => {
-      checkModel();
-    });
-  }
+  addBubbleBtn?.addEventListener('click', () => addBubble());
+  generatePromptBtn?.addEventListener('click', () => generatePrompt());
+  safeModeCheckbox?.addEventListener('change', () => checkModel());
 
   const closeBtn = document.querySelector('#welcomeBox .close-btn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      document.getElementById('welcomeBox').style.display = 'none';
-    });
-  }
+  closeBtn?.addEventListener('click', () => {
+    document.getElementById('welcomeBox').style.display = 'none';
+  });
 
-  // Populate dropdowns on load
   populateSelect(document.getElementById('platform'), 'platforms.json');
   populateSelect(document.getElementById('style'), 'styles.json');
   populateSelect(document.getElementById('aspect'), 'aspect-ratios.json');
@@ -38,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   populateSelect(document.getElementById('negativePackOptions'), 'negative-terms.json');
 
   function addBubble() {
+    if (!bubbleContainer) return;
+
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
 
@@ -67,9 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     removeBtn.className = 'remove-btn';
     removeBtn.textContent = '✖';
     removeBtn.setAttribute('aria-label', 'Remove bubble');
-    removeBtn.addEventListener('click', () => {
-      bubble.remove();
-    });
+    removeBtn.addEventListener('click', () => bubble.remove());
 
     bubble.appendChild(typeSelect);
     bubble.appendChild(valueSelect);
@@ -83,12 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const promptParts = [];
 
     bubbles.forEach(bubble => {
-      const type = bubble.querySelector('.type-select').value;
-      const value = bubble.querySelector('.value-select').value;
+      const type = bubble.querySelector('.type-select')?.value;
+      const value = bubble.querySelector('.value-select')?.value;
       const locked = bubble.classList.contains('locked');
       if (type && value) {
-        const part = locked ? `(${value})` : value;
-        promptParts.push(part);
+        promptParts.push(locked ? `(${value})` : value);
       }
     });
 
