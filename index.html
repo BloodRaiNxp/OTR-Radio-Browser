@@ -21,20 +21,35 @@
     </header>
 
     <section class="input-section">
-      <label for="platform">Platform</label>
-      <select id="platform"></select>
+      <div class="checkbox-group">
+        <input type="checkbox" id="manualToggle" />
+        <label for="manualToggle">Use Manual Prompt</label>
+      </div>
 
-      <label for="style">Style</label>
-      <select id="style"></select>
+      <div id="manualPromptSection" style="display: none;">
+        <label for="manualPrompt">Manual Prompt</label>
+        <textarea id="manualPrompt" placeholder="Write your full prompt here..."></textarea>
+      </div>
 
-      <label for="aspect">Aspect Ratio</label>
-      <select id="aspect"></select>
+      <div id="blockPromptSection">
+        <label for="imageType">Image Type</label>
+        <select id="imageType"></select>
 
-      <label for="qualityPackOptions">Enhancement Packs</label>
-      <select id="qualityPackOptions"></select>
+        <label for="subject">Subject</label>
+        <select id="subject"></select>
 
-      <label for="negativePackOptions">Negative Prompt</label>
-      <select id="negativePackOptions"></select>
+        <label for="action">Subject Action</label>
+        <select id="action"></select>
+
+        <label for="descriptors">Subject Descriptors & Details</label>
+        <select id="descriptors"></select>
+
+        <label for="quality">Quality / Word Salad</label>
+        <select id="quality"></select>
+
+        <label for="environment">Environment / Background</label>
+        <select id="environment"></select>
+      </div>
 
       <label for="negativePrompt">Negative Prompt Text</label>
       <textarea id="negativePrompt" placeholder="Enter negative terms..."></textarea>
@@ -52,11 +67,7 @@
     </section>
 
     <section class="output-section">
-      <h3>Prompt Bubbles</h3>
-      <div id="bubbleContainer" class="bubble-container"></div>
-
       <div class="button-section">
-        <button id="addBubbleBtn">Add Bubble</button>
         <button id="generatePromptBtn">Generate Prompt</button>
       </div>
 
