@@ -40,6 +40,12 @@ body {
 .input-section, .output-section {
   margin-bottom: 30px;
 }
+.helper-text {
+  font-size: 0.85em;
+  color: #ff6b6b;
+  margin-top: 4px;
+  display: block;
+}
 
 .input-section label {
   display: block;
