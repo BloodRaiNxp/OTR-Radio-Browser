@@ -71,23 +71,31 @@ function populateSelect(id, data, hasPlaceholder = false, isGrouped = false) {
   }
   if (isGrouped) {
     for (const group in data) {
-      const optgroup = document.createElement('optgroup');
-      optgroup.label = group;
-      data[group].forEach(item => {
+      if (Array.isArray(data[group])) {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = group;
+        data[group].forEach(item => {
+          const option = document.createElement('option');
+          option.value = item.value;
+          option.textContent = item.label;
+          optgroup.appendChild(option);
+        });
+        select.appendChild(optgroup);
+      } else {
+        console.warn(`Expected array for data[${group}], got`, data[group]);
+      }
+    }
+  } else {
+    if (Array.isArray(data)) {
+      data.forEach(item => {
         const option = document.createElement('option');
         option.value = item.value;
         option.textContent = item.label;
-        optgroup.appendChild(option);
+        select.appendChild(option);
       });
-      select.appendChild(optgroup);
+    } else {
+      console.warn(`Expected array for data, got`, data);
     }
-  } else {
-    data.forEach(item => {
-      const option = document.createElement('option');
-      option.value = item.value;
-      option.textContent = item.label;
-      select.appendChild(option);
-    });
   }
 }
 
