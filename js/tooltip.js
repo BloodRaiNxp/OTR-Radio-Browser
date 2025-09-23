@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tooltipBox.style.padding = '5px 10px';
       tooltipBox.style.borderRadius = '4px';
       tooltipBox.style.zIndex = '1000';
-      tooltipBox.style.top = `${e.clientY + 10}px`;
-      tooltipBox.style.left = `${e.clientX + 10}px`;
+      // Position near the ? icon
+      const rect = tooltip.getBoundingClientRect();
+      tooltipBox.style.top = `${rect.bottom + window.scrollY + 5}px`;
+      tooltipBox.style.left = `${rect.left + window.scrollX}px`;
       document.body.appendChild(tooltipBox);
       setTimeout(() => tooltipBox.remove(), 3000);
     });
