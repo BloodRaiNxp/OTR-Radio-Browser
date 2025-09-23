@@ -1,853 +1,120 @@
+<!--
+  PromptBuilder.Xp
+  Copyright (c) 2025 BloodRaiNxp
+  Version: 1.0.0
+  Created: September 23, 2025
+  Description: A platform-agnostic AI art and video prompt generator
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="BloodRaiNxp">
+  <meta name="description" content="PromptBuilder.Xp: A tool for generating AI art and video prompts across multiple platforms">
+  <meta name="copyright" content="Copyright (c) 2025 BloodRaiNxp">
   <title>PromptBuilder.Xp</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 20px;
-      background-image: url('https://via.placeholder.com/1000x2000?text=Subtle+Pattern');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      transition: background-color 0.3s, color 0.3s;
-      color: #333;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .logo {
-      max-width: 150px;
-      height: auto;
-    }
-
-    textarea, select, input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0 20px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 1em;
-      transition: border-color 0.3s;
-    }
-
-    textarea:focus, select:focus, input[type="text"]:focus {
-      border-color: #0078d4;
-      outline: none;
-    }
-
-    .checkbox-group {
-      margin: 15px 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .checkbox-group label {
-      margin-left: 8px;
-      font-size: 1em;
-    }
-
-    .helper-text {
-      font-size: 0.85em;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 12px 25px;
-      background-color: #0078d4;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background-color 0.3s, transform 0.1s;
-    }
-
-    button:hover {
-      background-color: #005fa3;
-      transform: translateY(-1px);
-    }
-
-    button:active {
-      transform: translateY(0);
-    }
-
-    #output {
-      white-space: pre-wrap;
-      background: #f9f9f9;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      margin-top: 20px;
-      color: #333;
-      font-size: 0.95em;
-    }
-
-    .dark-mode {
-      background-color: #1e1e1e;
-      color: #ddd;
-    }
-
-    .dark-mode .container {
-      background-color: #2c2c2c;
-    }
-
-    .dark-mode textarea,
-    .dark-mode select,
-    .dark-mode input[type="text"] {
-      background-color: #3a3a3a;
-      color: #eee;
-      border-color: #555;
-    }
-
-    .dark-mode .helper-text {
-      color: #aaa;
-    }
-
-    .dark-mode #output {
-      background: #2c2c2c;
-      color: #fff;
-      border-color: #555;
-    }
-
-    .dark-mode-toggle {
-      margin: 0;
-      padding: 5px 10px;
-    }
-
-    .dark-mode .dark-mode-toggle {
-      background-color: #2c2c2c;
-      border-color: #555;
-    }
-
-    select option {
-      color: #000;
-    }
-
-    .dark-mode select option {
-      color: #eee;
-    }
-
-    select:disabled option {
-      color: #888;
-    }
-
-    .modal {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background-color: #fff;
-      margin: 15% auto;
-      padding: 20px;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 400px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
-
-    .close-btn {
-      color: #aaa;
-      float: right;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .close-btn:hover,
-    .close-btn:focus {
-      color: #000;
-      text-decoration: none;
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      font-size: 1.5em;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1em;
-    }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #0078d4;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    .help-icon {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      background: #0078d4;
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 16px;
-      cursor: pointer;
-      margin-left: 5px;
-      font-size: 12px;
-      vertical-align: middle;
-    }
-
-    .help-icon:hover {
-      background: #005fa3;
-    }
-
-    .help-tooltip {
-      display: none;
-      position: absolute;
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      z-index: 1001;
-      max-width: 200px;
-      font-size: 0.9em;
-      color: #333;
-    }
-
-    .dark-mode .help-tooltip {
-      background: #2c2c2c;
-      border-color: #555;
-      color: #ddd;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div id="welcomeBox" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="document.getElementById('welcomeBox').style.display='none'">&times;</span>
+      <span class="close-btn">&times;</span>
       <h2>Welcome to PromptBuilder.Xp</h2>
-      <p>Your modular prompt toolkit for Piclumen. 🎨</p>
+      <p>Your toolkit for crafting AI art and video prompts for multiple platforms.</p>
     </div>
   </div>
   <div class="container">
     <div class="header">
-      <img src="https://via.placeholder.com/150x50?text=PromptBuilder.Xp+Logo" alt="PromptBuilder.Xp Logo" class="logo">
-      <div class="dark-mode-toggle" style="float: right; margin-top: 10px;">
+      <img src="assets/logo.png" alt="PromptBuilder.Xp Logo" class="logo">
+      <div class="dark-mode-toggle">
         <label>
-          <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()" />
-          Dark Mode
+          <input type="checkbox" id="darkModeToggle"> Dark Mode
         </label>
       </div>
     </div>
     <h1>PromptBuilder.Xp</h1>
 
-    <label for="model">Piclumen Model <span class="help-icon" onclick="showHelp('model')">?</span></label>
-    <select id="model" onchange="checkModel()">
-      <option value="ART V1">ART V1</option>
-      <option value="Realistic V2">Realistic V2</option>
-      <option value="Anime V2">Anime V2</option>
-      <option value="Lineart V1">Lineart V1</option>
-      <option value="Nano Banana">Nano Banana</option>
-      <option value="FLUX.1 Krea">FLUX.1 Krea</option>
-      <option value="Namiya">Namiya</option>
-      <option value="FLUX.1 Kontext">FLUX.1 Kontext</option>
-      <option value="Primo">Primo</option>
-      <option value="Pony Diffusion V6">Pony Diffusion V6</option>
-      <option value="FLUX.1-schnell">FLUX.1-schnell</option>
-      <option value="FLUX.1-dev">FLUX.1-dev</option>
-      <option value="Picflow">Picflow</option>
-    </select>
+    <div class="input-section">
+      <label for="platform">Platform <span class="help-icon" data-help="platform">?</span></label>
+      <select id="platform">
+        <option value="" disabled selected>Select a platform</option>
+      </select>
 
-    <label for="style">Style <span class="help-icon" onclick="showHelp('style')">?</span></label>
-    <select id="style">
-      <option value="" disabled selected>Select a style</option>
-      <option value="Neon">Neon</option>
-      <option value="Fantasy">Fantasy</option>
-      <option value="Van Gogh">Van Gogh</option>
-      <option value="GTA">GTA</option>
-      <option value="Comic">Comic</option>
-      <option value="Pop Art">Pop Art</option>
-      <option value="Sci-Fi">Sci-Fi</option>
-      <option value="Simple">Simple</option>
-      <option value="1980's anime">1980's anime</option>
-      <option value="3D animation">3D animation</option>
-      <option value="Caricature">Caricature</option>
-      <option value="Dark fantasy">Dark fantasy</option>
-      <option value="Poster design">Poster design</option>
-      <option value="Pixel art">Pixel art</option>
-      <option value="Monochrome">Monochrome</option>
-      <option value="Graffiti">Graffiti</option>
-      <option value="Surrealism">Surrealism</option>
-      <option value="Glitch">Glitch</option>
-      <option value="Silhouette">Silhouette</option>
-      <option value="Flat Papercraft">Flat Papercraft</option>
-      <option value="Painting">Painting</option>
-      <option value="Sketch">Sketch</option>
-      <option value="Watercolor">Watercolor</option>
-      <option value="Oil Painting">Oil Painting</option>
-      <option value="Lineart">Lineart</option>
-      <option value="Depth of field">Depth of field</option>
-      <option value="Film noir">Film noir</option>
-      <option value="Long exposure">Long exposure</option>
-      <option value="Analog film">Analog film</option>
-      <option value="Cinematic">Cinematic</option>
-      <option value="Faded Photo">Faded Photo</option>
-      <option value="Tilt Shift">Tilt Shift</option>
-    </select>
+      <label for="model">Model <span class="help-icon" data-help="model">?</span></label>
+      <select id="model" disabled>
+        <option value="" disabled selected>Select a platform first</option>
+      </select>
 
-    <label for="aspect">Aspect Ratio <span class="help-icon" onclick="showHelp('aspect')">?</span></label>
-    <select id="aspect">
-      <option value="1:1">1:1</option>
-      <option value="5:6">5:6</option>
-      <option value="6:5">6:5</option>
-      <option value="4:5">4:5</option>
-      <option value="5:4">5:4</option>
-      <option value="3:4">3:4</option>
-      <option value="4:3">4:3</option>
-      <option value="2:3">2:3</option>
-      <option value="3:2">3:2</option>
-      <option value="5:8">5:8</option>
-      <option value="8:5">8:5</option>
-      <option value="9:16">9:16</option>
-      <option value="16:9">16:9</option>
-      <option value="1:2">1:2</option>
-      <option value="2:1">2:1</option>
-      <option value="9:19">9:19</option>
-      <option value="19:9">19:9</option>
-      <option value="9:21">9:21</option>
-      <option value="21:9">21:9</option>
-    </select>
+      <label for="style">Style <span class="help-icon" data-help="style">?</span></label>
+      <select id="style">
+        <option value="" disabled selected>Select a style</option>
+      </select>
 
-    <label for="prompt">Main Prompt <span class="help-icon" onclick="showHelp('prompt')">?</span></label>
-    <textarea id="prompt" rows="4" placeholder="Describe your image..."></textarea>
+      <label for="aspect">Aspect Ratio <span class="help-icon" data-help="aspect">?</span></label>
+      <select id="aspect"></select>
 
-    <label for="qualityPackOptions">Quality Pack Modifiers <span class="help-icon" onclick="showHelp('qualityPackOptions')">?</span> <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
-    <select id="qualityPackOptions" multiple size="15">
-      <optgroup label="LIGHTING & ATMOSPHERE">
-        <option value="ethereal glow">Ethereal glow</option>
-        <option value="bioluminescent">Bioluminescent</option>
-        <option value="moonlit haze">Moonlit haze</option>
-        <option value="mystical aura">Mystical aura</option>
-        <option value="enchanted twilight">Enchanted twilight</option>
-        <option value="radiant beams">Radiant beams</option>
-        <option value="starlit shimmer">Starlit shimmer</option>
-        <option value="volcanic embers">Volcanic embers</option>
-        <option value="golden hour luminescence">Golden hour luminescence</option>
-        <option value="arcane illumination">Arcane illumination</option>
-        <option value="celestial radiance">Celestial radiance</option>
-        <option value="dreamlike haze">Dreamlike haze</option>
-        <option value="flickering candlelight">Flickering candlelight</option>
-        <option value="cosmic glow">Cosmic glow</option>
-        <option value="phantom luminescence">Phantom luminescence</option>
-        <option value="aurora borealis sky">Aurora borealis sky</option>
-        <option value="divine radiance">Divine radiance</option>
-        <option value="star-forged light">Star-forged light</option>
-        <option value="enchanted shadows">Enchanted shadows</option>
-        <option value="faintly glowing mist">Faintly glowing mist</option>
-        <option value="ghostly afterglow">Ghostly afterglow</option>
-        <option value="firefly-filled air">Firefly-filled air</option>
-        <option value="eclipsed moonlight">Eclipsed moonlight</option>
-        <option value="whispering stardust">Whispering stardust</option>
-        <option value="twilight infused fog">Twilight infused fog</option>
-        <option value="prism-like reflections">Prism-like reflections</option>
-      </optgroup>
-      <optgroup label="TEXTURES & SURFACES">
-        <option value="crystalline structures">Crystalline structures</option>
-        <option value="veined marble">Veined marble</option>
-        <option value="ancient runes">Ancient runes</option>
-        <option value="weathered stone">Weathered stone</option>
-        <option value="iridescent scales">Iridescent scales</option>
-        <option value="celestial silk">Celestial silk</option>
-        <option value="frozen mist">Frozen mist</option>
-        <option value="thorn-covered">Thorn-covered</option>
-        <option value="shadowy tendrils">Shadowy tendrils</option>
-        <option value="cosmic dust">Cosmic dust</option>
-        <option value="enchanted ice">Enchanted ice</option>
-        <option value="moonstone texture">Moonstone texture</option>
-        <option value="silver-threaded fabric">Silver-threaded fabric</option>
-        <option value="dragonbone patterns">Dragonbone patterns</option>
-        <option value="gilded engravings">Gilded engravings</option>
-        <option value="star-forged metal">Star-forged metal</option>
-        <option value="ethereal glass">Ethereal glass</option>
-        <option value="opalescent waves">Opalescent waves</option>
-        <option value="bloodstained parchment">Bloodstained parchment</option>
-        <option value="timeworn leather">Timeworn leather</option>
-        <option value="whispering vines">Whispering vines</option>
-        <option value="ghostly inscriptions">Ghostly inscriptions</option>
-        <option value="bioluminescent moss">Bioluminescent moss</option>
-        <option value="arcane-infused bark">Arcane-infused bark</option>
-        <option value="obsidian reflections">Obsidian reflections</option>
-        <option value="meteoric ore">Meteoric ore</option>
-      </optgroup>
-      <optgroup label="MAGICAL & MYSTICAL ELEMENTS">
-        <option value="arcane sigils">Arcane sigils</option>
-        <option value="floating islands">Floating islands</option>
-        <option value="ghostly apparitions">Ghostly apparitions</option>
-        <option value="sacred fire">Sacred fire</option>
-        <option value="shimmering portal">Shimmering portal</option>
-        <option value="dreamlike landscapes">Dreamlike landscapes</option>
-        <option value="enchanted vines">Enchanted vines</option>
-        <option value="whispering spirits">Whispering spirits</option>
-        <option value="eldritch tendrils">Eldritch tendrils</option>
-        <option value="fae lanterns">Fae lanterns</option>
-        <option value="alchemical symbols">Alchemical symbols</option>
-        <option value="runic enchantments">Runic enchantments</option>
-        <option value="teleportation rift">Teleportation rift</option>
-        <option value="crystallized magic">Crystallized magic</option>
-        <option value="orb of divination">Orb of divination</option>
-        <option value="eldritch vortex">Eldritch vortex</option>
-        <option value="elemental energy swirl">Elemental energy swirl</option>
-        <option value="time-warping aura">Time-warping aura</option>
-        <option value="celestial gateway">Celestial gateway</option>
-        <option value="ancestral echoes">Ancestral echoes</option>
-        <option value="shadowy enchantments">Shadowy enchantments</option>
-        <option value="reality distortion">Reality distortion</option>
-        <option value="living constellations">Living constellations</option>
-        <option value="enchanted snowfall">Enchanted snowfall</option>
-        <option value="prismatic beams">Prismatic beams</option>
-        <option value="infinite reflections">Infinite reflections</option>
-      </optgroup>
-      <optgroup label="NATURE & ENVIRONMENT">
-        <option value="otherworldly flora">Otherworldly flora</option>
-        <option value="luminescent mushrooms">Luminescent mushrooms</option>
-        <option value="dark enchanted forest">Dark enchanted forest</option>
-        <option value="floating crystals">Floating crystals</option>
-        <option value="glowing waterfalls">Glowing waterfalls</option>
-        <option value="mystic fog">Mystic fog</option>
-        <option value="celestial gardens">Celestial gardens</option>
-        <option value="thorny brambles">Thorny brambles</option>
-        <option value="overgrown ruins">Overgrown ruins</option>
-        <option value="eternal autumn">Eternal autumn</option>
-        <option value="ancient sacred tree">Ancient sacred tree</option>
-        <option value="frozen wasteland">Frozen wasteland</option>
-        <option value="rainbow-lit cavern">Rainbow-lit cavern</option>
-        <option value="shattered reality landscape">Shattered reality landscape</option>
-        <option value="enchanted lake">Enchanted lake</option>
-        <option value="time-frozen ruins">Time-frozen ruins</option>
-        <option value="living vines">Living vines</option>
-        <option value="bioluminescent ocean">Bioluminescent ocean</option>
-        <option value="ever-burning desert">Ever-burning desert</option>
-        <option value="gravity-defying terrain">Gravity-defying terrain</option>
-        <option value="whispering wind">Whispering wind</option>
-        <option value="starlit meadow">Starlit meadow</option>
-        <option value="shimmering tide pools">Shimmering tide pools</option>
-        <option value="sacred grove">Sacred grove</option>
-        <option value="eldritch swamp">Eldritch swamp</option>
-        <option value="fire-lit valley">Fire-lit valley</option>
-        <option value="echoing canyons">Echoing canyons</option>
-      </optgroup>
-      <optgroup label="CHARACTER ENHANCEMENTS">
-        <option value="fiery eyes">Fiery eyes</option>
-        <option value="glowing tattoos">Glowing tattoos</option>
-        <option value="shadowy cloak">Shadowy cloak</option>
-        <option value="silver armor">Silver armor</option>
-        <option value="runed gauntlets">Runed gauntlets</option>
-        <option value="antlers adorned with gems">Antlers adorned with gems</option>
-        <option value="flowing celestial robes">Flowing celestial robes</option>
-        <option value="dragon-scale armor">Dragon-scale armor</option>
-        <option value="glowing wings">Glowing wings</option>
-        <option value="phantom limbs">Phantom limbs</option>
-        <option value="spectral chains">Spectral chains</option>
-        <option value="halo of light">Halo of light</option>
-        <option value="bioluminescent hair">Bioluminescent hair</option>
-        <option value="ethereal antlers">Ethereal antlers</option>
-        <option value="radiant feathers">Radiant feathers</option>
-        <option value="timeworn staff">Timeworn staff</option>
-        <option value="arcane-infused weapons">Arcane-infused weapons</option>
-        <option value="floating crown">Floating crown</option>
-        <option value="elemental-infused hands">Elemental-infused hands</option>
-        <option value="luminous gemstone embedded skin">Luminous gemstone embedded skin</option>
-        <option value="star-dusted freckles">Star-dusted freckles</option>
-        <option value="mechanical prosthetics">Mechanical prosthetics</option>
-        <option value="eldritch scars">Eldritch scars</option>
-        <option value="glowing rune-covered skin">Glowing rune-covered skin</option>
-        <option value="ancient royal sigil tattoos">Ancient royal sigil tattoos</option>
-        <option value="spirit-bound armor">Spirit-bound armor</option>
-        <option value="crown of thorns">Crown of thorns</option>
-      </optgroup>
-      <optgroup label="CREATURES & BEASTS">
-        <option value="eldritch horrors">Eldritch horrors</option>
-        <option value="phantom wolves">Phantom wolves</option>
-        <option value="crystal golems">Crystal golems</option>
-        <option value="bioluminescent serpents">Bioluminescent serpents</option>
-        <option value="mechanical dragons">Mechanical dragons</option>
-        <option value="ethereal spirits">Ethereal spirits</option>
-        <option value="shadowy griffons">Shadowy griffons</option>
-        <option value="arcane-infused beasts">Arcane-infused beasts</option>
-        <option value="undead warriors">Undead warriors</option>
-        <option value="celestial phoenix">Celestial phoenix</option>
-        <option value="voidborn leviathans">Voidborn leviathans</option>
-        <option value="spectral foxes">Spectral foxes</option>
-        <option value="ancient titans">Ancient titans</option>
-        <option value="shapeshifting monstrosities">Shapeshifting monstrosities</option>
-        <option value="whispering wraiths">Whispering wraiths</option>
-        <option value="starborn unicorns">Starborn unicorns</option>
-        <option value="abyssal kraken">Abyssal kraken</option>
-        <option value="fire-forged wyverns">Fire-forged wyverns</option>
-        <option value="dream-consuming creatures">Dream-consuming creatures</option>
-        <option value="cosmic jellyfish">Cosmic jellyfish</option>
-        <option value="divine sentinels">Divine sentinels</option>
-        <option value="serpent of time">Serpent of time</option>
-        <option value="faebound guardians">Faebound guardians</option>
-        <option value="spirit-touched felines">Spirit-touched felines</option>
-        <option value="ghostly direwolves">Ghostly direwolves</option>
-        <option value="infernal hellhounds">Infernal hellhounds</option>
-        <option value="twilight griffins">Twilight griffins</option>
-      </optgroup>
-      <optgroup label="WEAPONS & ARTIFACTS">
-        <option value="enchanted blade">Enchanted blade</option>
-        <option value="shadowforged dagger">Shadowforged dagger</option>
-        <option value="staff of endless wisdom">Staff of endless wisdom</option>
-        <option value="phoenix-forged sword">Phoenix-forged sword</option>
-        <option value="crystalline bow">Crystalline bow</option>
-        <option value="lightning-infused spear">Lightning-infused spear</option>
-        <option value="eldritch grimoire">Eldritch grimoire</option>
-        <option value="celestial crown">Celestial crown</option>
-        <option value="chrono-gloves of time">Chrono-gloves of time</option>
-        <option value="rune-etched shield">Rune-etched shield</option>
-        <option value="arcane gauntlets">Arcane gauntlets</option>
-        <option value="living armor">Living armor</option>
-        <option value="sacred gemstone amulet">Sacred gemstone amulet</option>
-        <option value="fire-bound hammer">Fire-bound hammer</option>
-        <option value="moonstone dagger">Moonstone dagger</option>
-        <option value="chaos-infused wand">Chaos-infused wand</option>
-        <option value="star-carved talisman">Star-carved talisman</option>
-        <option value="reality-bending gauntlets">Reality-bending gauntlets</option>
-        <option value="blood-etched battleaxe">Blood-etched battleaxe</option>
-        <option value="dreamwoven scepter">Dreamwoven scepter</option>
-        <option value="eldritch-infused mask">Eldritch-infused mask</option>
-        <option value="spirit-bound relic">Spirit-bound relic</option>
-        <option value="alchemical philosopher’s stone">Alchemical philosopher’s stone</option>
-        <option value="artifact of infinite knowledge">Artifact of infinite knowledge</option>
-        <option value="song-infused flute">Song-infused flute</option>
-        <option value="astral-infused necklace">Astral-infused necklace</option>
-      </optgroup>
-      <optgroup label="STRUCTURES & LOCATIONS">
-        <option value="ancient floating citadel">Ancient floating citadel</option>
-        <option value="bioluminescent caves">Bioluminescent caves</option>
-        <option value="timeworn spire">Timeworn spire</option>
-        <option value="eldritch cathedral">Eldritch cathedral</option>
-        <option value="shadowed ruins">Shadowed ruins</option>
-        <option value="celestial palace">Celestial palace</option>
-        <option value="arcane library">Arcane library</option>
-        <option value="whispering tomb">Whispering tomb</option>
-        <option value="portal-infused shrine">Portal-infused shrine</option>
-        <option value="shattered dimensional gate">Shattered dimensional gate</option>
-        <option value="phantom fortress">Phantom fortress</option>
-        <option value="star-touched temple">Star-touched temple</option>
-        <option value="moonlit sanctuary">Moonlit sanctuary</option>
-        <option value="enchanted bridge">Enchanted bridge</option>
-        <option value="living tower">Living tower</option>
-        <option value="frozen throne">Frozen throne</option>
-        <option value="clockwork city">Clockwork city</option>
-        <option value="lost kingdom of light">Lost kingdom of light</option>
-        <option value="shifting labyrinth">Shifting labyrinth</option>
-        <option value="ember-lit village">Ember-lit village</option>
-        <option value="spectral harbor">Spectral harbor</option>
-        <option value="gilded halls of eternity">Gilded halls of eternity</option>
-        <option value="gravity-defying castle">Gravity-defying castle</option>
-        <option value="primordial battlefield">Primordial battlefield</option>
-        <option value="oceanic abyss kingdom">Oceanic abyss kingdom</option>
-      </optgroup>
-    </select>
+      <label for="promptType">Prompt Type <span class="help-icon" data-help="promptType">?</span></label>
+      <select id="promptType">
+        <option value="image">Image</option>
+        <option value="video">Video</option>
+      </select>
 
-    <div class="checkbox-group">
-      <input type="checkbox" id="weights" />
-      <label for="weights">Apply weighting logic <span class="help-icon" onclick="showHelp('weights')">?</span></label>
+      <label>Prompt Builder <span class="help-icon" data-help="promptBuilder">?</span></label>
+      <div id="promptBuilder" class="bubble-container">
+        <!-- Bubbles will be dynamically inserted here -->
+      </div>
+      <button id="randomPromptBtn">Randomize Prompt</button>
+      <button id="addBubbleBtn">Add Bubble</button>
+
+      <label for="qualityPackOptions">Quality Modifiers <span class="help-icon" data-help="qualityPackOptions">?</span>
+        <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
+      </label>
+      <select id="qualityPackOptions" multiple size="10"></select>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="weights">
+        <label for="weights">Apply weighting logic <span class="help-icon" data-help="weights">?</span></label>
+      </div>
+      <div class="helper-text">Wraps key terms in parentheses for emphasis.</div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="preserveCase">
+        <label for="preserveCase">Preserve original casing <span class="help-icon" data-help="preserveCase">?</span></label>
+      </div>
+      <div class="helper-text">Keeps capitalization as entered.</div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="safeMode">
+        <label for="safeMode">Safe mode <span class="help-icon" data-help="safeMode">?</span></label>
+      </div>
+      <div class="helper-text">Blocks prompts with sensitive terms.</div>
+
+      <label for="negativePackOptions">Negative Terms <span class="help-icon" data-help="negativePackOptions">?</span>
+        <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span>
+      </label>
+      <select id="negativePackOptions" multiple size="8"></select>
+
+      <label for="negativePrompt">Custom Negative Prompt <span class="help-icon" data-help="negativePrompt">?</span></label>
+      <textarea id="negativePrompt" rows="2"></textarea>
+      <div class="helper-text" id="negativeHelper">Optional: things to avoid...</div>
     </div>
-    <div class="helper-text">Wraps key terms in parentheses for emphasis.</div>
 
-    <div class="checkbox-group">
-      <input type="checkbox" id="preserveCase" />
-      <label for="preserveCase">Preserve original casing <span class="help-icon" onclick="showHelp('preserveCase')">?</span></label>
+    <div class="button-section">
+      <button id="generateBtn">Generate Prompt</button>
+      <button id="copyBtn">Copy to Clipboard</button>
     </div>
-    <div class="helper-text">Keeps capitalization as entered.</div>
 
-    <div class="checkbox-group">
-      <input type="checkbox" id="safeMode" />
-      <label for="safeMode">Safe mode (hide flagged prompts) <span class="help-icon" onclick="showHelp('safeMode')">?</span></label>
+    <div class="output-section">
+      <h2>Generated Prompt</h2>
+      <div id="output"></div>
     </div>
-    <div class="helper-text">Blocks prompts with sensitive or banned terms.</div>
-
-    <label for="negativePackOptions">Recommended Negative Terms <span class="help-icon" onclick="showHelp('negativePackOptions')">?</span> <span class="helper-text">(Hold Ctrl or Cmd to select multiple)</span></label>
-    <select id="negativePackOptions" multiple size="10">
-      <option value="(((worst quality:1.5)))">(((worst quality:1.5)))</option>
-      <option value="(((low quality:1.5)))">(((low quality:1.5)))</option>
-      <option value="(((normal quality:1.5)))">(((normal quality:1.5)))</option>
-      <option value="(((low-res:1.5)))">(((low-res:1.5)))</option>
-      <option value="(((bad anatomy:3.0)))">(((bad anatomy:3.0)))</option>
-      <option value="(((deformed hands:1.5)))">(((deformed hands:1.5)))</option>
-      <option value="(((bad hands:1.5)))">(((bad hands:1.5)))</option>
-      <option value="(((cropped:1.5)))">(((cropped:1.5)))</option>
-      <option value="(((oversaturated:1.5)))">(((oversaturated:1.5)))</option>
-      <option value="(((extra limb)))">(((extra limb)))</option>
-      <option value="(((missing limbs)))">(((missing limbs)))</option>
-      <option value="(((conjoined fingers:1.5)))">(((conjoined fingers:1.5)))</option>
-      <option value="(((deformed fingers:1.5)))">(((deformed fingers:1.5)))</option>
-      <option value="signature">signature</option>
-      <option value="watermark">watermark</option>
-      <option value="artist name">artist name</option>
-      <option value="QR code">QR code</option>
-      <option value="font">font</option>
-      <option value="logo">logo</option>
-      <option value="censor">censor</option>
-      <option value="(((underage:1.5)))">(((underage:1.5)))</option>
-      <option value="(((child:1.5)))">(((child:1.5)))</option>
-      <option value="(((children:1.5)))">(((children:1.5)))</option>
-      <option value="blurry">Blurry</option>
-      <option value="distorted">Distorted</option>
-      <option value="grainy">Grainy</option>
-      <option value="shattered">Shattered</option>
-      <option value="chaotic">Chaotic</option>
-    </select>
-
-    <label for="negativePrompt">Custom Negative Prompt <span class="help-icon" onclick="showHelp('negativePrompt')">?</span></label>
-    <textarea id="negativePrompt" rows="2"></textarea>
-    <div class="helper-text" id="negativeHelper">Optional: things to avoid...</div>
-
-    <button onclick="generatePrompt()">Generate Prompt</button>
-    <button onclick="copyPrompt()">Copy to Clipboard</button>
-
-    <div id="output"></div>
   </div>
 
-  <footer style="text-align:center; margin-top:30px; color:#666;">
-    Created by BloodRaiNxp
-  </footer>
+  <footer>Copyright &copy; 2025 BloodRaiNxp. All rights reserved.</footer>
 
-  <script>
-    function modelSupportsNegative(model) {
-      const allowed = ["Realistic V2", "Anime V2", "Lineart V1", "FLUX.1 Krea", "Namiya", "Primo", "Pony Diffusion V6", "Picflow"];
-      return allowed.includes(model);
-    }
-
-    function checkModel() {
-      const model = document.getElementById("model").value;
-      const negativePrompt = document.getElementById("negativePrompt");
-      const helper = document.getElementById("negativeHelper");
-      const negativePack = document.getElementById("negativePackOptions");
-
-      if (modelSupportsNegative(model)) {
-        negativePrompt.disabled = false;
-        negativePack.disabled = false;
-        helper.innerText = "Optional: things to avoid...";
-      } else {
-        negativePrompt.disabled = true;
-        negativePack.disabled = true;
-        helper.innerText = "This model does not support negative prompts.";
-        negativePrompt.value = "";
-      }
-    }
-
-    function getNegativePrompt() {
-      const selected = Array.from(document.getElementById("negativePackOptions").selectedOptions).map(opt => opt.value);
-      const manual = document.getElementById("negativePrompt").value.trim();
-      return [...selected, manual].filter(Boolean).join(", ");
-    }
-
-    function toggleDarkMode() {
-      const isDark = document.body.classList.toggle("dark-mode");
-      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-    }
-
-    function generatePrompt() {
-      const model = document.getElementById("model").value;
-      const style = document.getElementById("style").value;
-      const aspect = document.getElementById("aspect").value;
-      const rawPrompt = document.getElementById("prompt").value.trim();
-      const qualityPack = Array.from(document.getElementById("qualityPackOptions").selectedOptions).map(opt => opt.value);
-      const preserveCase = document.getElementById("preserveCase").checked;
-      const safeMode = document.getElementById("safeMode").checked;
-      const weights = document.getElementById("weights").checked;
-
-      if (!rawPrompt) {
-        document.getElementById("output").innerText = "Error: Please enter a prompt.";
-        return;
-      }
-
-      let prompt = rawPrompt;
-      if (qualityPack.length > 0) prompt += ", " + qualityPack.join(", ");
-      console.log("Weights checked:", weights);
-      console.log("Prompt before weights:", prompt);
-      if (weights && prompt) prompt = applyWeights(prompt);
-      console.log("Prompt after weights:", prompt);
-      if (!preserveCase) prompt = prompt.toLowerCase();
-
-      const flaggedWords = [
-        "underage", "minor", "child", "children", "young girl", "young boy", "little girl", "little boy", "schoolgirl", "schoolboy",
-        "nsfw", "naked", "bare breast", "titts", "topless", "bottomless", "explicit", "lewd", "erotic", "sexual", "sensual", "revealing",
-        "provocative", "suggestive pose", "see-through", "exposed", "fetish",
-        "violence", "torture", "self-harm", "suicide", "abuse", "blood", "gore", "injury", "dead body", "corpse", "mutilated", "decapitated",
-        "non-consensual", "forced", "coerced", "trafficking", "slave", "abduction", "captivity", "hostage", "grooming"
-      ];
-
-      const normalizedPrompt = prompt
-        .toLowerCase()
-        .replace(/\([^)]+\)/g, match => match.toLowerCase())
-        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
-        .replace(/\s+/g, " ");
-
-      const detected = flaggedWords.filter(word => normalizedPrompt.includes(word));
-
-      const output = document.getElementById("output");
-      if (safeMode && detected.length > 0) {
-        output.innerHTML = `⚠️ Prompt hidden due to flagged terms: ${detected.join(", ")}. Try using terms like 'adult character' or 'mature figure'.`;
-        return;
-      }
-
-      let result = `Model: ${model}\nStyle: ${style || 'N/A'}\nAspect Ratio: ${aspect || 'N/A'}\n\nPrompt:\n${prompt}`;
-      const negative = getNegativePrompt();
-      if (modelSupportsNegative(model) && negative) result += `\n\nNegative Prompt:\n${negative}`;
-      output.innerText = result;
-    }
-
-    function applyWeights(text) {
-      if (isAdvancedPrompt(text)) return text;
-      const keyTerms = [
-        "warrior", "landscape", "serene", "dramatic", "soft lighting", "vibrant", "mythical", "futuristic",
-        "sky", "girl", "car", "tree", "castle", "dragon", "samurai", "face", "eyes", "background",
-        "ethereal", "glow", "moonlit", "mystical", "enchanted", "radiant", "starlit", "volcanic",
-        "crystalline", "marble", "runes", "weathered", "iridescent", "silk", "frozen", "thorn",
-        "arcane", "sigils", "floating", "ghostly", "sacred", "shimmering", "portal", "flora",
-        "mushrooms", "forest", "crystals", "waterfalls", "fog", "gardens", "brambles", "ruins",
-        "fiery", "tattoos", "cloak", "armor", "gauntlets", "antlers", "robes", "wings", "limbs",
-        "horrors", "wolves", "golems", "serpents", "dragons", "spirits", "griffons", "beasts",
-        "blade", "dagger", "staff", "sword", "bow", "spear", "grimoire", "crown", "shield",
-        "citadel", "caves", "spire", "cathedral", "palace", "library", "tomb", "shrine",
-        "bioluminescent", "ancient", "eldritch", "ocean", "flowing", "phoenix", "chaos", "gilded", "halls",
-        "moss", "sigil"
-      ];
-      console.log("Applying weights to:", text);
-      return text.replace(new RegExp(`\\b(${keyTerms.join("|")})\\b`, "gi"), match => `(${match})`);
-    }
-
-    window.onload = () => {
-      checkModel();
-      if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark-mode");
-        document.getElementById("darkModeToggle").checked = true;
-      }
-    };
-
-    function isAdvancedPrompt(text) {
-      const advancedKeywords = ["neural", "fractal", "32K", "bioluminescent", "cinematic", "style transfer"];
-      return text.length > 300 || advancedKeywords.some(keyword => text.toLowerCase().includes(keyword));
-    }
-
-    function copyPrompt() {
-      const output = document.getElementById("output");
-      if (!navigator.clipboard) {
-        alert("Clipboard API not supported. Please copy manually.");
-        return;
-      }
-      navigator.clipboard.writeText(output.innerText).then(() => {
-        alert("Prompt copied to clipboard!");
-      }).catch(err => {
-        alert("Failed to copy. Try manually: Ctrl+C");
-        console.error("Clipboard error:", err);
-      });
-    }
-
-    function showHelp(fieldId) {
-      let tooltipText;
-      switch (fieldId) {
-        case 'model':
-          tooltipText = "Select the Piclumen model that best suits your desired output style.";
-          break;
-        case 'style':
-          tooltipText = "Choose a visual style to apply (e.g., Fantasy, Sci-Fi). This shapes the artistic tone of your prompt.";
-          break;
-        case 'aspect':
-          tooltipText = "Pick an aspect ratio to define the image's proportions (e.g., 1:1 for square).";
-          break;
-        case 'prompt':
-          tooltipText = "Enter a detailed description of the image you want to create. Be specific about subjects, settings, and moods!";
-          break;
-        case 'qualityPackOptions':
-          tooltipText = "Select multiple modifiers to enhance your prompt with lighting, textures, or magical elements.";
-          break;
-        case 'weights':
-          tooltipText = "Enable to emphasize key terms by wrapping them in parentheses for the AI to prioritize.";
-          break;
-        case 'preserveCase':
-          tooltipText = "Check to keep the original capitalization of your input text.";
-          break;
-        case 'safeMode':
-          tooltipText = "Enable to block prompts with sensitive or banned terms for safer content.";
-          break;
-        case 'negativePackOptions':
-          tooltipText = "Select negative terms to exclude from the generated image (e.g., low quality, blurry).";
-          break;
-        case 'negativePrompt':
-          tooltipText = "Add custom terms to avoid in the image output.";
-          break;
-        default:
-          tooltipText = "Click for help on this section.";
-      }
-
-      let tooltip = document.createElement("div");
-      tooltip.className = "help-tooltip";
-      tooltip.innerText = tooltipText;
-      document.body.appendChild(tooltip);
-
-      const helpIcon = event.target; // Use the clicked question mark
-      const rect = helpIcon.getBoundingClientRect();
-      const tooltipWidth = 200; // Approximate width of tooltip
-      let leftPos = rect.left + window.scrollX - (tooltipWidth / 2) + (rect.width / 2);
-      let topPos = rect.bottom + window.scrollY + 5;
-
-      // Adjust if tooltip would go off-screen
-      if (leftPos + tooltipWidth > window.innerWidth) {
-        leftPos = window.innerWidth - tooltipWidth - 10;
-      } else if (leftPos < 0) {
-        leftPos = 10;
-      }
-
-      if (topPos + 100 > window.innerHeight + window.scrollY) {
-        topPos = rect.top + window.scrollY - 105; // Move above if too low
-      }
-
-      tooltip.style.top = topPos + "px";
-      tooltip.style.left = leftPos + "px";
-      tooltip.style.display = "block";
-
-      setTimeout(() => {
-        tooltip.onclick = () => tooltip.style.display = "none";
-        document.addEventListener("click", function hide(e) {
-          if (!tooltip.contains(e.target) && e.target.className !== "help-icon") {
-            tooltip.style.display = "none";
-            document.removeEventListener("click", hide);
-          }
-        });
-      }, 0);
-    }
-  </script>
+  <script src="js/utils.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
