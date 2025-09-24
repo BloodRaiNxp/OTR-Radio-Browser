@@ -1,0 +1,9 @@
+{
+  "background": "assets/western-bg.jpg",
+  "shows": {
+    "Gunsmoke": {
+      "description": "Legendary Western drama from Dodge City.",
+      "source": "data/westerns/gunsmoke.json"
+    }
+  }
+}
