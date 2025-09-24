@@ -1,26 +1,29 @@
 function renderShows(shows) {
-  currentShows = shows;
+  currentShows = {}; // Reset
+
   const showList = document.getElementById('showList');
   showList.innerHTML = '';
 
   Object.entries(shows).forEach(([showName, show]) => {
     if (show.source) {
-      // Load episodes from external file
       fetch(show.source)
         .then(res => res.json())
-        .then(episodes => renderEpisodes(episodes, showName, show.description))
+        .then(episodes => {
+          currentShows[showName] = { description: show.description, episodes };
+          renderEpisodes(showName, show.description, episodes);
+        })
         .catch(err => {
           console.error(`Error loading ${showName}:`, err);
           showList.innerHTML += `<p style="color:red;">⚠️ Could not load episodes for ${showName}</p>`;
         });
     } else if (show.episodes) {
-      // Load embedded episodes
-      renderEpisodes(show.episodes, showName, show.description);
+      currentShows[showName] = show;
+      renderEpisodes(showName, show.description, show.episodes);
     }
   });
 }
 
-function renderEpisodes(episodes, showName, description) {
+function renderEpisodes(showName, description, episodes) {
   const showList = document.getElementById('showList');
 
   const showTitle = document.createElement('div');
