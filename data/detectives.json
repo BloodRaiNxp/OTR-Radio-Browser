@@ -1,0 +1,14 @@
+{
+  "background": "assets/detective-bg.jpg",
+  "shows": {
+    "Yours Truly, Johnny Dollar": {
+      "description": "The man with the action-packed expense account.",
+      "episodes": [
+        {
+          "title": "The McCormack Matter",
+          "url": "https://www.goldenage-wotr.com/audio/JohnnyDollar/JohnnyDollar_McCormackMatter.mp3"
+        }
+      ]
+    }
+  }
+}
