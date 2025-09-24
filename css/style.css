@@ -75,25 +75,33 @@ select {
 #showList {
   width: 90%;
   max-width: 800px;
+  margin: 1em auto;
   background-color: rgba(0,0,0,0.6);
   padding: 1em;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 .show-title {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: bold;
-  margin-top: 1em;
+  margin-bottom: 0.5em;
   font-family: 'Orbitron', sans-serif;
+  color: #ffd700;
 }
 
 .episode {
-  margin: 0.5em 0;
+  background-color: #222;
+  padding: 0.5em;
+  border-radius: 5px;
 }
 
 .episode a {
   color: #ffd700;
   text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .episode a:hover {
