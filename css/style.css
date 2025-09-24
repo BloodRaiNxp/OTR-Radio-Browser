@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: 'Arial', sans-serif;
   color: #f4f4f4;
+  background-color: #EBEBFF; /* soft Hulk purple canvas */
   background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease-in-out;
