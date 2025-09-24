@@ -168,7 +168,8 @@ footer {
 }
 
 .dismiss-btn {
-  color: #DBF28F;                    /* replaces gold */
+ color: #DBF28F;
+ cursor: pointer; /* fixes the typing cursor */
 }
 .dismiss-btn:hover {
   color: red;                        /* keep this as-is */
