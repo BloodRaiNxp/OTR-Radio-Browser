@@ -102,3 +102,8 @@ document.getElementById('genreSelect').addEventListener('change', (e) => {
 
 // Initial load
 loadGenre(currentGenre);
+
+// ✅ Global error listener (restored)
+window.addEventListener('error', function(e) {
+  console.error("Global error caught:", e.message);
+});
