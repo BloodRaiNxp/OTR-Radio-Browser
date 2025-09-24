@@ -50,7 +50,7 @@ function renderShows(shows) {
   });
 }
 
-// Render episode list
+// Render episode list with embedded audio
 function renderEpisodes(showName, description, episodes) {
   const showList = document.getElementById('showList');
 
@@ -69,16 +69,20 @@ function renderEpisodes(showName, description, episodes) {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
 
-    const epLink = document.createElement('a');
-    epLink.href = episode.url;
-    epLink.textContent = episode.title;
-    epLink.target = '_blank';
+    const epTitle = document.createElement('div');
+    epTitle.textContent = episode.title;
+    epTitle.className = 'episode-title';
 
-    epLink.addEventListener('click', () => {
+    const audioPlayer = document.createElement('audio');
+    audioPlayer.controls = true;
+    audioPlayer.src = episode.url;
+
+    audioPlayer.addEventListener('play', () => {
       document.getElementById('marqueeText').textContent = `Now Playing: ${episode.title} from ${showName}`;
     });
 
-    epDiv.appendChild(epLink);
+    epDiv.appendChild(epTitle);
+    epDiv.appendChild(audioPlayer);
     showList.appendChild(epDiv);
   });
 }
