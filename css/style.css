@@ -1,0 +1,90 @@
+/* Fonts and Base Styling */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: #f4f4f4;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
+}
+
+header {
+  text-align: center;
+  padding: 1em;
+  background-color: #222;
+  font-family: 'Rock Salt', cursive;
+  font-size: 1.5em;
+  border-bottom: 4px solid #444;
+}
+
+#controls {
+  text-align: center;
+  margin: 1em;
+}
+
+select {
+  font-size: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+#weather {
+  text-align: center;
+  margin: 1em;
+}
+
+#nowPlaying {
+  background-color: #111;
+  padding: 0.5em;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1em;
+  text-align: center;
+  border-top: 2px solid #444;
+  border-bottom: 2px solid #444;
+}
+
+#radioContent {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#showList {
+  width: 90%;
+  max-width: 800px;
+  background-color: rgba(0,0,0,0.6);
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.show-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 1em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.episode {
+  margin: 0.5em 0;
+}
+
+.episode a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.episode a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background-color: #222;
+  font-size: 0.9em;
+  border-top: 4px solid #444;
+}
