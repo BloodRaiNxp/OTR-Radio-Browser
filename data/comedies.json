@@ -1,0 +1,14 @@
+{
+  "background": "assets/comedy-bg.jpg",
+  "shows": {
+    "Jack Benny Program": {
+      "description": "Deadpan timing and violin jokes.",
+      "episodes": [
+        {
+          "title": "Jack Goes to the Doctor",
+          "url": "https://www.goldenage-wotr.com/audio/JackBenny/JackBenny_Doctor.mp3"
+        }
+      ]
+    }
+  }
+}
