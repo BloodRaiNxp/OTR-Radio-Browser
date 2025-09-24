@@ -5,110 +5,78 @@
   Created: September 23, 2025
   Description: A platform-agnostic AI art and video prompt generator
 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PromptBuilder.Xp</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <img src="assets/logo.png" alt="PromptBuilder Logo" class="logo" />
+  <div class="app">
+    <header class="topbar">
       <h1>PromptBuilder.Xp</h1>
+      <div class="toggles">
+        <label class="toggle"><input id="darkModeToggle" type="checkbox"> Dark</label>
+        <label class="toggle"><input id="safeMode" type="checkbox" checked> Safe Mode</label>
+      </div>
     </header>
 
-    <section class="input-section">
-      <!-- Manual Prompt Toggle -->
-      <div class="checkbox-group">
-        <input type="checkbox" id="manualToggle" />
-        <label for="manualToggle">Use Manual Prompt</label>
-      </div>
+    <main class="main">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>Model & Settings</h2>
+          <label>Model
+            <select id="modelSelect"></select>
+          </label>
+          <label>Aspect Ratio
+            <select id="aspectRatio"></select>
+          </label>
+        </section>
 
-      <!-- Manual Prompt Textarea -->
-      <div id="manualPromptSection" style="display: none;">
-        <label for="manualPrompt">Manual Prompt</label>
-        <textarea id="manualPrompt" placeholder="Write your full prompt here..."></textarea>
-      </div>
+        <section class="panel">
+          <h2>Inputs</h2>
+          <label>Image Type<select id="imageType"></select></label>
+          <label>Subject<select id="subject"></select></label>
+          <label>Action<select id="action"></select></label>
+          <label>Environment<select id="environment"></select></label>
+          <label>Descriptors<select id="descriptors" multiple></select></label>
+          <label>Quality Pack<select id="quality" multiple></select></label>
+        </section>
 
-      <!-- Structured Prompt Blocks -->
-      <div id="blockPromptSection">
-        <label for="imageType">Image Type</label>
-        <select id="imageType"></select>
+        <section class="panel small">
+          <button id="generatePromptBtn" class="btn">Generate Prompt</button>
+          <button id="clearBtn" class="btn ghost">Clear</button>
+        </section>
+      </aside>
 
-        <label for="subject">Subject</label>
-        <select id="subject"></select>
-
-        <label for="action">Subject Action</label>
-        <select id="action"></select>
-
-        <label for="descriptors">Subject Descriptors & Details</label>
-        <select id="descriptors"></select>
-
-        <label for="environment">Environment / Background</label>
-        <select id="environment"></select>
-
-        <!-- Enhancement Packs -->
-        <label for="quality">Quality Pack Modifiers</label>
-        <select id="quality" multiple></select>
-
-        <!-- Enhancement Toggles -->
-        <div class="checkbox-group">
-          <input type="checkbox" id="applyWeighting" />
-          <label for="applyWeighting">Apply weighting logic</label>
+      <section class="workspace">
+        <div class="panel">
+          <h2>Manual Prompt</h2>
+          <label class="inline"><input id="manualToggle" type="checkbox"> Use manual prompt</label>
+          <textarea id="manualPrompt" placeholder="Type a manual prompt..." rows="6"></textarea>
         </div>
 
-        <div class="checkbox-group">
-          <input type="checkbox" id="preserveCasing" />
-          <label for="preserveCasing">Preserve original casing</label>
+        <div class="panel">
+          <h2>Negative Prompt</h2>
+          <textarea id="negativePrompt" placeholder="Negative prompt (where supported)..." rows="3"></textarea>
+          <div id="negativeHelper" class="helper"></div>
         </div>
-      </div>
 
-      <!-- Negative Prompt -->
-      <label for="negativePrompt">Negative Prompt Text</label>
-      <textarea id="negativePrompt" placeholder="Enter negative terms..."></textarea>
-      <span id="negativeHelper" class="helper-text"></span>
+        <div class="panel">
+          <h2>Generated Prompt</h2>
+          <pre id="promptOutput" class="output"></pre>
+        </div>
+      </section>
+    </main>
 
-      <!-- Safe Mode -->
-      <div class="checkbox-group">
-        <input type="checkbox" id="safeMode" />
-        <label for="safeMode">Safe Mode</label>
-      </div>
-
-      <!-- Dark Mode -->
-      <div class="checkbox-group">
-        <input type="checkbox" id="darkModeToggle" />
-        <label for="darkModeToggle">Dark Mode</label>
-      </div>
-    </section>
-
-    <!-- Output Section -->
-    <section class="output-section">
-      <div class="button-section">
-        <button id="generatePromptBtn">Generate Prompt</button>
-      </div>
-
-      <h3>Generated Prompt</h3>
-      <div id="promptOutput" class="prompt-output"></div>
-    </section>
+    <footer class="footer">
+      <small>PromptBuilder.Xp — patched snapshot</small>
+    </footer>
   </div>
 
-  <!-- Welcome Modal -->
-  <div id="welcomeBox" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">✖</span>
-      <p>Welcome to PromptBuilder.Xp! Start by selecting a platform and style.</p>
-    </div>
-  </div>
-
-  <footer>
-    Copyright &copy; 2025 BloodRaiNxp. All rights reserved.
-  </footer>
-
-  <script src="js/utils.js" defer></script>
-  <script src="js/tooltip.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <!-- important: type=\"module\" since we use imports -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
