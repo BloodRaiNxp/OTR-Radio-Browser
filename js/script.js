@@ -1,35 +1,20 @@
-// Load JSON data
-let jsonData;
-
-fetch('data/radioData.json')
-  .then(response => response.json())
-  .then(data => {
-    jsonData = data;
-    loadGenre('Westerns'); // Default genre on load
-  });
-
-// Shuffle helper
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+function loadGenre(genre) {
+  const fileName = genre.toLowerCase().replace(/ /g, '-').replace(/&/g, 'and') + '.json';
+  fetch(`data/${fileName}`)
+    .then(response => response.json())
+    .then(genreData => {
+      document.body.style.backgroundImage = `url(${genreData.background})`;
+      renderShows(genreData.shows);
+    });
 }
 
-// Load selected genre
-document.getElementById('genreSelect').addEventListener('change', function () {
-  const selectedGenre = this.value;
-  loadGenre(selectedGenre);
-});
-
-function loadGenre(genre) {
-  const genreData = jsonData.genres[genre];
-  document.body.style.backgroundImage = `url(${genreData.background})`;
-
+function renderShows(shows) {
   const showList = document.getElementById('showList');
   showList.innerHTML = '';
 
-  const showKeys = shuffle(Object.keys(genreData.shows));
-
+  const showKeys = Object.keys(shows);
   showKeys.forEach(showName => {
-    const show = genreData.shows[showName];
+    const show = shows[showName];
 
     const showTitle = document.createElement('div');
     showTitle.className = 'show-title';
