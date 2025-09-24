@@ -6,23 +6,39 @@
   Description: A platform-agnostic AI art and video prompt generator
 */
 
-document.addEventListener('DOMContentLoaded', () => {
+import {
+  populateSelect,
+  loadFlaggedWords,
+  detectFlaggedTerms
+} from './utils.js';
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const modelSelect = document.getElementById('modelSelect');
+  const aspectRatio = document.getElementById('aspectRatio');
   const manualToggle = document.getElementById('manualToggle');
   const manualPrompt = document.getElementById('manualPrompt');
   const generatePromptBtn = document.getElementById('generatePromptBtn');
   const clearBtn = document.getElementById('clearBtn');
   const promptOutput = document.getElementById('promptOutput');
-  const safeModeCheckbox = document.getElementById('safeMode');
   const negativePrompt = document.getElementById('negativePrompt');
   const negativeHelper = document.getElementById('negativeHelper');
-
-  const modelSelect = document.getElementById('modelSelect');
-  const aspectRatio = document.getElementById('aspectRatio');
-
+  const safeModeCheckbox = document.getElementById('safeMode');
   const applyWeighting = document.getElementById('applyWeighting');
   const preserveCasing = document.getElementById('preserveCasing');
 
-  // Format modifiers with weighting and casing
+  let modelCapabilities = {};
+
+  // Load model metadata
+  async function loadModelCapabilities() {
+    try {
+      const res = await fetch('data/models.json');
+      modelCapabilities = await res.json();
+    } catch (e) {
+      console.warn('Could not load model metadata', e);
+      modelCapabilities = {};
+    }
+  }
+
   function formatModifiers(modifiers, applyWeighting, preserveCasing) {
     return modifiers.map(mod => {
       let term = preserveCasing ? mod : mod.toLowerCase();
@@ -30,25 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Get selected values from multi-selects
   function getMultiSelectValues(id) {
     const el = document.getElementById(id);
     return Array.from(el?.selectedOptions || []).map(opt => opt.value);
   }
 
-  // Generate prompt
-  generatePromptBtn?.addEventListener('click', () => {
+  generatePromptBtn?.addEventListener('click', async () => {
+    await loadFlaggedWords();
+
     let prompt = '';
 
     if (manualToggle?.checked) {
       prompt = manualPrompt?.value || '';
     } else {
-      const blocks = [
-        'imageType',
-        'subject',
-        'action',
-        'environment'
-      ].map(id => document.getElementById(id)?.value || '');
+      const blocks = ['imageType', 'subject', 'action', 'environment']
+        .map(id => document.getElementById(id)?.value || '');
 
       const descriptors = getMultiSelectValues('descriptors');
       const quality = getMultiSelectValues('quality');
@@ -57,13 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
       prompt = [...blocks, ...modifiers].filter(Boolean).join(', ');
     }
 
-    // Safe mode scan
-    if (safeModeCheckbox?.checked && negativePrompt && negativeHelper) {
-      const flaggedWords = [
-        "nsfw", "gore", "nudity", "violence", "explicit", "titts", "blood", "kill", "rape"
-      ];
-      const input = negativePrompt.value.toLowerCase();
-      const detected = flaggedWords.filter(word => input.includes(word));
+    const model = modelSelect?.value || 'Unknown Model';
+    const aspect = aspectRatio?.value || 'Unknown Ratio';
+    const capabilities = modelCapabilities?.[model] || {};
+
+    if (safeModeCheckbox?.checked && capabilities.supportsNegative && negativePrompt?.value) {
+      const detected = detectFlaggedTerms(negativePrompt.value);
       if (detected.length > 0) {
         negativeHelper.textContent = `⚠️ Prompt hidden due to flagged terms: ${detected.join(", ")}`;
         promptOutput.textContent = '';
@@ -73,14 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const model = modelSelect?.value || 'Unknown Model';
-    const aspect = aspectRatio?.value || 'Unknown Ratio';
-
     const finalOutput = `Model: ${model}\nAspect Ratio: ${aspect}\n\nPrompt:\n${prompt}`;
     promptOutput.textContent = finalOutput;
   });
 
-  // Clear all inputs
   clearBtn?.addEventListener('click', () => {
     manualPrompt.value = '';
     negativePrompt.value = '';
@@ -88,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     negativeHelper.textContent = '';
   });
 
-  // Populate dropdowns
+  await loadModelCapabilities();
+
   populateSelect(modelSelect, 'platforms.json');
   populateSelect(aspectRatio, 'aspect-ratios.json');
   populateSelect(document.getElementById('imageType'), 'image-types.json');
