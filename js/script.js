@@ -4,6 +4,13 @@ let currentGenre = 'westerns';
 // Load genre data
 function loadGenre(genreName) {
   currentGenre = genreName;
+
+  // 🔧 Safe reset before loading
+  document.getElementById('showList').innerHTML = '';
+  document.getElementById('marqueeText').textContent = '';
+  currentShows = {};
+  document.body.style.backgroundImage = '';
+
   fetch(`data/${genreName}.json`)
     .then(res => res.json())
     .then(data => {
