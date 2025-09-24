@@ -102,9 +102,9 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
   }
 });
 
-// Genre selector
+// Genre selector (patched to lowercase)
 document.getElementById('genreSelect').addEventListener('change', (e) => {
-  loadGenre(e.target.value);
+  loadGenre(e.target.value.toLowerCase());
 });
 
 // Initial load
