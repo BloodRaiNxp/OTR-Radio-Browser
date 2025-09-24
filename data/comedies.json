@@ -1,14 +1,9 @@
 {
-  "background": "assets/comedy-bg.jpg",
+  "background": "assets/comedies-bg.jpg",
   "shows": {
-    "Jack Benny Program": {
-      "description": "Deadpan timing and violin jokes.",
-      "episodes": [
-        {
-          "title": "Jack Goes to the Doctor",
-          "url": "https://www.goldenage-wotr.com/audio/JackBenny/JackBenny_Doctor.mp3"
-        }
-      ]
+    "Blondie": {
+      "description": "Lighthearted adventures of Dagwood and Blondie.",
+      "source": "data/comedies/blondie.json"
     }
   }
 }
