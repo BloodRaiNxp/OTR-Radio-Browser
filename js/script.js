@@ -6,7 +6,6 @@ let lastPlayingBlock = null;
 function loadGenre(genreName) {
   currentGenre = genreName;
 
-  // 🔧 Safe reset before loading
   document.getElementById('showList').innerHTML = '';
   document.getElementById('marqueeText').textContent = '';
   currentShows = {};
@@ -24,7 +23,7 @@ function loadGenre(genreName) {
     });
 }
 
-// Render shows and episodes
+// Render shows and episodes (now collapsible)
 function renderShows(shows) {
   currentShows = {};
   const showList = document.getElementById('showList');
@@ -49,19 +48,22 @@ function renderShows(shows) {
   });
 }
 
-// Render episode list
+// Render episode list inside collapsible <details>
 function renderEpisodes(showName, description, episodes) {
   const showList = document.getElementById('showList');
 
-  const showTitle = document.createElement('div');
-  showTitle.className = 'show-title';
-  showTitle.textContent = showName;
-  showList.appendChild(showTitle);
+  const details = document.createElement('details');
+  details.open = true;
+
+  const summary = document.createElement('summary');
+  summary.className = 'show-title';
+  summary.textContent = showName;
+  details.appendChild(summary);
 
   if (description) {
     const showDesc = document.createElement('p');
     showDesc.textContent = description;
-    showList.appendChild(showDesc);
+    details.appendChild(showDesc);
   }
 
   episodes.forEach(episode => {
@@ -85,8 +87,10 @@ function renderEpisodes(showName, description, episodes) {
 
     epDiv.appendChild(epTitle);
     epDiv.appendChild(audioPlayer);
-    showList.appendChild(epDiv);
+    details.appendChild(epDiv);
   });
+
+  showList.appendChild(details);
 }
 
 // Surprise Me button (embedded + dismissable)
