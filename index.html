@@ -8,75 +8,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>PromptBuilder.Xp</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="app">
-    <header class="topbar">
-      <h1>PromptBuilder.Xp</h1>
-      <div class="toggles">
-        <label class="toggle"><input id="darkModeToggle" type="checkbox"> Dark</label>
-        <label class="toggle"><input id="safeMode" type="checkbox" checked> Safe Mode</label>
-      </div>
-    </header>
-
-    <main class="main">
-      <aside class="sidebar">
-        <section class="panel">
-          <h2>Model & Settings</h2>
-          <label>Model
-            <select id="modelSelect"></select>
-          </label>
-          <label>Aspect Ratio
-            <select id="aspectRatio"></select>
-          </label>
-        </section>
-
-        <section class="panel">
-          <h2>Inputs</h2>
-          <label>Image Type<select id="imageType"></select></label>
-          <label>Subject<select id="subject"></select></label>
-          <label>Action<select id="action"></select></label>
-          <label>Environment<select id="environment"></select></label>
-          <label>Descriptors<select id="descriptors" multiple></select></label>
-          <label>Quality Pack<select id="quality" multiple></select></label>
-        </section>
-
-        <section class="panel small">
-          <button id="generatePromptBtn" class="btn">Generate Prompt</button>
-          <button id="clearBtn" class="btn ghost">Clear</button>
-        </section>
-      </aside>
-
-      <section class="workspace">
-        <div class="panel">
-          <h2>Manual Prompt</h2>
-          <label class="inline"><input id="manualToggle" type="checkbox"> Use manual prompt</label>
-          <textarea id="manualPrompt" placeholder="Type a manual prompt..." rows="6"></textarea>
-        </div>
-
-        <div class="panel">
-          <h2>Negative Prompt</h2>
-          <textarea id="negativePrompt" placeholder="Negative prompt (where supported)..." rows="3"></textarea>
-          <div id="negativeHelper" class="helper"></div>
-        </div>
-
-        <div class="panel">
-          <h2>Generated Prompt</h2>
-          <pre id="promptOutput" class="output"></pre>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <small>PromptBuilder.Xp — patched snapshot</small>
-    </footer>
+  <!-- Welcome Box -->
+  <div id="welcomeBox">
+    <button class="close-btn">x</button>
+    <p>Welcome to PromptBuilder.Xp</p>
   </div>
 
-  <!-- important: type=\"module\" since we use imports -->
+  <!-- Manual Prompt Toggle -->
+  <label><input id="manualToggle" type="checkbox"> Manual prompt</label>
+
+  <!-- Manual Prompt Section -->
+  <section id="manualPromptSection" style="display: none;">
+    <textarea id="manualPrompt" placeholder="Type your full prompt here..."></textarea>
+  </section>
+
+  <!-- Structured Prompt Blocks -->
+  <section id="blockPromptSection">
+    <label>Image Type<select id="imageType"></select></label>
+    <label>Subject<select id="subject"></select></label>
+    <label>Action<select id="action"></select></label>
+    <label>Descriptors<select id="descriptors" multiple></select></label>
+    <label>Environment<select id="environment"></select></label>
+    <label>Quality Pack<select id="quality" multiple></select></label>
+
+    <!-- Enhancement Toggles -->
+    <label><input id="applyWeighting" type="checkbox"> Apply weighting</label>
+    <label><input id="preserveCasing" type="checkbox"> Preserve casing</label>
+  </section>
+
+  <!-- Model & Aspect Ratio -->
+  <section>
+    <label>Model<select id="modelSelect"></select></label>
+    <label>Aspect Ratio<select id="aspectRatio"></select></label>
+  </section>
+
+  <!-- Theme & Safety Toggles -->
+  <label><input id="darkModeToggle" type="checkbox"> Dark Mode</label>
+  <label><input id="safeMode" type="checkbox" checked> Safe Mode</label>
+
+  <!-- Negative Prompt -->
+  <textarea id="negativePrompt" placeholder="Negative prompt (if supported)..."></textarea>
+  <div id="negativeHelper"></div>
+
+  <!-- Action Buttons -->
+  <button id="generatePromptBtn">Generate Prompt</button>
+  <button id="clearBtn">Clear</button>
+
+  <!-- Output -->
+  <pre id="promptOutput"></pre>
+
+  <!-- Scripts -->
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/tooltip.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
+
+
