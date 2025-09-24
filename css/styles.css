@@ -15,10 +15,10 @@
 }
 
 [data-theme='dark'] {
-  --bg: #1c1f26;         /* dark background for body */
+  --bg: #1c1f26;         /* softened background */
   --panel: #ffffff;      /* keep panels white */
   --muted: #a0a6b2;
-  --text: #0b1226;       /* dark text on white panels */
+  --text: #0b1226;       /* readable dark text */
   --accent: #9b8cff;
 }
 
@@ -93,9 +93,12 @@ label {
 }
 
 select,
+input[type="text"],
 textarea {
   width: 100%;
-  padding: 8px;
+  font-size: 1rem;
+  padding: 12px;
+  min-height: 48px;
   border-radius: 8px;
   border: 1px solid rgba(11, 18, 38, 0.06);
   background: transparent;
@@ -104,6 +107,10 @@ textarea {
 select[multiple],
 textarea {
   min-height: 80px;
+}
+
+select {
+  height: 48px;
 }
 
 .btn {
