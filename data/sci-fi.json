@@ -1,18 +1,9 @@
 {
-  "background": "assets/scifi-bg.jpg",
+  "background": "assets/sci-fi-bg.jpg",
   "shows": {
     "X Minus One": {
-      "description": "NBC's speculative fiction series.",
-      "episodes": [
-        {
-          "title": "And the Moon Be Still and Bright",
-          "url": "https://static.secure.website/wscfus/8274769/1552423/xminusone-550422-andthemoonbestillandbright.mp3"
-        },
-        {
-          "title": "No Contact",
-          "url": "https://static.secure.website/wscfus/8274769/1552424/xminusone-550424-nocontact.mp3"
-        }
-      ]
+      "description": "Classic sci-fi radio drama.",
+      "source": "data/sci-fi/x-minus-one.json"
     }
   }
 }
