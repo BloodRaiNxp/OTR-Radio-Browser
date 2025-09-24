@@ -127,3 +127,21 @@ footer {
   font-size: 0.9em;
   border-top: 4px solid #444;
 }
+.playing-now {
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+.dismiss-btn {
+  float: right;
+  margin-left: 0.5em;
+  cursor: pointer;
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.dismiss-btn:hover {
+  color: red;
+}
+
