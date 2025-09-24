@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const applyWeighting = document.getElementById('applyWeighting');
   const preserveCasing = document.getElementById('preserveCasing');
   const darkModeToggle = document.getElementById('darkModeToggle');
+  populateTagGroup('descriptorsContainer', 'descriptors.json');
 
   let modelCapabilities = {};
 
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const blocks = ['imageType', 'subject', 'action', 'environment']
         .map(id => document.getElementById(id)?.value || '');
 
-      const descriptors = getMultiSelectValues('descriptors');
+      const descriptors = getCheckedTags('descriptorsContainer');
       const quality = getMultiSelectValues('quality');
       const modifiers = formatModifiers([...descriptors, ...quality], applyWeighting?.checked, preserveCasing?.checked);
 
