@@ -1,18 +1,9 @@
 {
-  "background": "assets/horror-bg.jpg",
+  "background": "assets/suspense-bg.jpg",
   "shows": {
-    "Jeff Regan, Investigator": {
-      "description": "Hard-boiled detective drama.",
-      "episodes": [
-        {
-          "title": "The Prodigal Daughter",
-          "url": "https://files.secure.website/wscfus/8274769/uploads/JRI48-07-17_-_The_Prodigal_Daughter.mp3"
-        },
-        {
-          "title": "The Lonesome Lady",
-          "url": "https://files.secure.website/wscfus/8274769/uploads/JRI48-07-24_-_The_Lonesome_Lady.mp3"
-        }
-      ]
+    "Inner Sanctum": {
+      "description": "Chilling tales from the crypt of radio horror.",
+      "source": "data/suspense-and-horror/inner-sanctum.json"
     }
   }
 }
