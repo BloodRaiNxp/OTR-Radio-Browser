@@ -21,16 +21,19 @@
     </header>
 
     <section class="input-section">
+      <!-- Manual Prompt Toggle -->
       <div class="checkbox-group">
         <input type="checkbox" id="manualToggle" />
         <label for="manualToggle">Use Manual Prompt</label>
       </div>
 
+      <!-- Manual Prompt Textarea -->
       <div id="manualPromptSection" style="display: none;">
         <label for="manualPrompt">Manual Prompt</label>
         <textarea id="manualPrompt" placeholder="Write your full prompt here..."></textarea>
       </div>
 
+      <!-- Structured Prompt Blocks -->
       <div id="blockPromptSection">
         <label for="imageType">Image Type</label>
         <select id="imageType"></select>
@@ -44,28 +47,44 @@
         <label for="descriptors">Subject Descriptors & Details</label>
         <select id="descriptors"></select>
 
-        <label for="quality">Quality / Word Salad</label>
-        <select id="quality"></select>
-
         <label for="environment">Environment / Background</label>
         <select id="environment"></select>
+
+        <!-- Enhancement Packs -->
+        <label for="quality">Quality Pack Modifiers</label>
+        <select id="quality" multiple></select>
+
+        <!-- Enhancement Toggles -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="applyWeighting" />
+          <label for="applyWeighting">Apply weighting logic</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="preserveCasing" />
+          <label for="preserveCasing">Preserve original casing</label>
+        </div>
       </div>
 
+      <!-- Negative Prompt -->
       <label for="negativePrompt">Negative Prompt Text</label>
       <textarea id="negativePrompt" placeholder="Enter negative terms..."></textarea>
       <span id="negativeHelper" class="helper-text"></span>
 
+      <!-- Safe Mode -->
       <div class="checkbox-group">
         <input type="checkbox" id="safeMode" />
         <label for="safeMode">Safe Mode</label>
       </div>
 
+      <!-- Dark Mode -->
       <div class="checkbox-group">
         <input type="checkbox" id="darkModeToggle" />
         <label for="darkModeToggle">Dark Mode</label>
       </div>
     </section>
 
+    <!-- Output Section -->
     <section class="output-section">
       <div class="button-section">
         <button id="generatePromptBtn">Generate Prompt</button>
@@ -76,6 +95,7 @@
     </section>
   </div>
 
+  <!-- Welcome Modal -->
   <div id="welcomeBox" class="modal">
     <div class="modal-content">
       <span class="close-btn">✖</span>
