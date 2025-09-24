@@ -155,20 +155,38 @@ footer {
   border-top: 4px solid #444;
 }
 .playing-now {
-  border: 2px solid #ffd700;
-  box-shadow: 0 0 10px #ffd700;
+  border: 2px solid #A5C882;         /* replaces gold */
+  box-shadow: 0 0 10px #C1FF99;      /* softer green glow */
 }
 
 .dismiss-btn {
-  float: right;
-  margin-left: 0.5em;
-  cursor: pointer;
-  color: #ffd700;
-  font-weight: bold;
-  font-size: 1.2em;
+  color: #DBF28F;                    /* replaces gold */
+}
+.dismiss-btn:hover {
+  color: red;                        /* keep this as-is */
 }
 
-.dismiss-btn:hover {
-  color: red;
+#marqueeText {
+  color: #DBF28F; /* soft Hulk green */
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1em;
+  text-align: center;
+  margin: 0.5em auto;
+}
+
+label[for="genreSelect"] {
+  color: #DBF28F; /* soft Hulk green */
+  font-weight: bold;
+  font-size: 1em;
+  margin-right: 0.5em;
+}
+
+#genreSelect {
+  background-color: #EBEBFF;         /* soft Hulk purple */
+  color: #2E2E2E;                    /* readable dark text */
+  border: 1px solid #A5C882;         /* gentle green outline */
+  font-size: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
 }
 
