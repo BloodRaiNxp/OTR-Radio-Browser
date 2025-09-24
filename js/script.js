@@ -79,7 +79,7 @@ function renderEpisodes(showName, description, episodes) {
     audioPlayer.src = episode.url;
 
     audioPlayer.addEventListener('play', () => {
-      document.getElementById('marqueeText').textContent = `Now Playing: ${episode.title} from ${showName}`;
+     document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
       if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
       epDiv.classList.add('playing-now');
       lastPlayingBlock = epDiv;
