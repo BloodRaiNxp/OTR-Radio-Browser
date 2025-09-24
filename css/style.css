@@ -176,12 +176,22 @@ footer {
 }
 
 #marqueeText {
-  color: #DBF28F; /* soft Hulk green */
+  overflow: hidden;
+  white-space: nowrap;
+  animation: scrollMarquee 12s linear infinite;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1em;
+  color: #DBF28F;
   text-align: center;
   margin: 0.5em auto;
 }
+
+@keyframes scrollMarquee {
+  0%   { transform: translateX(100%); opacity: 1; }
+  50%  { transform: translateX(-100%); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 1; }
+}
+
 
 label[for="genreSelect"] {
   color: #C1FF99; /* brighter Hulk green */
