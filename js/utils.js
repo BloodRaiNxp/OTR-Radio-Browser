@@ -6,78 +6,60 @@
   Description: A platform-agnostic AI art and video prompt generator
 */
 
-function populateSelect(selectElement, jsonFile) {
-  fetch(`data/${jsonFile}`)
-    .then(response => response.json())
-    .then(data => {
-      selectElement.innerHTML = '';
+let FLAGGED_WORDS = null;
 
-      if (Array.isArray(data)) {
-        data.forEach(item => {
-          const option = document.createElement('option');
-          option.value = item.value || item;
-          option.textContent = item.label || item;
-          selectElement.appendChild(option);
-        });
-      } else if (typeof data === 'object') {
-        Object.entries(data).forEach(([key, values]) => {
-          const optgroup = document.createElement('optgroup');
-          optgroup.label = key;
-
-          values.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.value || item;
-            option.textContent = item.label || item;
-            optgroup.appendChild(option);
-          });
-
-          selectElement.appendChild(optgroup);
-        });
-      } else {
-        selectElement.innerHTML = '<option disabled>Invalid data format</option>';
-        console.error(`Unexpected data format in ${jsonFile}`);
-      }
-    })
-    .catch(error => {
-      selectElement.innerHTML = '<option disabled>Error loading options</option>';
-      console.error(`Error loading ${jsonFile}:`, error);
-    });
+export async function loadFlaggedWords() {
+  if (FLAGGED_WORDS) return FLAGGED_WORDS;
+  try {
+    const res = await fetch('data/flagged-words.json');
+    FLAGGED_WORDS = await res.json();
+  } catch (e) {
+    console.warn('Could not load flagged words', e);
+    FLAGGED_WORDS = ["nsfw", "gore", "nudity", "violence"]; // fallback
+  }
+  return FLAGGED_WORDS;
 }
 
-function toggleDarkMode() {
-  const isDarkMode = document.getElementById('darkModeToggle')?.checked;
-  document.body.classList.toggle('dark-mode', isDarkMode);
-  localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+export function detectFlaggedTerms(text) {
+  if (!text) return [];
+  const words = text.toLowerCase();
+  const flagged = (FLAGGED_WORDS || []).filter(w => {
+    const safeW = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // escape regex chars
+    const re = new RegExp('\\b' + safeW + '\\b', 'i'); // word boundary
+    return re.test(words);
+  });
+  return flagged;
 }
 
-function checkModel() {
-  const safeMode = document.getElementById('safeMode');
-  const negativePrompt = document.getElementById('negativePrompt');
-  const negativeHelper = document.getElementById('negativeHelper');
+export async function populateSelect(selectEl, jsonPath) {
+  try {
+    const res = await fetch(`data/${jsonPath}`);
+    const data = await res.json();
 
-  if (!safeMode || !negativePrompt || !negativeHelper) return;
-
-  const flaggedWords = [
-    "nsfw", "gore", "nudity", "violence", "explicit", "titts", "blood", "kill", "rape"
-  ];
-  const input = negativePrompt.value.toLowerCase();
-
-  if (safeMode.checked) {
-    const detected = flaggedWords.filter(word => input.includes(word));
-    negativeHelper.textContent = detected.length > 0
-      ? `⚠️ Prompt hidden due to flagged terms: ${detected.join(", ")}`
-      : '';
-  } else {
-    negativeHelper.textContent = '';
+    if (Array.isArray(data)) {
+      data.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.value || item;
+        opt.textContent = item.label || item;
+        selectEl.appendChild(opt);
+      });
+    } else {
+      Object.entries(data).forEach(([group, items]) => {
+        const optGroup = document.createElement('optgroup');
+        optGroup.label = group;
+        items.forEach(item => {
+          const opt = document.createElement('option');
+          opt.value = item.value || item;
+          opt.textContent = item.label || item;
+          optGroup.appendChild(opt);
+        });
+        selectEl.appendChild(optGroup);
+      });
+    }
+  } catch {
+    const fallback = document.createElement('option');
+    fallback.textContent = '⚠️ Failed to load options';
+    fallback.disabled = true;
+    selectEl.appendChild(fallback);
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const darkToggle = document.getElementById('darkModeToggle');
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-    if (darkToggle) darkToggle.checked = true;
-  }
-
-  darkToggle?.addEventListener('change', toggleDarkMode);
-});
