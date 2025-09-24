@@ -110,6 +110,13 @@ audio {
   border-radius: 5px;
 }
 
+.episode-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 .episode a {
   color: #ffd700;
   text-decoration: none;
