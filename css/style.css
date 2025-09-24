@@ -17,6 +17,10 @@ header {
   border-bottom: 4px solid #444;
 }
 
+<div style="width: 100%; overflow: hidden;">
+  <div id="marqueeText">🎧 Now Playing: …</div>
+</div>
+
 #controls {
   display: flex;
   justify-content: center;
