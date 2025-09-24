@@ -87,7 +87,7 @@ function renderEpisodes(showName, description, episodes) {
   });
 }
 
-// Surprise Me button
+// Surprise Me button (embedded playback)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
   const allEpisodes = [];
 
@@ -102,7 +102,27 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
   if (allEpisodes.length > 0) {
     const random = allEpisodes[Math.floor(Math.random() * allEpisodes.length)];
     document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
-    window.open(random.url, '_blank');
+
+    const showList = document.getElementById('showList');
+    const surpriseBlock = document.createElement('div');
+    surpriseBlock.className = 'episode';
+
+    const epTitle = document.createElement('div');
+    epTitle.textContent = random.title;
+    epTitle.className = 'episode-title';
+
+    const audioPlayer = document.createElement('audio');
+    audioPlayer.controls = true;
+    audioPlayer.src = random.url;
+    audioPlayer.autoplay = true;
+
+    audioPlayer.addEventListener('play', () => {
+      document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+    });
+
+    surpriseBlock.appendChild(epTitle);
+    surpriseBlock.appendChild(audioPlayer);
+    showList.prepend(surpriseBlock);
   }
 });
 
