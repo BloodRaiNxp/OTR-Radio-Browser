@@ -38,15 +38,17 @@
 
 
 <section class="panel">
-<h2>Inputs</h2>
-<label>Image Type<select id="imageType"></select></label>
-<label>Subject<select id="subject"></select></label>
-<label>Action<select id="action"></select></label>
-<label>Environment<select id="environment"></select></label>
-<label>Descriptors<select id="descriptors" multiple></select></label>
-<label>Quality Pack<select id="quality" multiple></select></label>
+  <h2>Inputs</h2>
+  <label>Image Type<select id="imageType"></select></label>
+  <label>Subject<select id="subject"></select></label>
+  <label>Action<select id="action"></select></label>
+  <label>Environment<select id="environment"></select></label>
+  <label>Descriptors</label>
+  <div id="descriptorsContainer" class="tag-group"></div>
+  <label>Quality Pack<select id="quality" multiple></select></label>
 </section>
 
+  
 
 <section class="panel small">
 <button id="generatePromptBtn" class="btn">Generate Prompt</button>
@@ -87,6 +89,7 @@
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
+
 
 
 
