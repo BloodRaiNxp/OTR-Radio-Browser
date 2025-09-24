@@ -3,12 +3,7 @@
   "shows": {
     "Gunsmoke": {
       "description": "Legendary Western drama from Dodge City.",
-      "episodes": [
-        {
-          "title": "Billy the Kid",
-          "url": "https://archive.org/download/gunsmoke_episode2.mp3"
-        }
-      ]
+      "source": "data/westerns/gunsmoke.json"
     }
   }
 }
