@@ -140,6 +140,12 @@ details[open] summary {
   border-bottom: 1px solid #ffd700;
 }
 
+label[for="genreSelect"] {
+  color: #ffd700; /* bright gold */
+  font-weight: bold;
+  font-size: 1em;
+  margin-right: 0.5em;
+}
 
 footer {
   text-align: center;
