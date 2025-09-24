@@ -8,23 +8,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const manualToggle = document.getElementById('manualToggle');
-  const manualPromptSection = document.getElementById('manualPromptSection');
-  const blockPromptSection = document.getElementById('blockPromptSection');
+  const manualPrompt = document.getElementById('manualPrompt');
   const generatePromptBtn = document.getElementById('generatePromptBtn');
+  const clearBtn = document.getElementById('clearBtn');
   const promptOutput = document.getElementById('promptOutput');
   const safeModeCheckbox = document.getElementById('safeMode');
   const negativePrompt = document.getElementById('negativePrompt');
   const negativeHelper = document.getElementById('negativeHelper');
 
+  const modelSelect = document.getElementById('modelSelect');
+  const aspectRatio = document.getElementById('aspectRatio');
+
   const applyWeighting = document.getElementById('applyWeighting');
   const preserveCasing = document.getElementById('preserveCasing');
-
-  // Toggle between manual and block mode
-  manualToggle?.addEventListener('change', () => {
-    const useManual = manualToggle.checked;
-    manualPromptSection.style.display = useManual ? 'block' : 'none';
-    blockPromptSection.style.display = useManual ? 'none' : 'block';
-  });
 
   // Format modifiers with weighting and casing
   function formatModifiers(modifiers, applyWeighting, preserveCasing) {
@@ -34,35 +30,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Get selected enhancement modifiers
-  function getSelectedModifiers() {
-    const qualitySelect = document.getElementById('quality');
-    const selected = Array.from(qualitySelect?.selectedOptions || []).map(opt => opt.value);
-    return formatModifiers(selected, applyWeighting?.checked, preserveCasing?.checked);
+  // Get selected values from multi-selects
+  function getMultiSelectValues(id) {
+    const el = document.getElementById(id);
+    return Array.from(el?.selectedOptions || []).map(opt => opt.value);
   }
 
   // Generate prompt
   generatePromptBtn?.addEventListener('click', () => {
     let prompt = '';
 
-    if (manualToggle.checked) {
-      prompt = document.getElementById('manualPrompt')?.value || '';
+    if (manualToggle?.checked) {
+      prompt = manualPrompt?.value || '';
     } else {
       const blocks = [
         'imageType',
         'subject',
         'action',
-        'descriptors',
         'environment'
-      ];
-      const parts = blocks.map(id => {
-        const el = document.getElementById(id);
-        return el?.value || '';
-      }).filter(Boolean);
+      ].map(id => document.getElementById(id)?.value || '');
 
-      const modifiers = getSelectedModifiers();
-      const fullPrompt = [...parts, ...modifiers].join(', ');
-      prompt = fullPrompt;
+      const descriptors = getMultiSelectValues('descriptors');
+      const quality = getMultiSelectValues('quality');
+      const modifiers = formatModifiers([...descriptors, ...quality], applyWeighting?.checked, preserveCasing?.checked);
+
+      prompt = [...blocks, ...modifiers].filter(Boolean).join(', ');
     }
 
     // Safe mode scan
@@ -81,20 +73,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    promptOutput.textContent = prompt;
+    const model = modelSelect?.value || 'Unknown Model';
+    const aspect = aspectRatio?.value || 'Unknown Ratio';
+
+    const finalOutput = `Model: ${model}\nAspect Ratio: ${aspect}\n\nPrompt:\n${prompt}`;
+    promptOutput.textContent = finalOutput;
   });
 
-  // Welcome box close
-  const closeBtn = document.querySelector('#welcomeBox .close-btn');
-  closeBtn?.addEventListener('click', () => {
-    document.getElementById('welcomeBox').style.display = 'none';
+  // Clear all inputs
+  clearBtn?.addEventListener('click', () => {
+    manualPrompt.value = '';
+    negativePrompt.value = '';
+    promptOutput.textContent = '';
+    negativeHelper.textContent = '';
   });
 
   // Populate dropdowns
+  populateSelect(modelSelect, 'platforms.json');
+  populateSelect(aspectRatio, 'aspect-ratios.json');
   populateSelect(document.getElementById('imageType'), 'image-types.json');
   populateSelect(document.getElementById('subject'), 'subjects.json');
   populateSelect(document.getElementById('action'), 'actions.json');
+  populateSelect(document.getElementById('environment'), 'environments.json');
   populateSelect(document.getElementById('descriptors'), 'descriptors.json');
   populateSelect(document.getElementById('quality'), 'quality-packs.json');
-  populateSelect(document.getElementById('environment'), 'environments.json');
 });
