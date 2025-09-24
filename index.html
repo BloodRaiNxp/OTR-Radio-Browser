@@ -5,90 +5,68 @@
   Created: September 23, 2025
   Description: A platform-agnostic AI art and video prompt generator
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PromptBuilder.Xp</title>
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Golden Age Radio Lounge</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Rock+Salt&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="app">
-<header class="topbar">
-<h1>PromptBuilder.Xp</h1>
-<div class="toggles">
-<label class="toggle"><input id="darkModeToggle" type="checkbox"> Dark</label>
-<label class="toggle"><input id="safeMode" type="checkbox" checked> Safe Mode</label>
-</div>
-</header>
 
+  <!-- Header -->
+  <header>
+    <h1>🎙️ Golden Age Radio Lounge</h1>
+    <p>A nostalgic gift streaming public domain classics</p>
+  </header>
 
-<main class="main">
-<aside class="sidebar">
-<section class="panel">
-<h2>Model & Settings</h2>
-<label>Model
-<select id="modelSelect"></select>
-</label>
-<label>Aspect Ratio
-<select id="aspectRatio"></select>
-</label>
-</section>
+  <!-- Genre Switcher -->
+  <section id="controls">
+    <label for="genreSelect">Choose a Genre:</label>
+    <select id="genreSelect">
+      <option value="Westerns">Westerns</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Mystery">Mystery</option>
+    </select>
+  </section>
 
+  <!-- Weather Widget for Ivanhoe -->
+  <section id="weather">
+    <a class="weatherwidget-io" href="https://forecast7.com/en/30d68n94d41/ivanhoe/?unit=us" data-label_1="IVANHOE" data-label_2="WEATHER" data-font="Arial Black" data-theme="random_grey">IVANHOE WEATHER</a>
+    <script>
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s);js.id=id;
+        js.src='https://weatherwidget.io/js/widget.min.js';
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    }(document,'script','weatherwidget-io-js');
+    </script>
+  </section>
 
-<section class="panel">
-  <h2>Inputs</h2>
-  <label>Image Type<select id="imageType"></select></label>
-  <label>Subject<select id="subject"></select></label>
-  <label>Action<select id="action"></select></label>
-  <label>Environment<select id="environment"></select></label>
-  <label>Descriptors</label>
-  <div id="descriptorsContainer" class="tag-group"></div>
-  <label>Quality Pack<select id="quality" multiple></select></label>
-</section>
+  <!-- Now Playing Marquee -->
+  <section id="nowPlaying">
+    <marquee behavior="scroll" direction="left" id="marqueeText">Select an episode to begin...</marquee>
+  </section>
 
-  
+  <!-- Episode Loader -->
+  <section id="radioContent">
+    <div id="showList"></div>
+  </section>
 
-<section class="panel small">
-<button id="generatePromptBtn" class="btn">Generate Prompt</button>
-<button id="clearBtn" class="btn ghost">Clear</button>
-</section>
-</aside>
+  <!-- Footer -->
+  <footer>
+    <p>All content streamed from public archives. No hosting, no monetization, no copyright infringement.</p>
+  </footer>
 
-
-<section class="workspace">
-<div class="panel">
-<h2>Manual Prompt</h2>
-<label class="inline"><input id="manualToggle" type="checkbox"> Use manual prompt</label>
-<textarea id="manualPrompt" placeholder="Type a manual prompt..." rows="6"></textarea>
-</div>
-
-
-<div class="panel">
-<h2>Negative Prompt</h2>
-<textarea id="negativePrompt" placeholder="Negative prompt (where supported)..." rows="3"></textarea>
-<div id="negativeHelper" class="helper"></div>
-</div>
-
-
-<div class="panel">
-<h2>Generated Prompt</h2>
-<pre id="promptOutput" class="output"></pre>
-</div>
-</section>
-</main>
-
-
-<footer class="footer">
-<small>PromptBuilder.Xp — patched snapshot</small>
-</footer>
-</div>
-
-
-<script type="module" src="js/main.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
+
+
 
 
 
