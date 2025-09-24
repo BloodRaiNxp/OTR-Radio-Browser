@@ -158,3 +158,26 @@ select {
   z-index: 9999;
   max-width: 300px;
 }
+
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid rgba(11, 18, 38, 0.06);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.tag-item input[type="checkbox"] {
+  margin-right: 6px;
+}
+
