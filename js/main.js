@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const safeModeCheckbox = document.getElementById('safeMode');
   const applyWeighting = document.getElementById('applyWeighting');
   const preserveCasing = document.getElementById('preserveCasing');
+  const darkModeToggle = document.getElementById('darkModeToggle');
 
   let modelCapabilities = {};
 
@@ -33,9 +34,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const res = await fetch('data/models.json');
       modelCapabilities = await res.json();
+
+      // Populate modelSelect manually from keys
+      modelSelect.innerHTML = '';
+      Object.keys(modelCapabilities).forEach(key => {
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = key;
+        modelSelect.appendChild(opt);
+      });
+
+      // Restore last-used model
+      const lastModel = localStorage.getItem('pbxp.model');
+      if (lastModel && modelCapabilities[lastModel]) {
+        modelSelect.value = lastModel;
+      }
+
+      updateAspectOptions(modelSelect.value);
     } catch (e) {
       console.warn('Could not load model metadata', e);
       modelCapabilities = {};
+    }
+  }
+
+  function updateAspectOptions(modelName) {
+    const capabilities = modelCapabilities[modelName];
+    aspectRatio.innerHTML = '';
+    if (capabilities?.supportsAspectRatios) {
+      capabilities.supportsAspectRatios.forEach(r => {
+        const opt = document.createElement('option');
+        opt.value = r;
+        opt.textContent = r;
+        aspectRatio.appendChild(opt);
+      });
     }
   }
 
@@ -73,6 +104,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const aspect = aspectRatio?.value || 'Unknown Ratio';
     const capabilities = modelCapabilities?.[model] || {};
 
+    localStorage.setItem('pbxp.model', model);
+    localStorage.setItem('pbxp.aspect', aspect);
+
     if (safeModeCheckbox?.checked && capabilities.supportsNegative && negativePrompt?.value) {
       const detected = detectFlaggedTerms(negativePrompt.value);
       if (detected.length > 0) {
@@ -95,10 +129,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     negativeHelper.textContent = '';
   });
 
+  modelSelect?.addEventListener('change', e => {
+    const selected = e.target.value;
+    updateAspectOptions(selected);
+  });
+
+  // Dark mode toggle
+  if (localStorage.getItem('pbxp.darkMode') === 'true') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    darkModeToggle.checked = true;
+  }
+
+  darkModeToggle?.addEventListener('change', e => {
+    const isDark = e.target.checked;
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('pbxp.darkMode', isDark);
+  });
+
   await loadModelCapabilities();
 
-  populateSelect(modelSelect, 'platforms.json');
-  populateSelect(aspectRatio, 'aspect-ratios.json');
   populateSelect(document.getElementById('imageType'), 'image-types.json');
   populateSelect(document.getElementById('subject'), 'subjects.json');
   populateSelect(document.getElementById('action'), 'actions.json');
