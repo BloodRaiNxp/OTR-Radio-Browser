@@ -31,10 +31,14 @@ export function detectFlaggedTerms(text) {
   return flagged;
 }
 
-export async function populateSelect(selectEl, jsonPath) {
+export async function populateSelect(selectEl, source) {
   try {
-    const res = await fetch(`data/${jsonPath}`);
+    const isAbsolute = /^https?:\/\//i.test(source);
+    const path = isAbsolute ? source : `data/${source}`;
+    const res = await fetch(path);
     const data = await res.json();
+
+    selectEl.innerHTML = ''; // clear existing
 
     if (Array.isArray(data)) {
       data.forEach(item => {
@@ -56,7 +60,8 @@ export async function populateSelect(selectEl, jsonPath) {
         selectEl.appendChild(optGroup);
       });
     }
-  } catch {
+  } catch (e) {
+    console.warn(`Failed to load ${source}`, e);
     const fallback = document.createElement('option');
     fallback.textContent = '⚠️ Failed to load options';
     fallback.disabled = true;
