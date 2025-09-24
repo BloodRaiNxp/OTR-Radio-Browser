@@ -46,6 +46,18 @@ select {
   margin-left: 1em;
 }
 
+audio {
+  width: 100%;
+  margin-top: 0.3em;
+}
+
+.episode-title {
+  font-weight: bold;
+  color: #ffd700;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 0.2em;
+}
+
 #weather {
   width: 100%;
   max-width: 600px;
