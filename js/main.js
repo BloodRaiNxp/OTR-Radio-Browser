@@ -152,6 +152,37 @@ document.addEventListener('DOMContentLoaded', async () => {
   populateSelect(document.getElementById('subject'), 'subjects.json');
   populateSelect(document.getElementById('action'), 'actions.json');
   populateSelect(document.getElementById('environment'), 'environments.json');
-  populateSelect(document.getElementById('descriptors'), 'descriptors.json');
+  async function populateTagGroup(containerId, source) {
+  try {
+    const res = await fetch(`data/${source}`);
+    const data = await res.json();
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    data.forEach(item => {
+      const label = document.createElement('label');
+      label.className = 'tag-item';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = item.value || item;
+
+      const span = document.createElement('span');
+      span.textContent = item.label || item;
+
+      label.appendChild(checkbox);
+      label.appendChild(span);
+      container.appendChild(label);
+    });
+  } catch (e) {
+    console.warn(`Failed to load ${source}`, e);
+  }
+}
+
+function getCheckedTags(containerId) {
+  const container = document.getElementById(containerId);
+  return Array.from(container.querySelectorAll('input[type="checkbox"]:checked'))
+    .map(cb => cb.value);
+}
   populateSelect(document.getElementById('quality'), 'quality-packs.json');
 });
