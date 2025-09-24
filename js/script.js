@@ -1,13 +1,7 @@
+let currentShows = {};
+
 function loadGenre(genre) {
-  const fileName = genre
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/&/g, 'and') + '.json';
-
-  console.log("✅ script.js loaded");
-  console.log("Trying to load genre:", genre);
-  console.log("Fetching file:", `data/${fileName}`);
-
+  const fileName = genre.toLowerCase().replace(/ /g, '-').replace(/&/g, 'and') + '.json';
   fetch(`data/${fileName}`)
     .then(response => {
       if (!response.ok) {
@@ -35,15 +29,11 @@ function loadGenre(genre) {
 }
 
 function renderShows(shows) {
+  currentShows = shows;
   const showList = document.getElementById('showList');
   showList.innerHTML = '';
 
   const showKeys = Object.keys(shows);
-  if (showKeys.length === 0) {
-    showList.innerHTML = `<p>No shows available for this genre.</p>`;
-    return;
-  }
-
   showKeys.forEach(showName => {
     const show = shows[showName];
 
@@ -55,13 +45,6 @@ function renderShows(shows) {
     const showDesc = document.createElement('p');
     showDesc.textContent = show.description;
     showList.appendChild(showDesc);
-
-    if (!show.episodes || show.episodes.length === 0) {
-      const noEpisodes = document.createElement('p');
-      noEpisodes.textContent = "No episodes available.";
-      showList.appendChild(noEpisodes);
-      return;
-    }
 
     show.episodes.forEach(episode => {
       const epDiv = document.createElement('div');
@@ -81,6 +64,23 @@ function renderShows(shows) {
     });
   });
 }
+
+document.getElementById('surpriseBtn').addEventListener('click', () => {
+  const allEpisodes = [];
+  Object.entries(currentShows).forEach(([showName, show]) => {
+    if (show.episodes) {
+      show.episodes.forEach(ep => {
+        allEpisodes.push({ ...ep, showName });
+      });
+    }
+  });
+
+  if (allEpisodes.length > 0) {
+    const random = allEpisodes[Math.floor(Math.random() * allEpisodes.length)];
+    document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+    window.open(random.url, '_blank');
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const genreSelect = document.getElementById('genreSelect');
