@@ -15,7 +15,7 @@
 }
 
 [data-theme='dark'] {
-  --bg: #CCC1C0;         /* softened background */
+  --bg: #E8DCDC;         /* softened background */
   --panel: #ffffff;      /* keep panels white */
   --muted: #a0a6b2;
   --text: #0b1226;       /* readable dark text */
