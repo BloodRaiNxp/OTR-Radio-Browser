@@ -15,11 +15,11 @@
 }
 
 [data-theme='dark'] {
-  --bg: #0b0f16;
-  --panel: #0f1720;
-  --muted: #9aa6b2;
-  --text: #e6eef8;
-  --accent: #9b8cff;
+  --bg: #1c1f26;         /* softened background */
+  --panel: #2a2f38;      /* lifted panel tone */
+  --muted: #a0a6b2;      /* slightly brighter muted text */
+  --text: #e0e4ec;       /* softer than pure white */
+  --accent: #9b8cff;     /* keep accent for contrast */
 }
 
 * {
