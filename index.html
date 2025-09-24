@@ -9,43 +9,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Golden Age Radio Lounge</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Rock+Salt&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Header -->
   <header>
     <h1>🎙️ Golden Age Radio Lounge</h1>
-    <p>Nostalgic gift streammaker of public domain classics</p>
+    <p>A nostalgic gift streaming public domain classics</p>
   </header>
 
-  <div id="weather">
-    <p><strong>Yankeeville, Multiverse</strong></p>
-    <p>Current Temp: 77°F ☁️</p>
-    <p>Tue: 77°F ☁️ | Wed: 77°F ☁️ | Thu: 77°F ☁️ | Fri: 77°F ☁️</p>
-    <p>Sat: 80°F ☁️ | Sun: 80°F ☁️ | Mon: 80°F ☁️</p>
-  </div>
+  <!-- Genre Switcher -->
+  <section id="controls">
+    <label for="genreSelect">Choose a Genre:</label>
+    <select id="genreSelect">
+      <option value="Westerns">Westerns</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Comedies">Comedies</option>
+      <option value="Suspense and Horror">Suspense and Horror</option>
+      <option value="Detectives">Detectives</option>
+    </select>
+    <button id="surpriseBtn">🎲 Surprise Me</button>
+  </section>
 
-  <select id="genreSelect">
-    <option value="Westerns">Westerns</option>
-    <option value="Sci-Fi">Sci-Fi</option>
-    <option value="Comedies">Comedies</option>
-    <option value="Suspense and Horror">Suspense and Horror</option>
-    <option value="Detectives">Detectives</option>
-  </select>
+  <!-- Weather Widget for Ivanhoe -->
+  <section id="weather">
+    <a class="weatherwidget-io" href="https://forecast7.com/en/30d68n94d41/ivanhoe/?unit=us" data-label_1="IVANHOE" data-label_2="WEATHER" data-font="Arial Black" data-theme="random_grey">IVANHOE WEATHER</a>
+    <script>
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s);js.id=id;
+        js.src='https://weatherwidget.io/js/widget.min.js';
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    }(document,'script','weatherwidget-io-js');
+    </script>
+  </section>
 
-  <button id="surpriseBtn">🎲 Surprise Me</button>
+  <!-- Now Playing Marquee -->
+  <section id="nowPlaying">
+    <marquee behavior="scroll" direction="left" id="marqueeText">Select an episode to begin...</marquee>
+  </section>
 
-  <marquee behavior="scroll" direction="left" id="marqueeText">Select an episode to begin...</marquee>
+  <!-- Episode Loader -->
+  <section id="radioContent">
+    <div id="showList"></div>
+  </section>
 
-  <div id="showList"></div>
-
-  <footer style="text-align:center; margin:2em; font-size:0.8em;">
+  <!-- Footer -->
+  <footer>
     <p>All content streamed from public archives. No hosting, no monetization, no copyright infringement.</p>
   </footer>
 
   <script src="js/script.js"></script>
 </body>
 </html>
+
+
 
 
 
