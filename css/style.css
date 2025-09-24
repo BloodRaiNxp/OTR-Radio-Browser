@@ -175,9 +175,9 @@ footer {
 }
 
 label[for="genreSelect"] {
-  color: #DBF28F; /* soft Hulk green */
+  color: #C1FF99; /* brighter Hulk green */
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.1em;
   margin-right: 0.5em;
 }
 
