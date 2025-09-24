@@ -1,5 +1,6 @@
 let currentShows = {};
 let currentGenre = 'westerns';
+let lastPlayingBlock = null;
 
 // Load genre data
 function loadGenre(genreName) {
@@ -31,7 +32,6 @@ function renderShows(shows) {
 
   Object.entries(shows).forEach(([showName, show]) => {
     if (show.source) {
-      // Modular loading from external file
       fetch(show.source)
         .then(res => res.json())
         .then(episodes => {
@@ -43,14 +43,13 @@ function renderShows(shows) {
           showList.innerHTML += `<p style="color:red;">⚠️ Could not load episodes for ${showName}</p>`;
         });
     } else if (show.episodes) {
-      // Embedded episodes
       currentShows[showName] = show;
       renderEpisodes(showName, show.description, show.episodes);
     }
   });
 }
 
-// Render episode list with embedded audio
+// Render episode list
 function renderEpisodes(showName, description, episodes) {
   const showList = document.getElementById('showList');
 
@@ -79,6 +78,9 @@ function renderEpisodes(showName, description, episodes) {
 
     audioPlayer.addEventListener('play', () => {
       document.getElementById('marqueeText').textContent = `Now Playing: ${episode.title} from ${showName}`;
+      if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
+      epDiv.classList.add('playing-now');
+      lastPlayingBlock = epDiv;
     });
 
     epDiv.appendChild(epTitle);
@@ -87,7 +89,7 @@ function renderEpisodes(showName, description, episodes) {
   });
 }
 
-// Surprise Me button (embedded playback)
+// Surprise Me button (embedded + dismissable)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
   const allEpisodes = [];
 
@@ -101,15 +103,23 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 
   if (allEpisodes.length > 0) {
     const random = allEpisodes[Math.floor(Math.random() * allEpisodes.length)];
-    document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+    document.getElementById('marqueeText').textContent = `🎧 Choose a category or roll random`;
 
     const showList = document.getElementById('showList');
     const surpriseBlock = document.createElement('div');
-    surpriseBlock.className = 'episode';
+    surpriseBlock.className = 'episode surprise-block';
 
     const epTitle = document.createElement('div');
     epTitle.textContent = random.title;
     epTitle.className = 'episode-title';
+
+    const dismissBtn = document.createElement('span');
+    dismissBtn.textContent = '✖';
+    dismissBtn.className = 'dismiss-btn';
+    dismissBtn.title = 'Remove';
+    dismissBtn.addEventListener('click', () => {
+      surpriseBlock.remove();
+    });
 
     const audioPlayer = document.createElement('audio');
     audioPlayer.controls = true;
@@ -118,15 +128,19 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 
     audioPlayer.addEventListener('play', () => {
       document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+      if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
+      surpriseBlock.classList.add('playing-now');
+      lastPlayingBlock = surpriseBlock;
     });
 
+    epTitle.appendChild(dismissBtn);
     surpriseBlock.appendChild(epTitle);
     surpriseBlock.appendChild(audioPlayer);
     showList.prepend(surpriseBlock);
   }
 });
 
-// Genre selector (patched to lowercase)
+// Genre selector
 document.getElementById('genreSelect').addEventListener('change', (e) => {
   loadGenre(e.target.value.toLowerCase());
 });
@@ -134,7 +148,7 @@ document.getElementById('genreSelect').addEventListener('change', (e) => {
 // Initial load
 loadGenre(currentGenre);
 
-// ✅ Global error listener (restored)
+// Global error listener
 window.addEventListener('error', function(e) {
   console.error("Global error caught:", e.message);
 });
