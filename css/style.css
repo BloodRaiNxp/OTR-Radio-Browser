@@ -162,7 +162,7 @@ details[open] summary {
 
 /* Merged and clarified label[for="genreSelect"] styling */
 label[for="genreSelect"] {
-  color: #C1FF99; /* brighter Hulk green, last rule wins */
+  color: #000000; /* black, last rule wins */
   font-weight: bold;
   font-size: 1.1em;
   margin-right: 0.5em;
@@ -196,7 +196,7 @@ footer {
   animation: scrollMarquee 20s linear infinite;
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1em;
-  color: #DBF28F;
+  color: #4B0082;
   text-align: center;
   margin: 0.5em auto;
 }
