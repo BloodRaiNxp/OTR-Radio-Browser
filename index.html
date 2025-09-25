@@ -10,25 +10,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Golden Age Radio Lounge - A nostalgic gift streaming public domain classic radio shows.">
   <title>Golden Age Radio Lounge</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Rock+Salt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Rock+Salt&family=Ewert&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <h1 style="font-family: 'Ewert', cursive; font-size: 2.2em; color: #DBF28F;">
-      🎙️ Golden Age Radio Lounge
-    </h1>
-    <p style="font-family: 'Ewert', cursive; font-size: 1.2em; color: #4B0082;">
-      A nostalgic gift streaming public domain classics
-    </p>
+    <h1>🎙️ Golden Age Radio Lounge</h1>
+    <p class="subtitle">A nostalgic gift streaming public domain classics</p>
   </header>
-    <div style="width: 100%; overflow: hidden;">
-  <div id="marqueeText">🎧 Choose a category or roll random</div>
-</div>
-  <link href="https://fonts.googleapis.com/css2?family=Ewert&display=swap" rel="stylesheet">
+  <!-- Single styled marqueeText div (no duplicate id, no <marquee> tag) -->
+  <div id="marqueeText" tabindex="0" aria-live="polite">🎧 Choose a category or roll random</div>
 
   <!-- Genre Switcher -->
   <section id="controls">
@@ -58,10 +53,7 @@
     </script>
   </section>
 
-  <!-- Now Playing Marquee -->
-  <section id="nowPlaying">
-    <marquee behavior="scroll" direction="left" id="marqueeText">Select an episode to begin...</marquee>
-  </section>
+  <!-- Now Playing Marquee (no longer needed, handled by #marqueeText above) -->
 
   <!-- Episode Loader -->
   <section id="radioContent">
@@ -76,21 +68,3 @@
   <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
