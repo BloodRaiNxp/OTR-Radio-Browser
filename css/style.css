@@ -182,7 +182,7 @@ footer {
 #marqueeText {
   overflow: hidden;
   white-space: nowrap;
-  animation: scrollMarquee 12s linear infinite;
+  animation: scrollMarquee 20s linear infinite; /* slowed down */
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1em;
   color: #DBF28F;
