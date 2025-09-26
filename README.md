@@ -1,63 +1,26 @@
+# OTR Radio Browser
 
-# PromptBuilder.Xp
+Browse, search, and play thousands of Old Time Radio (OTR) episodes by genre and show.  
+This project is a personal archive and streaming interface—no code, data, or media may be repurposed, modified, or redistributed without explicit permission.
 
-**Version:** 1.0.0  
-**Created:** September 23, 2025  
-**Author:** BloodRaiNxp  
-**License:** MIT
+## Features
+- Genre-based browsing (Detectives, Sci-Fi, Westerns, Comedy, Suspense & Horror, etc.)
+- Scrollable dropdown lists for shows; select and play episodes instantly
+- Playlists with real episode titles and working MP3 links
+- Easy addition of new genres, shows, and episodes via modular JSON files
 
-## 🧠 Overview
+## Data Structure
+- `data/{genre}.json` — genre index file listing all shows and subcategories
+- `data/{genre}/{show}.json` — playlist files for each show, listing episode titles and URLs
 
-PromptBuilder.Xp is a platform-agnostic AI art and video prompt generator designed for modularity, contributor safety, and sleek UI. It supports dynamic dropdowns, bubble-based prompt construction, safe mode filtering, and dark mode.
+## Usage
+- Visit: [OTR Radio Browser on GitHub Pages](https://bloodrainxp.github.io/OTR-Radio-Browser/)
+- Select a genre, browse shows, and stream episodes for personal use only.
 
-## 🚀 Features
+## Copyright & Terms
+All code, data, and media in this repository are © BloodRaiNxp.  AKA. Chris Youngblood
+You may **not** copy, repurpose, redistribute, or modify any part of this project or its contents.  
+For permissions or inquiries, contact the repository owner directly.
 
-- Dynamic dropdowns powered by JSON configs
-- Bubble-based prompt builder with lock/remove logic
-- Flagged word filtering and safe mode toggle
-- Dark mode with localStorage persistence
-- Tooltip guidance and responsive layout
-- Modular architecture for easy expansion
-🔗 **Live demo**: [https://bloodrainxp.github.io/PromptBuilder.Xp/](https://bloodrainxp.github.io/PromptBuilder.Xp/)
-
----
-
-
-## 🛡️ Contributor-Safe Philosophy
-
-All logic is modular and JSON-driven. No external dependencies or runtime calls. Flagged terms are filtered before prompt generation. UI is designed for clarity, accessibility, and reproducibility.
-
-## 📦 How to Use
-
-1. Open `index.html` in any modern browser.
-2. Select platform, model, style, and aspect ratio.
-3. Add bubbles to build your prompt.
-4. Toggle safe mode or apply quality modifiers.
-5. Click **Generate Prompt** and copy the result.
-
-## 🔧 Future Enhancements
-
-- Optional AI-powered prompt suggestions
-- Style preview panel using Colormind or Google Fonts
-- Export to platform-specific formats
----
-
-## 🛠 Built By
-
-**Chris Youngblood**  
-Architect of modular creative tools, prompt engineer, and catalog builder.  
-Focused on precision, transparency, and empowering others through robust systems.
-
----
-
-## 📄 License
-
-This project is not licensed for reuse, redistribution, or modification without explicit permission.  
-
----
-
-## 💬 Feedback
-
-Got ideas, bugs, or feature requests?  
-Open an issue or reach out via GitHub.
-
+## Project Link
+[https://github.com/BloodRaiNxp/OTR-Radio-Browser](https://github.com/BloodRaiNxp/OTR-Radio-Browser)
