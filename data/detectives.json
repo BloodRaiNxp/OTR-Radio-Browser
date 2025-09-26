@@ -1,9 +1,0 @@
-{
-  "background": "assets/detective-bg.jpg",
-  "shows": {
-    "Richard Diamond": {
-      "description": "Sharp-witted private detective solving cases with charm and grit.",
-      "source": "data/detectives/richard-diamond.json"
-    }
-  }
-}
