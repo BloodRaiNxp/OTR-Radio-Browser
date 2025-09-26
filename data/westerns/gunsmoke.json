@@ -1,14 +1,1 @@
-[
-  {
-    "title": "The Guitar",
-    "url": "https://archive.org/download/OTRR_Gunsmoke_Singles/Gunsmoke_51-06-20_001_The_Guitar.mp3"
-  },
-  {
-    "title": "Billy the Kid",
-    "url": "https://archive.org/download/OTRR_Gunsmoke_Singles/Gunsmoke_52-06-07_052_Billy_the_Kid.mp3"
-  },
-  {
-    "title": "The Hunter",
-    "url": "https://archive.org/download/OTRR_Gunsmoke_Singles/Gunsmoke_53-12-06_143_The_Hunter.mp3"
-  }
-]
+{"playlist": ["Episode 1", "Episode 2", "Episode 3"]}
