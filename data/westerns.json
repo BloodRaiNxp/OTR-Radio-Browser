@@ -1,8 +1,29 @@
-[
-  "Gunsmoke",
-  "Have Gun Will Travel",
-  "Frontier Town",
-  "Frontier Gentleman",
-  "The Six Shooter",
-  "Death Valley Days"
-]
+{
+  "background": "images/westerns-bg.jpg",
+  "shows": {
+    "Gunsmoke": {
+      "description": "Classic radio western.",
+      "source": "data/westerns/gunsmoke.json"
+    },
+    "Have Gun Will Travel": {
+      "description": "Adventures of Paladin.",
+      "source": "data/westerns/have-gun-will-travel.json"
+    },
+    "Frontier Town": {
+      "description": "Small town drama.",
+      "source": "data/westerns/frontier-town.json"
+    },
+    "Frontier Gentleman": {
+      "description": "Gentleman abroad.",
+      "source": "data/westerns/frontier-gentleman.json"
+    },
+    "The Six Shooter": {
+      "description": "Jimmy Stewart stars.",
+      "source": "data/westerns/the-six-shooter.json"
+    },
+    "Death Valley Days": {
+      "description": "Life in Death Valley.",
+      "source": "data/westerns/death-valley-days.json"
+    }
+  }
+}
