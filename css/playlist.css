@@ -1,0 +1,5 @@
+.playlist-scrollbox {
+    max-height: 400px;
+    overflow-y: auto;
+    /* Add any other styles as needed for scalable UI */
+}
