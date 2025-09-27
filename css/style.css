@@ -104,6 +104,15 @@ audio {
   align-items: center;
 }
 
+.show-instruction {
+  text-align: center;
+  color: #4B0082;
+  font-size: 1.1em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  font-family: 'Orbitron', sans-serif;
+}
+
 #showList {
   width: 90%;
   max-width: 800px;
