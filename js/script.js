@@ -97,6 +97,9 @@ function renderShowBox(showName, description, episodes) {
     const epTitle = document.createElement('div');
     epTitle.textContent = episode.title;
     epTitle.className = 'episode-title';
+    
+    // Add tooltip for truncated titles
+    epTitle.title = episode.title;
 
     if (episode.url && episode.url.trim() !== '') {
       const audioPlayer = document.createElement('audio');
@@ -167,6 +170,9 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     const epTitle = document.createElement('div');
     epTitle.textContent = random.title;
     epTitle.className = 'episode-title';
+    
+    // Add tooltip for truncated titles
+    epTitle.title = random.title;
 
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
