@@ -5,7 +5,6 @@ let lastPlayingBlock = null;
 // Load genre data
 function loadGenre(genreName) {
   currentGenre = genreName;
-
   document.getElementById('showList').innerHTML = '';
   document.getElementById('marqueeText').textContent = '';
   currentShows = {};
@@ -59,7 +58,7 @@ function renderShowBox(showName, description, episodes) {
   header.className = 'show-title';
   header.tabIndex = 0;
   header.style.cursor = 'pointer';
-  header.setAttribute('title', showName); // Add title attribute for full name
+  header.setAttribute('title', showName);
 
   // Indicator arrow
   const indicator = document.createElement('span');
@@ -95,9 +94,22 @@ function renderShowBox(showName, description, episodes) {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
 
+    // Episode title above player, truncation, tooltip
     const epTitle = document.createElement('div');
     epTitle.textContent = episode.title;
     epTitle.className = 'episode-title';
+    epTitle.setAttribute('title', episode.title);
+
+    // Accessibility: Set title only if visually truncated
+    setTimeout(() => {
+      if (epTitle.scrollWidth > epTitle.clientWidth) {
+        epTitle.setAttribute('title', episode.title);
+      } else {
+        epTitle.removeAttribute('title');
+      }
+    }, 15);
+
+    epDiv.appendChild(epTitle);
 
     if (episode.url && episode.url.trim() !== '') {
       const audioPlayer = document.createElement('audio');
@@ -119,7 +131,6 @@ function renderShowBox(showName, description, episodes) {
       epDiv.appendChild(noAudio);
     }
 
-    epDiv.appendChild(epTitle);
     content.appendChild(epDiv);
   });
 
