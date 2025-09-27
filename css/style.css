@@ -140,24 +140,9 @@ audio {
   text-decoration: underline;
 }
 
-details {
-  margin-bottom: 1em;
-}
-
-details[open] summary::after {
-  content: "▼";
-  float: right;
-  color: #ffd700;
-}
-
-details summary::after {
-  content: "▶";
-  float: right;
-  color: #ffd700;
-}
-
-details[open] summary {
-  border-bottom: 1px solid #ffd700;
+/* Show content container styling */
+.show-content {
+  transition: all 0.3s ease;
 }
 
 /* Merged and clarified label[for="genreSelect"] styling */

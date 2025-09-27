@@ -48,23 +48,42 @@ function renderShows(shows) {
   });
 }
 
-// Render episode list inside collapsible <details>
+// Render episode list inside collapsible box
 function renderEpisodes(showName, description, episodes) {
   const showList = document.getElementById('showList');
 
-  const details = document.createElement('details');
-  details.open = true;
+  // Create show box container
+  const showBox = document.createElement('div');
+  showBox.className = 'show-box';
 
-  const summary = document.createElement('summary');
-  summary.className = 'show-title';
-  summary.textContent = showName;
-  details.appendChild(summary);
+  // Create show title header (clickable)
+  const showHeader = document.createElement('h2');
+  showHeader.textContent = showName;
+  showHeader.style.cursor = 'pointer';
+  showHeader.style.userSelect = 'none';
+  
+  // Add expand/collapse indicator
+  const indicator = document.createElement('span');
+  indicator.textContent = '▼';
+  indicator.style.float = 'right';
+  indicator.style.color = '#ffe066';
+  showHeader.appendChild(indicator);
+
+  showBox.appendChild(showHeader);
+
+  // Create content container (initially visible)
+  const contentContainer = document.createElement('div');
+  contentContainer.className = 'show-content';
 
   if (description) {
     const showDesc = document.createElement('p');
     showDesc.textContent = description;
-    details.appendChild(showDesc);
+    contentContainer.appendChild(showDesc);
   }
+
+  // Create episode list container
+  const episodeList = document.createElement('div');
+  episodeList.className = 'episode-list';
 
   episodes.forEach(episode => {
     const epDiv = document.createElement('div');
@@ -87,10 +106,21 @@ function renderEpisodes(showName, description, episodes) {
 
     epDiv.appendChild(epTitle);
     epDiv.appendChild(audioPlayer);
-    details.appendChild(epDiv);
+    episodeList.appendChild(epDiv);
   });
 
-  showList.appendChild(details);
+  contentContainer.appendChild(episodeList);
+  showBox.appendChild(contentContainer);
+
+  // Add click handler for collapsible functionality
+  let isExpanded = true;
+  showHeader.addEventListener('click', () => {
+    isExpanded = !isExpanded;
+    contentContainer.style.display = isExpanded ? 'block' : 'none';
+    indicator.textContent = isExpanded ? '▼' : '▶';
+  });
+
+  showList.appendChild(showBox);
 }
 
 // Surprise Me button (embedded + dismissable)
