@@ -5,6 +5,7 @@ let lastPlayingBlock = null;
 // Load genre data
 function loadGenre(genreName) {
   currentGenre = genreName;
+
   document.getElementById('showList').innerHTML = '';
   document.getElementById('marqueeText').textContent = '';
   currentShows = {};
@@ -58,7 +59,6 @@ function renderShowBox(showName, description, episodes) {
   header.className = 'show-title';
   header.tabIndex = 0;
   header.style.cursor = 'pointer';
-  header.setAttribute('title', showName);
 
   // Indicator arrow
   const indicator = document.createElement('span');
@@ -94,22 +94,9 @@ function renderShowBox(showName, description, episodes) {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
 
-    // Episode title above player, truncation, tooltip
     const epTitle = document.createElement('div');
     epTitle.textContent = episode.title;
     epTitle.className = 'episode-title';
-    epTitle.setAttribute('title', episode.title);
-
-    // Accessibility: Set title only if visually truncated
-    setTimeout(() => {
-      if (epTitle.scrollWidth > epTitle.clientWidth) {
-        epTitle.setAttribute('title', episode.title);
-      } else {
-        epTitle.removeAttribute('title');
-      }
-    }, 15);
-
-    epDiv.appendChild(epTitle);
 
     if (episode.url && episode.url.trim() !== '') {
       const audioPlayer = document.createElement('audio');
@@ -131,6 +118,7 @@ function renderShowBox(showName, description, episodes) {
       epDiv.appendChild(noAudio);
     }
 
+    epDiv.appendChild(epTitle);
     content.appendChild(epDiv);
   });
 
@@ -150,15 +138,72 @@ function renderShowBox(showName, description, episodes) {
   showBox.appendChild(header);
   showBox.appendChild(content);
   showList.appendChild(showBox);
-
-  // Accessibility: Set title only if visually truncated
-  setTimeout(() => {
-    if (header.scrollWidth > header.clientWidth) {
-      header.setAttribute('title', showName);
-    } else {
-      header.removeAttribute('title');
-    }
-  }, 15);
 }
 
-// ...rest of file unchanged...
+// Surprise Me button (only one surprise block at a time)
+document.getElementById('surpriseBtn').addEventListener('click', () => {
+  const showList = document.getElementById('showList');
+  // Remove any previous surprise block
+  const previousSurprise = showList.querySelector('.surprise-block');
+  if (previousSurprise) previousSurprise.remove();
+
+  const allEpisodes = [];
+
+  Object.entries(currentShows).forEach(([showName, show]) => {
+    if (show.episodes) {
+      show.episodes.forEach(ep => {
+        allEpisodes.push({ ...ep, showName });
+      });
+    }
+  });
+
+  if (allEpisodes.length > 0) {
+    const random = allEpisodes[Math.floor(Math.random() * allEpisodes.length)];
+    document.getElementById('marqueeText').textContent = `🎧 Choose a category or roll random`;
+
+    const surpriseBlock = document.createElement('div');
+    surpriseBlock.className = 'episode surprise-block';
+
+    const epTitle = document.createElement('div');
+    epTitle.textContent = random.title;
+    epTitle.className = 'episode-title';
+
+    const dismissBtn = document.createElement('span');
+    dismissBtn.textContent = '\u2716';
+    dismissBtn.className = 'dismiss-btn';
+    dismissBtn.title = 'Remove';
+    dismissBtn.addEventListener('click', () => {
+      surpriseBlock.remove();
+    });
+
+    const audioPlayer = document.createElement('audio');
+    audioPlayer.controls = true;
+    audioPlayer.src = random.url;
+    audioPlayer.autoplay = true;
+
+    audioPlayer.addEventListener('play', () => {
+      document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+      if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
+      surpriseBlock.classList.add('playing-now');
+      lastPlayingBlock = surpriseBlock;
+    });
+
+    epTitle.appendChild(dismissBtn);
+    surpriseBlock.appendChild(epTitle);
+    surpriseBlock.appendChild(audioPlayer);
+    showList.prepend(surpriseBlock);
+  }
+});
+
+// Genre selector
+document.getElementById('genreSelect').addEventListener('change', (e) => {
+  loadGenre(e.target.value.toLowerCase());
+});
+
+// Initial load
+loadGenre(currentGenre);
+
+// Global error listener
+window.addEventListener('error', function(e) {
+  console.error("Global error caught:", e.message);
+});
