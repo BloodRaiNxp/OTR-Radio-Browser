@@ -51,30 +51,35 @@ function renderShows(shows) {
 // Render a single show as a collapsible .show-box
 function renderShowBox(showName, description, episodes) {
   const showList = document.getElementById('showList');
-
-  // Create main show box
   const showBox = document.createElement('div');
   showBox.className = 'show-box';
 
   // Header (collapsible control)
   const header = document.createElement('h2');
   header.className = 'show-title';
-  header.tabIndex = 0; // for keyboard accessibility
+  header.tabIndex = 0;
   header.style.cursor = 'pointer';
 
   // Indicator arrow
   const indicator = document.createElement('span');
-  indicator.textContent = '▼';
+  indicator.textContent = '▶'; // Closed by default
   indicator.style.marginRight = '8px';
   indicator.style.transition = 'transform 0.2s';
 
+  // Subtle instruction
+  const instruction = document.createElement('span');
+  instruction.textContent = ' (click to expand)';
+  instruction.style.fontSize = '0.85em';
+  instruction.style.color = '#888';
+
   header.appendChild(indicator);
   header.appendChild(document.createTextNode(showName));
+  header.appendChild(instruction);
 
   // Collapsible content container
   const content = document.createElement('div');
   content.className = 'episode-list';
-  content.style.display = 'block';
+  content.style.display = 'none'; // Closed by default
 
   // Optional description
   if (description) {
@@ -93,24 +98,32 @@ function renderShowBox(showName, description, episodes) {
     epTitle.textContent = episode.title;
     epTitle.className = 'episode-title';
 
-    const audioPlayer = document.createElement('audio');
-    audioPlayer.controls = true;
-    audioPlayer.src = episode.url;
+    if (episode.url && episode.url.trim() !== '') {
+      const audioPlayer = document.createElement('audio');
+      audioPlayer.controls = true;
+      audioPlayer.src = episode.url;
 
-    audioPlayer.addEventListener('play', () => {
-      document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
-      if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
-      epDiv.classList.add('playing-now');
-      lastPlayingBlock = epDiv;
-    });
+      audioPlayer.addEventListener('play', () => {
+        document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
+        if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
+        epDiv.classList.add('playing-now');
+        lastPlayingBlock = epDiv;
+      });
+
+      epDiv.appendChild(audioPlayer);
+    } else {
+      const noAudio = document.createElement('span');
+      noAudio.textContent = 'Audio unavailable';
+      noAudio.className = 'no-audio';
+      epDiv.appendChild(noAudio);
+    }
 
     epDiv.appendChild(epTitle);
-    epDiv.appendChild(audioPlayer);
     content.appendChild(epDiv);
   });
 
   // Collapsible logic
-  let expanded = true;
+  let expanded = false;
   header.addEventListener('click', () => {
     expanded = !expanded;
     content.style.display = expanded ? 'block' : 'none';
@@ -127,8 +140,13 @@ function renderShowBox(showName, description, episodes) {
   showList.appendChild(showBox);
 }
 
-// Surprise Me button (embedded + dismissable)
+// Surprise Me button (only one surprise block at a time)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
+  const showList = document.getElementById('showList');
+  // Remove any previous surprise block
+  const previousSurprise = showList.querySelector('.surprise-block');
+  if (previousSurprise) previousSurprise.remove();
+
   const allEpisodes = [];
 
   Object.entries(currentShows).forEach(([showName, show]) => {
@@ -143,7 +161,6 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     const random = allEpisodes[Math.floor(Math.random() * allEpisodes.length)];
     document.getElementById('marqueeText').textContent = `🎧 Choose a category or roll random`;
 
-    const showList = document.getElementById('showList');
     const surpriseBlock = document.createElement('div');
     surpriseBlock.className = 'episode surprise-block';
 
