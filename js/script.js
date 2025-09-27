@@ -23,7 +23,7 @@ function loadGenre(genreName) {
     });
 }
 
-// Render shows and episodes (now collapsible)
+// Render shows and episodes (collapsible .show-box divs)
 function renderShows(shows) {
   currentShows = {};
   const showList = document.getElementById('showList');
@@ -35,7 +35,7 @@ function renderShows(shows) {
         .then(res => res.json())
         .then(episodes => {
           currentShows[showName] = { description: show.description, episodes };
-          renderEpisodes(showName, show.description, episodes);
+          renderShowBox(showName, show.description, episodes);
         })
         .catch(err => {
           console.error(`Error loading ${showName}:`, err);
@@ -43,29 +43,48 @@ function renderShows(shows) {
         });
     } else if (show.episodes) {
       currentShows[showName] = show;
-      renderEpisodes(showName, show.description, show.episodes);
+      renderShowBox(showName, show.description, show.episodes);
     }
   });
 }
 
-// Render episode list inside collapsible <details>
-function renderEpisodes(showName, description, episodes) {
+// Render a single show as a collapsible .show-box
+function renderShowBox(showName, description, episodes) {
   const showList = document.getElementById('showList');
 
-  const details = document.createElement('details');
-  details.open = true;
+  // Create main show box
+  const showBox = document.createElement('div');
+  showBox.className = 'show-box';
 
-  const summary = document.createElement('summary');
-  summary.className = 'show-title';
-  summary.textContent = showName;
-  details.appendChild(summary);
+  // Header (collapsible control)
+  const header = document.createElement('h2');
+  header.className = 'show-title';
+  header.tabIndex = 0; // for keyboard accessibility
+  header.style.cursor = 'pointer';
 
+  // Indicator arrow
+  const indicator = document.createElement('span');
+  indicator.textContent = '▼';
+  indicator.style.marginRight = '8px';
+  indicator.style.transition = 'transform 0.2s';
+
+  header.appendChild(indicator);
+  header.appendChild(document.createTextNode(showName));
+
+  // Collapsible content container
+  const content = document.createElement('div');
+  content.className = 'episode-list';
+  content.style.display = 'block';
+
+  // Optional description
   if (description) {
     const showDesc = document.createElement('p');
     showDesc.textContent = description;
-    details.appendChild(showDesc);
+    showDesc.style.marginBottom = '0.7em';
+    content.appendChild(showDesc);
   }
 
+  // Add episodes
   episodes.forEach(episode => {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
@@ -87,10 +106,25 @@ function renderEpisodes(showName, description, episodes) {
 
     epDiv.appendChild(epTitle);
     epDiv.appendChild(audioPlayer);
-    details.appendChild(epDiv);
+    content.appendChild(epDiv);
   });
 
-  showList.appendChild(details);
+  // Collapsible logic
+  let expanded = true;
+  header.addEventListener('click', () => {
+    expanded = !expanded;
+    content.style.display = expanded ? 'block' : 'none';
+    indicator.textContent = expanded ? '▼' : '▶';
+  });
+  header.addEventListener('keydown', (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      header.click();
+    }
+  });
+
+  showBox.appendChild(header);
+  showBox.appendChild(content);
+  showList.appendChild(showBox);
 }
 
 // Surprise Me button (embedded + dismissable)
