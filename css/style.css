@@ -49,4 +49,187 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-/* ...rest of file unchanged... */
+/* Show container restoration */
+.show-box {
+  background: #222;
+  color: #f6f6f6;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  width: 95%;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Episode list inside each show */
+.episode-list {
+  max-height: 320px;
+  overflow-y: auto;
+  background: #333;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+}
+
+/* Episode block: HORIZONTAL layout (title to the right of player) */
+.episode {
+  background-color: #222;
+  padding: 0.8em;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1.2em;
+  overflow: hidden;
+}
+
+/* Audio player styles */
+.episode audio {
+  min-width: 200px;
+  max-width: 300px;
+  width: 300px;
+  flex-shrink: 0;
+}
+
+/* Episode title: to the right of audio, truncation, tooltip */
+.episode-title {
+  color: #ffd700;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Tooltip for truncated titles */
+.episode-title[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  top: 1.5em;
+  background: #222;
+  color: #ffd700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  z-index: 10;
+  white-space: normal;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  max-width: 300px;
+}
+
+/* Additional required styles from main application */
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-family: 'Rock Salt', cursive;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 1.1em;
+  margin: 0.5rem 0 0 0;
+  color: #ccc;
+}
+
+#marqueeBanner {
+  background: linear-gradient(45deg, #A5C882, #4CAF50);
+  padding: 0.8rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#marqueeText {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+}
+
+#controls {
+  background: #222;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  width: 95%;
+}
+
+#controls label {
+  color: #ffd700;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+#genreSelect {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: #ffd700;
+  font-size: 1em;
+  margin-right: 1rem;
+}
+
+#surpriseBtn {
+  background: linear-gradient(45deg, #A5C882, #4CAF50);
+  color: #222;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+#surpriseBtn:hover {
+  background: linear-gradient(45deg, #4CAF50, #A5C882);
+}
+
+.show-instruction {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+#radioContent {
+  padding: 0 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #888;
+  font-size: 0.9em;
+}
+
+/* Playing indicator */
+.playing-now {
+  box-shadow: 0 0 15px rgba(165, 200, 130, 0.5);
+  border: 2px solid #A5C882;
+}
+
+/* No audio message */
+.no-audio {
+  color: #888;
+  font-style: italic;
+  padding: 0.5rem;
+}
