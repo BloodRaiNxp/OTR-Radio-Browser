@@ -64,18 +64,50 @@ select {
 }
 
 audio {
-  width: 100%;
   margin-top: 0.3em;
+}
+/* ---- EPISODE ROWS - FLEXBOX, ALIGNMENT, NO OVERFLOW ---- */
+.episode {
+  background-color: #222;
+  padding: 0.5em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+.episode audio {
+  width: 70%;
+  min-width: 200px;
+  max-width: 400px;
+  flex-shrink: 0;
 }
 
 .episode-title {
-  font-weight: bold;
   color: #ffd700;
   font-family: 'Orbitron', sans-serif;
-  margin-bottom: 0.2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 1.15em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30%;
+  flex: 0 1 30%;
+  text-align: right;
+  padding-left: 0.5em;
+}
+
+/* Episode link styles preserved */
+.episode a {
+  color: #ffd700;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.episode a:hover {
+  text-decoration: underline;
 }
 
 #weather {
@@ -131,22 +163,6 @@ audio {
   margin-bottom: 0.5em;
   font-family: 'Orbitron', sans-serif;
   color: #ffd700;
-}
-
-.episode {
-  background-color: #222;
-  padding: 0.5em;
-  border-radius: 5px;
-}
-
-.episode a {
-  color: #ffd700;
-  text-decoration: none;
-  font-family: 'Orbitron', sans-serif;
-}
-
-.episode a:hover {
-  text-decoration: underline;
 }
 
 details {
@@ -262,43 +278,16 @@ footer {
   font-family: 'Segoe UI', 'Arial', sans-serif;
 }
 
-.episode {
-  background-color: #222;
-  padding: 0.5em;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  margin-bottom: 0.5em;
+.episode-list {
+  max-height: 300px; /* Adjust height for box scrollability */
+  overflow-y: auto;
+  background: #333;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.06);
 }
 
-.episode-title {
-  color: #ffd700;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.15em;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex: 1;
-  text-align: right;
-  padding-left: 0.5em;
-  min-width: 120px; /* or use max-width: 200px; */
-}
-
-audio {
-  flex-shrink: 0;
-}
-
-.episode a {
-  color: #ffd700;
-  text-decoration: none;
-  font-family: 'Orbitron', sans-serif;
-}
-
-.episode a:hover {
-  text-decoration: underline;
-}
 @media (max-width: 700px) {
   .show-box {
     max-width: 98vw;
