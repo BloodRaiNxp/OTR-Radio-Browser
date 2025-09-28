@@ -17,7 +17,7 @@ body {
   margin-bottom: 0.5em;
   font-family: 'Orbitron', sans-serif;
   color: #ffd700;
-  max-width: 380px;         /* Controls width for uniformity */
+  max-width: 380px;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -32,8 +32,8 @@ body {
 @media (max-width: 500px) {
   .show-title {
     font-size: 1.2em;
-    max-width: 280px; /* Adjust for smaller screens */
-    white-space: normal; /* Allow wrapping on small screens */
+    max-width: 280px;
+    white-space: normal;
   }
 }
 
@@ -112,13 +112,12 @@ body {
   align-items: center;
   gap: 1em;
   margin-bottom: 0.8em;
-  position: relative; /* Needed for .playing-now to position correctly */
+  position: relative;
   overflow: hidden;
 }
 
-/* Pill/Player styling for all .playing-now and .surprise-block */
-.episode.surprise-block,
-.episode.playing-now {
+/* Surprise pill (centered) */
+.episode.surprise-block {
   position: relative;
   left: 50%;
   top: 1em;
@@ -137,13 +136,11 @@ body {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.1em;
 }
+
+/* When playing: pulse/glow only, do NOT reposition episode rows */
 .episode.playing-now {
-  box-shadow: 0 0 16px 8px #A5C882;
   animation: pulse 2s infinite;
-}
-.episode.surprise-block.playing-now {
   box-shadow: 0 0 16px 8px #A5C882;
-  animation: pulse 2s infinite;
 }
 
 /* Audio player styles */
@@ -162,7 +159,7 @@ body {
   margin: 0;
   cursor: pointer;
   position: relative;
-  max-width: calc(100% - 220px); 
+  max-width: calc(100% - 220px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -172,7 +169,6 @@ body {
 }
 
 .episode-title[title]:hover::after {
-  /* Show full title on hover */
   content: attr(title);
   position: absolute;
   left: 0;
