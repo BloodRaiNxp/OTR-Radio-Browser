@@ -1,29 +1,49 @@
 {
-  "background": "logo.png: Download from https://via.placeholder.com/120x40",
+  "background": "",
   "shows": {
     "Gunsmoke": {
-      "description": "Classic radio western.",
+      "description": "Marshal Dillon keeps the peace in Dodge.",
       "source": "data/westerns/gunsmoke.json"
     },
     "Have Gun Will Travel": {
-      "description": "Adventures of Paladin.",
+      "description": "Paladin’s adventures in the Old West.",
       "source": "data/westerns/have-gun-will-travel.json"
     },
+    "Fort Laramie": {
+      "description": "U.S. cavalry drama at a frontier fort.",
+      "source": "data/westerns/fort-laramie.json"
+    },
+    "Tales of the Texas Rangers": {
+      "description": "Modern-era Texas Rangers cases.",
+      "source": "data/westerns/tales-of-the-texas-rangers.json"
+    },
     "Frontier Town": {
-      "description": "Small town drama.",
+      "description": "Chad Remington, frontier lawyer and troubleshooter.",
       "source": "data/westerns/frontier-town.json"
     },
     "Frontier Gentleman": {
-      "description": "Gentleman abroad.",
+      "description": "A British journalist roams the American West.",
       "source": "data/westerns/frontier-gentleman.json"
     },
     "The Six Shooter": {
-      "description": "Jimmy Stewart stars.",
+      "description": "Jimmy Stewart as drifter Britt Ponset.",
       "source": "data/westerns/the-six-shooter.json"
     },
     "Death Valley Days": {
-      "description": "Life in Death Valley.",
+      "description": "Tales from the California frontier.",
       "source": "data/westerns/death-valley-days.json"
+    },
+    "Hawk Larabee": {
+      "description": "A drifter’s adventures across the West.",
+      "source": "data/westerns/hawk-larabee.json"
+    },
+    "Luke Slaughter of Tombstone": {
+      "description": "Hard-driving Arizona cattleman stories.",
+      "source": "data/westerns/luke-slaughter-of-tombstone.json"
+    },
+    "Dr. Sixgun": {
+      "description": "Frontier doctor in a lawless town.",
+      "source": "data/westerns/dr-sixgun.json"
     }
   }
 }
