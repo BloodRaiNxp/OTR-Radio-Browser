@@ -3,13 +3,11 @@ let currentGenre = 'westerns';
 let lastPlayingBlock = null;
 let cachedEpisodes = [];
 
-// Helper: Pause all audio and remove .playing-now from all pills
 function pauseAllAudioPlayers() {
   document.querySelectorAll('audio').forEach(aud => aud.pause());
   document.querySelectorAll('.playing-now').forEach(box => box.classList.remove('playing-now'));
 }
 
-// Load genre data
 function loadGenre(genreName) {
   if (typeof genreName === 'string' && genreName.trim() !== '') {
     currentGenre = genreName;
@@ -30,19 +28,17 @@ function loadGenre(genreName) {
       });
   } else {
     console.warn('Invalid genreName provided:', genreName);
-    document.body.style.backgroundImage = "url('images/loading-bg.jpg')"; // Use a loading or placeholder image
+    document.body.style.backgroundImage = "url('images/loading-bg.jpg')";
     return;
   }
 }
 
-// Render shows and episodes (collapsible .show-box divs)
 function renderShows(shows) {
   currentShows = {};
   cachedEpisodes = [];
   const showList = document.getElementById('showList');
   showList.innerHTML = '';
 
-  // Ensure error container exists
   let errorContainer = document.getElementById('errorContainer');
   if (!errorContainer) {
     errorContainer = document.createElement('div');
@@ -60,7 +56,6 @@ function renderShows(shows) {
         .then(episodes => {
           currentShows[showName] = { description: show.description, episodes };
           renderShowBox(showName, show.description, episodes);
-          // Cache episodes for surprise button
           episodes.forEach(ep => {
             cachedEpisodes.push({ ...ep, showName });
           });
@@ -75,7 +70,6 @@ function renderShows(shows) {
     } else if (show.episodes) {
       currentShows[showName] = show;
       renderShowBox(showName, show.description, show.episodes);
-      // Cache episodes for surprise button
       show.episodes.forEach(ep => {
         cachedEpisodes.push({ ...ep, showName });
       });
@@ -83,11 +77,10 @@ function renderShows(shows) {
   });
 }
 
-// Render a pill-style player for a show/episode
 function renderShowBox(showName, description, episodes) {
   const showList = document.getElementById('showList');
   const indicator = document.createElement('span');
-  indicator.textContent = '\u25b6'; // Closed by default
+  indicator.textContent = '\u25b6';
   indicator.setAttribute('aria-label', 'Expand/collapse show');
   indicator.style.marginRight = '8px';
   indicator.style.transition = 'transform 0.2s';
@@ -105,9 +98,8 @@ function renderShowBox(showName, description, episodes) {
   instruction.style.fontSize = '0.85em';
   instruction.style.color = '#888';
 
-  // Accessibility: update instruction text based on focus method
   header.addEventListener('focus', (e) => {
-    if (e.detail === 0) { // Keyboard focus
+    if (e.detail === 0) {
       instruction.textContent = ' (press Enter or Space to expand)';
     }
   });
@@ -119,12 +111,10 @@ function renderShowBox(showName, description, episodes) {
   header.appendChild(document.createTextNode(showName));
   header.appendChild(instruction);
 
-  // Collapsible content container
   const content = document.createElement('div');
   content.className = 'episode-list';
-  content.style.display = 'none'; // Closed by default
+  content.style.display = 'none';
 
-  // Optional description
   if (description) {
     const showDesc = document.createElement('p');
     showDesc.textContent = description;
@@ -132,7 +122,6 @@ function renderShowBox(showName, description, episodes) {
     content.appendChild(showDesc);
   }
 
-  // Add episodes
   episodes.forEach(episode => {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
@@ -140,13 +129,11 @@ function renderShowBox(showName, description, episodes) {
     const epTitle = document.createElement('div');
     epTitle.textContent = episode.title;
 
-    // Check if episode has a URL for audio
     if (episode.url) {
       const audioPlayer = document.createElement('audio');
       audioPlayer.controls = true;
       audioPlayer.src = episode.url;
 
-      // Pill playbox logic
       audioPlayer.addEventListener('play', () => {
         pauseAllAudioPlayers();
         document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
@@ -168,7 +155,6 @@ function renderShowBox(showName, description, episodes) {
         }
       });
 
-      // Add X button to pill
       const dismissBtn = document.createElement('span');
       dismissBtn.textContent = '\u2716';
       dismissBtn.className = 'dismiss-btn';
@@ -195,7 +181,6 @@ function renderShowBox(showName, description, episodes) {
     content.appendChild(epDiv);
   });
 
-  // Collapsible logic
   let expanded = false;
   header.addEventListener('click', () => {
     expanded = !expanded;
@@ -213,14 +198,11 @@ function renderShowBox(showName, description, episodes) {
   showList.appendChild(showBox);
 }
 
-// Surprise Me button (only one surprise block at a time)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
   const showList = document.getElementById('showList');
-  // Remove any previous surprise block
   const previousSurprise = showList.querySelector('.surprise-block');
   if (previousSurprise) previousSurprise.remove();
 
-  // Use cached episodes for surprise button
   if (cachedEpisodes.length > 0) {
     const random = cachedEpisodes[Math.floor(Math.random() * cachedEpisodes.length)];
     document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
@@ -233,7 +215,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     epTitle.title = random.title;
     surpriseBlock.appendChild(epTitle);
 
-    let audioPlayer; // Fix: Declare in parent scope for dismissBtn access
+    let audioPlayer;
 
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
@@ -243,7 +225,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     dismissBtn.addEventListener('click', () => {
       surpriseBlock.classList.remove('playing-now');
       document.getElementById('marqueeText').textContent = '';
-      if (audioPlayer) audioPlayer.pause(); // Only pause if audioPlayer exists
+      if (audioPlayer) audioPlayer.pause();
       lastPlayingBlock = null;
     });
     surpriseBlock.appendChild(dismissBtn);
@@ -276,10 +258,8 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 
       surpriseBlock.appendChild(audioPlayer);
 
-      // Attempt to play audio after user interaction
       setTimeout(() => {
         audioPlayer.play().catch(() => {
-          // Playback failed due to browser policy; user must manually press play
           const warning = document.createElement('div');
           warning.textContent = '🔈 Click play to listen (autoplay blocked by browser)';
           warning.className = 'autoplay-warning';
@@ -324,7 +304,6 @@ window.onload = function() {
   loadGenre(currentGenre);
 };
 
-// Enable dropdown genre selection!
 document.getElementById('genreSelect').addEventListener('change', function() {
   loadGenre(this.value);
 });
