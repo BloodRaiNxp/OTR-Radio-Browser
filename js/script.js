@@ -3,11 +3,13 @@ let currentGenre = 'westerns';
 let lastPlayingBlock = null;
 let cachedEpisodes = [];
 
+// Pause any currently playing audio and clear playing-now state
 function pauseAllAudioPlayers() {
   document.querySelectorAll('audio').forEach(aud => aud.pause());
   document.querySelectorAll('.playing-now').forEach(box => box.classList.remove('playing-now'));
 }
 
+// Load genre data
 function loadGenre(genreName) {
   if (typeof genreName === 'string' && genreName.trim() !== '') {
     currentGenre = genreName;
@@ -33,12 +35,14 @@ function loadGenre(genreName) {
   }
 }
 
+// Render shows and episodes (collapsible .show-box divs)
 function renderShows(shows) {
   currentShows = {};
   cachedEpisodes = [];
   const showList = document.getElementById('showList');
   showList.innerHTML = '';
 
+  // Ensure error container exists
   let errorContainer = document.getElementById('errorContainer');
   if (!errorContainer) {
     errorContainer = document.createElement('div');
@@ -56,20 +60,22 @@ function renderShows(shows) {
         .then(episodes => {
           currentShows[showName] = { description: show.description, episodes };
           renderShowBox(showName, show.description, episodes);
+          // Cache episodes for surprise button
           episodes.forEach(ep => {
             cachedEpisodes.push({ ...ep, showName });
           });
         })
         .catch(err => {
           console.error(`Error loading ${showName}:`, err);
-          const errorContainer = document.getElementById('errorContainer');
-          if (errorContainer) {
-            errorContainer.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
+          const errorContainer2 = document.getElementById('errorContainer');
+          if (errorContainer2) {
+            errorContainer2.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
           }
         });
     } else if (show.episodes) {
       currentShows[showName] = show;
       renderShowBox(showName, show.description, show.episodes);
+      // Cache episodes for surprise button
       show.episodes.forEach(ep => {
         cachedEpisodes.push({ ...ep, showName });
       });
@@ -77,10 +83,11 @@ function renderShows(shows) {
   });
 }
 
+// Render a show block with collapsible episode list
 function renderShowBox(showName, description, episodes) {
   const showList = document.getElementById('showList');
   const indicator = document.createElement('span');
-  indicator.textContent = '\u25b6';
+  indicator.textContent = '\u25b6'; // closed ►
   indicator.setAttribute('aria-label', 'Expand/collapse show');
   indicator.style.marginRight = '8px';
   indicator.style.transition = 'transform 0.2s';
@@ -98,6 +105,7 @@ function renderShowBox(showName, description, episodes) {
   instruction.style.fontSize = '0.85em';
   instruction.style.color = '#888';
 
+  // Accessibility hint
   header.addEventListener('focus', (e) => {
     if (e.detail === 0) {
       instruction.textContent = ' (press Enter or Space to expand)';
@@ -111,6 +119,7 @@ function renderShowBox(showName, description, episodes) {
   header.appendChild(document.createTextNode(showName));
   header.appendChild(instruction);
 
+  // Collapsible content
   const content = document.createElement('div');
   content.className = 'episode-list';
   content.style.display = 'none';
@@ -122,12 +131,15 @@ function renderShowBox(showName, description, episodes) {
     content.appendChild(showDesc);
   }
 
+  // Episodes
   episodes.forEach(episode => {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
 
     const epTitle = document.createElement('div');
+    epTitle.className = 'episode-title'; // ensure truncation styles apply
     epTitle.textContent = episode.title;
+    epTitle.title = episode.title;
 
     if (episode.url) {
       const audioPlayer = document.createElement('audio');
@@ -155,6 +167,7 @@ function renderShowBox(showName, description, episodes) {
         }
       });
 
+      // Dismiss button for the row
       const dismissBtn = document.createElement('span');
       dismissBtn.textContent = '\u2716';
       dismissBtn.className = 'dismiss-btn';
@@ -181,11 +194,12 @@ function renderShowBox(showName, description, episodes) {
     content.appendChild(epDiv);
   });
 
+  // Collapsible toggle
   let expanded = false;
   header.addEventListener('click', () => {
     expanded = !expanded;
     content.style.display = expanded ? 'block' : 'none';
-    indicator.textContent = expanded ? '\u25bc' : '\u25b6';
+    indicator.textContent = expanded ? '\u25bc' : '\u25b6'; // ▼ or ►
   });
   header.addEventListener('keydown', (e) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -198,11 +212,14 @@ function renderShowBox(showName, description, episodes) {
   showList.appendChild(showBox);
 }
 
+// Surprise Me button (only one surprise block at a time)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
   const showList = document.getElementById('showList');
+  // Remove any previous surprise block
   const previousSurprise = showList.querySelector('.surprise-block');
   if (previousSurprise) previousSurprise.remove();
 
+  // Use cached episodes for surprise button
   if (cachedEpisodes.length > 0) {
     const random = cachedEpisodes[Math.floor(Math.random() * cachedEpisodes.length)];
     document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
@@ -211,11 +228,12 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     surpriseBlock.className = 'episode surprise-block';
 
     const epTitle = document.createElement('div');
+    epTitle.className = 'episode-title'; // ensure truncation styles apply
     epTitle.textContent = random.title;
     epTitle.title = random.title;
     surpriseBlock.appendChild(epTitle);
 
-    let audioPlayer;
+    let audioPlayer; // parent scope for dismiss handler
 
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
@@ -225,7 +243,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     dismissBtn.addEventListener('click', () => {
       surpriseBlock.classList.remove('playing-now');
       document.getElementById('marqueeText').textContent = '';
-      if (audioPlayer) audioPlayer.pause();
+      if (audioPlayer) audioPlayer.pause(); // guard in case url missing
       lastPlayingBlock = null;
     });
     surpriseBlock.appendChild(dismissBtn);
@@ -258,8 +276,10 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 
       surpriseBlock.appendChild(audioPlayer);
 
+      // Attempt to play audio after user interaction
       setTimeout(() => {
         audioPlayer.play().catch(() => {
+          // Playback failed due to browser policy; user must manually press play
           const warning = document.createElement('div');
           warning.textContent = '🔈 Click play to listen (autoplay blocked by browser)';
           warning.className = 'autoplay-warning';
@@ -304,6 +324,7 @@ window.onload = function() {
   loadGenre(currentGenre);
 };
 
+// Enable dropdown genre selection
 document.getElementById('genreSelect').addEventListener('change', function() {
   loadGenre(this.value);
 });
