@@ -204,8 +204,15 @@ body {
 /* Pointer cursor for X close button */
 .dismiss-btn {
   cursor: pointer;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  user-select: none;
 }
-
+.dismiss-btn:hover,
+.dismiss-btn:focus {
+  background: rgba(0,0,0,0.1);
+  outline: none;
+}
 /* Pulse animation */
 @keyframes pulse {
   0% { box-shadow: 0 0 8px 2px #A5C882, 0 0 0 0 #A5C882; }
