@@ -209,12 +209,25 @@ body {
 
 /* Popup for Surprise Me - always top right of page */
 .surprise-block.playing-now {
-  position: fixed;
+  position: relative;
+  left: 50%;
   top: 1em;
-  right: 1em;
-  left: auto;
-  transform: none;
-  z-index: 1000;
+  right: auto;
+  transform: translateX(-50%);
+  min-width: 320px;
+  max-width: 500px;
+  width: fit-content;
+  border-radius: 32px;
+  box-shadow: 0 0 16px 8px #A5C882;
+  animation: pulse 2s infinite;
+  background: #A5C882;
+  color: #222;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 0.7em 2em;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1em;
 }
 
 /* Additional required styles from main application */
