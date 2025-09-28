@@ -116,6 +116,36 @@ body {
   overflow: hidden;
 }
 
+/* Pill/Player styling for all .playing-now and .surprise-block */
+.episode.surprise-block,
+.episode.playing-now {
+  position: relative;
+  left: 50%;
+  top: 1em;
+  right: auto;
+  transform: translateX(-50%);
+  min-width: 320px;
+  max-width: 500px;
+  width: fit-content;
+  border-radius: 32px;
+  background: #A5C882;
+  color: #222;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 0.7em 2em;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1em;
+}
+.episode.playing-now {
+  box-shadow: 0 0 16px 8px #A5C882;
+  animation: pulse 2s infinite;
+}
+.episode.surprise-block.playing-now {
+  box-shadow: 0 0 16px 8px #A5C882;
+  animation: pulse 2s infinite;
+}
+
 /* Audio player styles */
 .episode audio {
   width: 100%;
@@ -180,54 +210,11 @@ body {
   cursor: pointer;
 }
 
-/* Pulsing glow for the currently playing show/episode */
+/* Pulse animation */
 @keyframes pulse {
   0% { box-shadow: 0 0 8px 2px #A5C882, 0 0 0 0 #A5C882; }
   50% { box-shadow: 0 0 16px 8px #A5C882, 0 0 0 0 #A5C882; }
   100% { box-shadow: 0 0 8px 2px #A5C882, 0 0 0 0 #A5C882; }
-}
-
-/* Centered playbox for episode/show */
-.playing-now {
-  background: #A5C882;
-  color: #222;
-  padding: 0.3rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.9em;
-  font-weight: bold;
-  position: absolute;
-  left: 50%;
-  top: 0.8em;
-  right: auto;
-  transform: translateX(-50%);
-  font-family: 'Orbitron', sans-serif;
-  border: 2px solid #A5C882;
-  animation: pulse 2s infinite;
-  box-shadow: 0 0 16px 8px #A5C882;
-  z-index: 10;
-}
-
-/* Popup for Surprise Me - always top right of page */
-.surprise-block.playing-now {
-  position: relative;
-  left: 50%;
-  top: 1em;
-  right: auto;
-  transform: translateX(-50%);
-  min-width: 320px;
-  max-width: 500px;
-  width: fit-content;
-  border-radius: 32px;
-  box-shadow: 0 0 16px 8px #A5C882;
-  animation: pulse 2s infinite;
-  background: #A5C882;
-  color: #222;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  padding: 0.7em 2em;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.1em;
 }
 
 /* Additional required styles from main application */
