@@ -5,7 +5,7 @@ body {
   background-color: #EBEBFF; /* soft Hulk purple canvas */
   background-size: cover;
   background-position: center;
-  transition: background-image 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
 }
 
 /* ... existing styles ... */
@@ -48,9 +48,9 @@ body {
   background: #222;
 }
 
-.show-title[title]:hover::after {
+.show-title[data-tooltip]:hover::after {
   /* Show full name on hover */
-  content: attr(title);
+  content: attr(data-tooltip);
   position: absolute;
   left: 0;
   top: 100%;
@@ -61,9 +61,9 @@ body {
   font-size: 14px;
   z-index: 10;
   white-space: normal;
+  word-break: break-word;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-
 /* Episode list inside each show */
 .episode-list {
   max-height: 320px;
@@ -110,7 +110,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 1.8em;
+  top: 100%;
   background: #222;
   color: #ffd700;
   padding: 2px 8px;

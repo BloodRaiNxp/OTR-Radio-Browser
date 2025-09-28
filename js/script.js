@@ -1,33 +1,51 @@
 let currentShows = {};
 let currentGenre = 'westerns';
 let lastPlayingBlock = null;
+let cachedEpisodes = [];
 
 // Load genre data
 function loadGenre(genreName) {
-  currentGenre = genreName;
+  if (typeof genreName === 'string' && genreName.trim() !== '') {
+    currentGenre = genreName;
+    document.getElementById('showList').innerHTML = '';
+    document.getElementById('marqueeText').textContent = '';
+    currentShows = {};
+    document.body.style.backgroundImage = '';
 
-  document.getElementById('showList').innerHTML = '';
-  document.getElementById('marqueeText').textContent = '';
-  currentShows = {};
-  document.body.style.backgroundImage = '';
-
-  fetch(`data/${genreName}.json`)
-    .then(res => res.json())
-    .then(data => {
-      document.body.style.backgroundImage = `url('${data.background}')`;
-      renderShows(data.shows);
-    })
-    .catch(error => {
-      console.error("Genre load error:", error);
-      document.getElementById('showList').innerHTML = `<p style="color:red;">⚠️ Could not load genre: ${genreName}</p>`;
-    });
+    fetch(`data/${genreName}.json`)
+      .then(res => res.json())
+      .then(data => {
+        document.body.style.backgroundImage = `url('${data.background}')`;
+        renderShows(data.shows);
+      })
+      .catch(error => {
+        console.error("Genre load error:", error);
+        document.getElementById('showList').innerHTML = `<p class="error-message">⚠️ Could not load genre: ${genreName}</p>`;
+      });
+  } else {
+    console.warn('Invalid genreName provided:', genreName);
+    document.body.style.backgroundImage = "url('images/loading-bg.jpg')"; // Use a loading or placeholder image
+    return;
+  }
 }
 
 // Render shows and episodes (collapsible .show-box divs)
 function renderShows(shows) {
   currentShows = {};
+  cachedEpisodes = [];
   const showList = document.getElementById('showList');
   showList.innerHTML = '';
+
+  // Ensure error container exists
+  let errorContainer = document.getElementById('errorContainer');
+  if (!errorContainer) {
+    errorContainer = document.createElement('div');
+    errorContainer.id = 'errorContainer';
+    errorContainer.style.color = 'red';
+    errorContainer.style.marginBottom = '1em';
+    showList.parentNode.insertBefore(errorContainer, showList);
+  }
+  errorContainer.innerHTML = '';
 
   Object.entries(shows).forEach(([showName, show]) => {
     if (show.source) {
@@ -36,21 +54,33 @@ function renderShows(shows) {
         .then(episodes => {
           currentShows[showName] = { description: show.description, episodes };
           renderShowBox(showName, show.description, episodes);
+          // Cache episodes for surprise button
+          episodes.forEach(ep => {
+            cachedEpisodes.push({ ...ep, showName });
+          });
         })
         .catch(err => {
           console.error(`Error loading ${showName}:`, err);
-          showList.innerHTML += `<p style="color:red;">⚠️ Could not load episodes for ${showName}</p>`;
+          const errorContainer = document.getElementById('errorContainer');
+          if (errorContainer) {
+            errorContainer.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
+          }
         });
     } else if (show.episodes) {
       currentShows[showName] = show;
       renderShowBox(showName, show.description, show.episodes);
+      // Cache episodes for surprise button
+      show.episodes.forEach(ep => {
+        cachedEpisodes.push({ ...ep, showName });
+      });
     }
   });
-}
-
-// Render a single show as a collapsible .show-box
-function renderShowBox(showName, description, episodes) {
-  const showList = document.getElementById('showList');
+  // Indicator arrow
+  const indicator = document.createElement('span');
+  indicator.textContent = '\u25b6'; // Closed by default
+  indicator.setAttribute('aria-label', 'Expand/collapse show'); // Accessibility label
+  indicator.style.marginRight = '8px';
+  indicator.style.transition = 'transform 0.2s';
   const showBox = document.createElement('div');
   showBox.className = 'show-box';
 
@@ -60,17 +90,21 @@ function renderShowBox(showName, description, episodes) {
   header.tabIndex = 0;
   header.style.cursor = 'pointer';
 
-  // Indicator arrow
-  const indicator = document.createElement('span');
-  indicator.textContent = '\u25b6'; // Closed by default
-  indicator.style.marginRight = '8px';
-  indicator.style.transition = 'transform 0.2s';
-
   // Subtle instruction
   const instruction = document.createElement('span');
   instruction.textContent = ' (click to expand)';
   instruction.style.fontSize = '0.85em';
   instruction.style.color = '#888';
+
+  // Accessibility: update instruction text based on focus method
+  header.addEventListener('focus', (e) => {
+    if (e.detail === 0) { // Keyboard focus
+      instruction.textContent = ' (press Enter or Space to expand)';
+    }
+  });
+  header.addEventListener('blur', () => {
+    instruction.textContent = ' (click to expand)';
+  });
 
   header.appendChild(indicator);
   header.appendChild(document.createTextNode(showName));
@@ -96,12 +130,9 @@ function renderShowBox(showName, description, episodes) {
 
     const epTitle = document.createElement('div');
     epTitle.textContent = episode.title;
-    epTitle.className = 'episode-title';
-    
-    // Add tooltip for truncated titles
-    epTitle.title = episode.title;
 
-    if (episode.url && episode.url.trim() !== '') {
+    // Check if episode has a URL for audio
+    if (episode.url) {
       const audioPlayer = document.createElement('audio');
       audioPlayer.controls = true;
       audioPlayer.src = episode.url;
@@ -111,6 +142,20 @@ function renderShowBox(showName, description, episodes) {
         if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
         epDiv.classList.add('playing-now');
         lastPlayingBlock = epDiv;
+      });
+      audioPlayer.addEventListener('pause', () => {
+        document.getElementById('marqueeText').textContent = '';
+        if (epDiv.classList.contains('playing-now')) {
+          epDiv.classList.remove('playing-now');
+          lastPlayingBlock = null;
+        }
+      });
+      audioPlayer.addEventListener('ended', () => {
+        document.getElementById('marqueeText').textContent = '';
+        if (epDiv.classList.contains('playing-now')) {
+          epDiv.classList.remove('playing-now');
+          lastPlayingBlock = null;
+        }
       });
 
       epDiv.appendChild(audioPlayer);
@@ -145,71 +190,107 @@ function renderShowBox(showName, description, episodes) {
 
 // Surprise Me button (only one surprise block at a time)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
-  const showList = document.getElementById('showList');
+const showList = document.getElementById('showList');
   // Remove any previous surprise block
   const previousSurprise = showList.querySelector('.surprise-block');
   if (previousSurprise) previousSurprise.remove();
 
-  const allEpisodes = [];
-
-  Object.entries(currentShows).forEach(([showName, show]) => {
-    if (show.episodes) {
-      show.episodes.forEach(ep => {
-        allEpisodes.push({ ...ep, showName });
-      });
-    }
-  });
-
-  if (allEpisodes.length > 0) {
-    const random = allEpisodes[Math.floor(Math.random() * allEpisodes.length)];
-    document.getElementById('marqueeText').textContent = `🎧 Choose a category or roll random`;
+  // Use cached episodes for surprise button
+  if (cachedEpisodes.length > 0) {
+    const random = cachedEpisodes[Math.floor(Math.random() * cachedEpisodes.length)];
+    document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
 
     const surpriseBlock = document.createElement('div');
     surpriseBlock.className = 'episode surprise-block';
 
     const epTitle = document.createElement('div');
     epTitle.textContent = random.title;
-    epTitle.className = 'episode-title';
-    
-    // Add tooltip for truncated titles
     epTitle.title = random.title;
+    surpriseBlock.appendChild(epTitle);
 
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
     dismissBtn.className = 'dismiss-btn';
     dismissBtn.title = 'Remove';
+    dismissBtn.style.marginLeft = '8px';
     dismissBtn.addEventListener('click', () => {
       surpriseBlock.remove();
+      document.getElementById('marqueeText').textContent = '';
+      if (surpriseBlock.classList.contains('playing-now')) {
+        surpriseBlock.classList.remove('playing-now');
+        lastPlayingBlock = null;
+      }
     });
+    surpriseBlock.appendChild(dismissBtn);
 
-    const audioPlayer = document.createElement('audio');
-    audioPlayer.controls = true;
-    audioPlayer.src = random.url;
-    audioPlayer.autoplay = true;
+if (random.url) {
+  const audioPlayer = document.createElement('audio');
+  audioPlayer.controls = true;
+  audioPlayer.src = random.url;
 
-    audioPlayer.addEventListener('play', () => {
-      document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
-      if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
-      surpriseBlock.classList.add('playing-now');
-      lastPlayingBlock = surpriseBlock;
+  audioPlayer.addEventListener('play', () => {
+    document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+    if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
+    surpriseBlock.classList.add('playing-now');
+    lastPlayingBlock = surpriseBlock;
+  });
+  audioPlayer.addEventListener('pause', () => {
+    document.getElementById('marqueeText').textContent = '';
+    if (surpriseBlock.classList.contains('playing-now')) {
+      surpriseBlock.classList.remove('playing-now');
+      lastPlayingBlock = null;
+    }
+  });
+  audioPlayer.addEventListener('ended', () => {
+    document.getElementById('marqueeText').textContent = '';
+    if (surpriseBlock.classList.contains('playing-now')) {
+      surpriseBlock.classList.remove('playing-now');
+      lastPlayingBlock = null;
+    }
+  });
+
+  surpriseBlock.appendChild(audioPlayer);
+
+  // Attempt to play audio after user interaction
+  setTimeout(() => {
+    audioPlayer.play().catch(() => {
+      // Playback failed due to browser policy; user must manually press play
+      const warning = document.createElement('div');
+      warning.textContent = '🔈 Click play to listen (autoplay blocked by browser)';
+      warning.className = 'autoplay-warning';
+      warning.style.color = '#d9534f';
+      warning.style.fontSize = '0.95em';
+      warning.style.marginTop = '0.5em';
+      surpriseBlock.appendChild(warning);
     });
+  }, 200);
+} else {
+  const noAudio = document.createElement('span');
+  noAudio.textContent = 'Audio unavailable';
+  noAudio.className = 'no-audio';
+  surpriseBlock.appendChild(noAudio);
+}
 
-    epTitle.appendChild(dismissBtn);
-    surpriseBlock.appendChild(epTitle);
-    surpriseBlock.appendChild(audioPlayer);
-    showList.prepend(surpriseBlock);
+showList.prepend(surpriseBlock);
   }
 });
 
-// Genre selector
-document.getElementById('genreSelect').addEventListener('change', (e) => {
-  loadGenre(e.target.value.toLowerCase());
-});
-
-// Initial load
-loadGenre(currentGenre);
-
-// Global error listener
 window.addEventListener('error', function(e) {
   console.error("Global error caught:", e.message);
+  const showList = document.getElementById('showList');
+  if (showList) {
+    showList.innerHTML = `
+      <p class="error-message">
+        ⚠️ An unexpected error occurred.<br>
+        Please check your internet connection.<br>
+        <button id="retryBtn" style="margin-top:8px;">Retry</button>
+      </p>
+    `;
+    const retryBtn = document.getElementById('retryBtn');
+    if (retryBtn) {
+      retryBtn.addEventListener('click', () => {
+        location.reload();
+      });
+    }
+  }
 });

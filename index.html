@@ -1,9 +1,9 @@
 <!--
-  PromptBuilder.Xp
+  Golden Age Radio Lounge
   Copyright (c) 2025 BloodRaiNxp
   Version: 1.0.0
   Created: September 23, 2025
-  Description: A platform-agnostic AI art and video prompt generator
+  Description: A nostalgic gift streaming public domain classic radio shows.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,7 @@
   </header>
   <!-- Single styled marqueeText div (no duplicate id, no <marquee> tag) -->
   <div id="marqueeBanner">
-  <div id="marqueeText">🎧 Choose a category or roll random</div>
+    <div id="marqueeText">🎧 Choose a category or roll random</div>
   </div>
 
   <!-- Genre Switcher -->
@@ -42,7 +42,13 @@
 
   <!-- Weather Widget for Ivanhoe -->
   <section id="weather">
-    <a class="weatherwidget-io" href="https://forecast7.com/en/30d68n94d41/ivanhoe/?unit=us" data-label_1="IVANHOE" data-label_2="WEATHER" data-font="Arial Black" data-theme="random_grey">IVANHOE WEATHER</a>
+    <!--
+      The data- attributes below configure the weather widget:
+      - data-label_1 and data-label_2 set the top and bottom labels.
+      - data-font sets the widget font.
+      - data-theme sets the color theme.
+    -->
+    <a class="weatherwidget-io" href="https://forecast7.com/en/30d68n94d41/ivanhoe/?unit=us" data-label_1="Ivanhoe" data-label_2="Weather" data-font="Arial Black" data-theme="random_grey">Ivanhoe Weather</a>
     <script>
     !function(d,s,id){
       var js,fjs=d.getElementsByTagName(s)[0];
@@ -53,9 +59,13 @@
       }
     }(document,'script','weatherwidget-io-js');
     </script>
-  </section>
-
   <!-- Now Playing Marquee (no longer needed, handled by #marqueeText above) -->
+
+  <!-- Instruction paragraph: guides users to interact with show titles to reveal episodes -->
+  <p class="show-instruction">Click a show title to expand and view episodes.</p>
+  <section id="radioContent">
+    <div id="showList"></div>
+  </section>
 
   <!-- Episode Loader -->
   <p class="show-instruction">Click a show title to expand and view episodes.</p>
@@ -68,6 +78,6 @@
     <p>All content streamed from public archives. No hosting, no monetization, no copyright infringement.</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>

@@ -1,1 +1,29 @@
-{\n  "background": "images/westerns-bg.jpg",\n  "shows": {\n    "Gunsmoke": {\n      "description": "Classic radio western.",\n      "source": "data/westerns/gunsmoke.json"\n    },\n    "Have Gun Will Travel": {\n      "description": "Adventures of Paladin.",\n      "source": "data/westerns/have-gun-will-travel.json"\n    },\n    "Frontier Town": {\n      "description": "Small town drama.",\n      "source": "data/westerns/frontier-town.json"\n    },\n    "Frontier Gentleman": {\n      "description": "Gentleman abroad.",\n      "source": "data/westerns/frontier-gentleman.json"\n    },\n    "The Six Shooter": {\n      "description": "Jimmy Stewart stars.",\n      "source": "data/westerns/the-six-shooter.json"\n    },\n    "Death Valley Days": {\n      "description": "Life in Death Valley.",\n      "source": "data/westerns/death-valley-days.json"\n    }\n  }\n}
+{
+  "background": "images/westerns-bg.jpg",
+  "shows": {
+	"Gunsmoke": {
+	  "description": "Classic radio western.",
+	  "source": "data/westerns/gunsmoke.json"
+	},
+	"Have Gun Will Travel": {
+	  "description": "Adventures of Paladin.",
+	  "source": "data/westerns/have-gun-will-travel.json"
+	},
+	"Frontier Town": {
+	  "description": "Small town drama.",
+	  "source": "data/westerns/frontier-town.json"
+	},
+	"Frontier Gentleman": {
+	  "description": "Gentleman abroad.",
+	  "source": "data/westerns/frontier-gentleman.json"
+	},
+	"The Six Shooter": {
+	  "description": "Jimmy Stewart stars.",
+	  "source": "data/westerns/the-six-shooter.json"
+	},
+	"Death Valley Days": {
+	  "description": "Life in Death Valley.",
+	  "source": "data/westerns/death-valley-days.json"
+	}
+  }
+}
