@@ -233,6 +233,8 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     epTitle.title = random.title;
     surpriseBlock.appendChild(epTitle);
 
+    let audioPlayer; // Fix: Declare in parent scope for dismissBtn access
+
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
     dismissBtn.className = 'dismiss-btn';
@@ -241,13 +243,13 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     dismissBtn.addEventListener('click', () => {
       surpriseBlock.classList.remove('playing-now');
       document.getElementById('marqueeText').textContent = '';
-      audioPlayer.pause();
+      if (audioPlayer) audioPlayer.pause(); // Only pause if audioPlayer exists
       lastPlayingBlock = null;
     });
     surpriseBlock.appendChild(dismissBtn);
 
     if (random.url) {
-      const audioPlayer = document.createElement('audio');
+      audioPlayer = document.createElement('audio');
       audioPlayer.controls = true;
       audioPlayer.src = random.url;
 
