@@ -1,108 +1,426 @@
 [
-  { "title": "Strange Vendetta", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581123_001_Strange_Vendetta.mp3" },
-  { "title": "Road To Wickenberg", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581130_002_Road_To_Wickenberg.mp3" },
-  { "title": "Ella West", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581207_003_Ella_West.mp3" },
-  { "title": "The Outlaw", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581214_004_The_Outlaw.mp3" },
-  { "title": "Hanging Cross", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581221_005_Hanging_Cross.mp3" },
-  { "title": "No Visitors", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581228_006_No_Visitors.mp3" },
-  { "title": "Hellen Of Abajinian", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590104_007_Hellen_Of__Abajinian.mp3" },
-  { "title": "The Englishman", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590111_008_The_Englishman.mp3" },
-  { "title": "The Bells Of Perdido", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590118_009_The_Bells_Of_Perdido.mp3" },
-  { "title": "The Teacher", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590125_010_The_Teacher.mp3" },
-  { "title": "A Matter Of Ethics", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590201_011_A_Matter_Of_Ethics.mp3" },
-  { "title": "Killers Widow", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590208_012_Killers_Widow.mp3" },
-  { "title": "Return Of Dr Thackery", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590215_013_Return_Of_Dr_Thackery.mp3" },
-  { "title": "Winchester Quarantine", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590222_014_Winchester_Quarantine.mp3" },
-  { "title": "Heyboys Revenge", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590301_015_Heyboys_Revenge.mp3" },
-  { "title": "Monster On Moon Ridge", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590308_016_Monster_On_Moon_Ridge.mp3" },
-  { "title": "Death Of A Young Gunfighter", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590315_017_Death_Of_A_Young_Gunfighter.mp3" },
-  { "title": "The Five Books Of Owen Deaver", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590322_018_The_Five_Books_Of_Owen_Deaver.mp3" },
-  { "title": "Sense Of Justice", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590329_019_Sense_Of_Justice.mp3" },
-  { "title": "Maggie Obanyon", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590405_020_Maggie_Obanyon.mp3" },
-  { "title": "The Colonel And The Lady", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590412_021_The_Colonel_And_The_Lady.mp3" },
-  { "title": "Birds Of A Feather", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590419_022_Birds_Of_A_Feather.mp3" },
-  { "title": "The Gunsmith", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590426_023_The_Gunsmith.mp3" },
-  { "title": "Gun Shy", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590503_024_Gun_Shy.mp3" },
-  { "title": "The Statue Of San Sabastian", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590510_025_The_Statue_Of_San_Sabastian.mp3" },
-  { "title": "Lady Kane The Silver Queen", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590517_026_Lady_Kane_The_Silver_Queen.mp3" },
-  { "title": "In An Evil Time", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590524_027_In_An_Evil_Time.mp3" },
-  { "title": "Blind Courage", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590531_028_Blind_Courage.mp3" },
-  { "title": "Roped", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590607_029_Roped.mp3" },
-  { "title": "Bitter Wine", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590614_030_Bitter_Wine.mp3" },
-  { "title": "North Fork", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590621_031_North_Fork.mp3" },
-  { "title": "Home coming", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590628_032_Home_coming.mp3" },
-  { "title": "Comanche", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590705_033_Comanche.mp3" },
-  { "title": "Young Gun", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590712_034_Young_Gun.mp3" },
-  { "title": "Deliver The Body", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590719_035_Deliver_The_Body.mp3" },
-  { "title": "The Wager", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590726_036_The_Wager.mp3" },
-  { "title": "High Wire", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590802_037_High_Wire.mp3" },
-  { "title": "Finn Alley", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590809_038_Finn_Alley.mp3" },
-  { "title": "The Lady", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590816_039_The_Lady.mp3" },
-  { "title": "Bonanza", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590823_040_Bonanza.mp3" },
-  { "title": "Love Birds", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590830_041_Love_Birds.mp3" },
-  { "title": "All That Glitters", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590906_042_All_That_Glitters.mp3" },
-  { "title": "Treasure Hunt", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590913_043_Treasure_Hunt.mp3" },
-  { "title": "Stardust", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590920_044_Stardust.mp3" },
-  { "title": "Like Father", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590927_045_Like_Father.mp3" },
-  { "title": "The Contessa", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591004_046_The_Contessa.mp3" },
-  { "title": "Stopover In Tombstone", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591011_047_Stopover_In_Tombstone.mp3" },
-  { "title": "Brothers Lost", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591018_048_Brothers_Lost.mp3" },
-  { "title": "When In Rome", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591025_049_When_In_Rome.mp3" },
-  { "title": "Wedding Day", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591101_050_Wedding_Day.mp3" },
-  { "title": "Assignment In Stones Crossing", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591108_051_AssignmentIn_Stones_Crossing.mp3" },
-  { "title": "Landfall", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591115_052_Landfall.mp3" },
-  { "title": "Fair Fugitive", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591122_053_Fair_Fugitive.mp3" },
-  { "title": "Bitter Vengeance", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591129_054_Bitter_Vengeance.mp3" },
-  { "title": "Anything I Want", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591206_055_Anything_I_Want.mp3" },
-  { "title": "Out Of Evil", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591213_056_Out_Of_Evil.mp3" },
-  { "title": "Range Carnival", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591220_057_Range_Carnival.mp3" },
-  { "title": "About Face", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591227_058_About_Face.mp3" },
-  { "title": "Return Engagement", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600103_059_Return_Engagement.mp3" },
-  { "title": "The Lonely One", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600110_060_The_Lonely_One.mp3" },
-  { "title": "French Leave", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600117_061_French_Leave.mp3" },
-  { "title": "Nataehon", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600124_062_Nataehon.mp3" },
-  { "title": "Bad Bert", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600131_063_Bad_Bert.mp3" },
-  { "title": "The Boss", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600207_064_The_Boss.mp3" },
-  { "title": "Bringem Back Alive", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600214_065_Bringem_Back_Alive.mp3" },
-  { "title": "That Was No Lady", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600221_066_That_Was_No_Lady.mp3" },
-  { "title": "Doll House In Diamond Springs", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600228_067_Doll_House_In_Diamond_Springs.mp3" },
-  { "title": "Somebody Out There Hates Me", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600306_068_Somebody_Out_There_Hates_Me.mp3" },
-  { "title": "Montana Vendetta", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600313_069_Montana_Vendetta.mp3" },
-  { "title": "Caesars Wife", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600320_070_Caesars_Wife.mp3" },
-  { "title": "They Told Me You Were Dead", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600327_071_They_Told_Me_You_Were_Dead.mp3" },
-  { "title": "ShanghaiIs A Verb", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600403_072_ShanghaiIs_A_Verb.mp3" },
-  { "title": "So True Mr Barnum", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600410_073_So_True_Mr_Barnum.mp3" },
-  { "title": "Prunellas Fellow", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600417_074_Prunellas_Fellow.mp3" },
-  { "title": "Irish Luck", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600424_075_Irish_Luck.mp3" },
-  { "title": "Dressed To Kill", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600501_076_Dressed_To_Kill.mp3" },
-  { "title": "Pat Murphy", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600508_077_Pat_Murphy.mp3" },
-  { "title": "Lena Countryman", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600515_078_Lena_Countryman.mp3" },
-  { "title": "The Lucky Penny Mine", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600522_079_The_Lucky_Penny_Mine.mp3" },
-  { "title": "Dusty And His Uncle Muncie", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600529_080_Dusty_And_His_Uncle_Muncie.mp3" },
-  { "title": "Apache Concerto", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600605_081_Apache_Concerto.mp3" },
-  { "title": "The Search For Willie Dawson", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600612_082_The_Search_For_Willie_Dawson.mp3" },
-  { "title": "Too Too Solid Town", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600619_083_Too_Too_Solid_Town.mp3" },
-  { "title": "Doctor From Vienna", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600626_084_Doctor_From_Vienna.mp3" },
-  { "title": "Dad Blamed Luck", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600703_085_Dad_Blamed_Luck.mp3" },
-  { "title": "Five Days To Yuma", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600710_086_Five_Days_To_Yuma.mp3" },
-  { "title": "Little Guns", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600717_087_Little_Guns.mp3" },
-  { "title": "Delta Queen", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600724_088_Delta_Queen.mp3" },
-  { "title": "My Son Must Die", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600731_089_My_Son_Must_Die.mp3" },
-  { "title": "Viva", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600807_090_Viva.mp3" },
-  { "title": "Extended Viva", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600814_091_Extended_Viva.mp3" },
-  { "title": "The Warrent", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600821_092_The_Warrent.mp3" },
-  { "title": "For The Birds", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600828_093_For_The_Birds.mp3" },
-  { "title": "Eat Crow", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600904_094_Eat_Crow.mp3" },
-  { "title": "Deadline", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600911_095_Deadline.mp3" },
-  { "title": "Nellie Watsons Boy", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600918_096_Nellie_Watsons_Boy.mp3" },
-  { "title": "Bringing Up Ollie", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600925_097_Bringing_Up_Ollie.mp3" },
-  { "title": "Talika", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601002_098_Talika.mp3" },
-  { "title": "Sam Crow", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601009_099_Sam_Crow.mp3" },
-  { "title": "Stardust", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601016_100_Stardust.mp3" },
-  { "title": "Hell Knows No Fury", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601023_101_Hell_Knows_No_Fury.mp3" },
-  { "title": "Oil", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601030_102_Oil.mp3" },
-  { "title": "The Odds", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601106_103_The_Odds.mp3" },
-  { "title": "The Map", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601113_104_The_Map.mp3" },
-  { "title": "Martha Nell", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601120_105_Martha_Nell.mp3" },
-  { "title": "From Here To Boston", "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601127_106_From_Here_To_Boston.mp3" }
+  {
+    "title": "HaveGunWillTravel 581123 001 Strange Vendetta",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581123_001_Strange_Vendetta.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 581130 002 Road To Wickenberg",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581130_002_Road_To_Wickenberg.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 581207 003 Ella West",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581207_003_Ella_West.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 581214 004 The Outlaw",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581214_004_The_Outlaw.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 581221 005 Hanging Cross",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581221_005_Hanging_Cross.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 581228 006 No Visitors",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_581228_006_No_Visitors.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590104 007 Hellen Of Abajinian",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590104_007_Hellen_Of__Abajinian.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590111 008 The Englishman",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590111_008_The_Englishman.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590118 009 The Bells Of Perdido",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590118_009_The_Bells_Of_Perdido.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590125 010 The Teacher",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590125_010_The_Teacher.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590201 011 A Matter Of Ethics",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590201_011_A_Matter_Of_Ethics.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590208 012 Killers Widow",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590208_012_Killers_Widow.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590215 013 Return Of Dr Thackery",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590215_013_Return_Of_Dr_Thackery.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590222 014 Winchester Quarantine",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590222_014_Winchester_Quarantine.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590301 015 Heyboys Revenge",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590301_015_Heyboys_Revenge.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590308 016 Monster On Moon Ridge",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590308_016_Monster_On_Moon_Ridge.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590315 017 Death Of A Young Gunfighter",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590315_017_Death_Of_A_Young_Gunfighter.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590322 018 The Five Books Of Owen Deaver",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590322_018_The_Five_Books_Of_Owen_Deaver.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590329 019 Sense Of Justice",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590329_019_Sense_Of_Justice.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590405 020 Maggie Obanyon",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590405_020_Maggie_Obanyon.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590412 021 The Colonel And The Lady",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590412_021_The_Colonel_And_The_Lady.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590419 022 Birds Of A Feather",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590419_022_Birds_Of_A_Feather.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590426 023 The Gunsmith",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590426_023_The_Gunsmith.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590503 024 Gun Shy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590503_024_Gun_Shy.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590510 025 The Statue Of San Sabastian",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590510_025_The_Statue_Of_San_Sabastian.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590517 026 Lady Kane The Silver Queen",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590517_026_Lady_Kane_The_Silver_Queen.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590524 027 In An Evil Time",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590524_027_In_An_Evil_Time.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590531 028 Blind Courage",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590531_028_Blind_Courage.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590607 029 Roped",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590607_029_Roped.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590614 030 Bitter Wine",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590614_030_Bitter_Wine.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590621 031 North Fork",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590621_031_North_Fork.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590628 032 Home coming",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590628_032_Home_coming.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590705 033 Comanche",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590705_033_Comanche.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590712 034 Young Gun",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590712_034_Young_Gun.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590719 035 Deliver The Body",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590719_035_Deliver_The_Body.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590726 036 The Wager",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590726_036_The_Wager.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590802 037 High Wire",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590802_037_High_Wire.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590809 038 Finn Alley",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590809_038_Finn_Alley.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590816 039 The Lady",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590816_039_The_Lady.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590823 040 Bonanza",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590823_040_Bonanza.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590830 041 Love Birds",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590830_041_Love_Birds.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590906 042 All That Glitters",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590906_042_All_That_Glitters.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590913 043 Treasure Hunt",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590913_043_Treasure_Hunt.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590920 044 Stardust",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590920_044_Stardust.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 590927 045 Like Father",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_590927_045_Like_Father.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591004 046 The Contessa",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591004_046_The_Contessa.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591011 047 Stopover In Tombstone",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591011_047_Stopover_In_Tombstone.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591018 048 Brothers Lost",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591018_048_Brothers_Lost.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591025 049 When In Rome",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591025_049_When_In_Rome.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591101 050 Wedding Day",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591101_050_Wedding_Day.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591108 051 AssignmentIn Stones Crossing",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591108_051_AssignmentIn_Stones_Crossing.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591115 052 Landfall",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591115_052_Landfall.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591122 053 Fair Fugitive",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591122_053_Fair_Fugitive.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591129 054 Bitter Vengeance",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591129_054_Bitter_Vengeance.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591206 055 Anything I Want",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591206_055_Anything_I_Want.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591213 056 Out Of Evil",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591213_056_Out_Of_Evil.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591220 057 Range Carnival",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591220_057_Range_Carnival.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 591227 058 About Face",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_591227_058_About_Face.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600103 059 Return Engagement",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600103_059_Return_Engagement.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600110 060 The Lonely One",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600110_060_The_Lonely_One.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600117 061 French Leave",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600117_061_French_Leave.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600124 062 Nataehon",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600124_062_Nataehon.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600131 063 Bad Bert",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600131_063_Bad_Bert.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600207 064 The Boss",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600207_064_The_Boss.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600214 065 Bringem Back Alive",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600214_065_Bringem_Back_Alive.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600221 066 That Was No Lady",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600221_066_That_Was_No_Lady.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600228 067 Doll House In Diamond Springs",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600228_067_Doll_House_In_Diamond_Springs.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600306 068 Somebody Out There Hates Me",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600306_068_Somebody_Out_There_Hates_Me.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600313 069 Montana Vendetta",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600313_069_Montana_Vendetta.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600320 070 Caesars Wife",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600320_070_Caesars_Wife.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600327 071 They Told Me You Were Dead",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600327_071_They_Told_Me_You_Were_Dead.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600403 072 ShanghaiIs A Verb",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600403_072_ShanghaiIs_A_Verb.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600410 073 So True Mr Barnum",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600410_073_So_True_Mr_Barnum.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600417 074 Prunellas Fellow",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600417_074_Prunellas_Fellow.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600424 075 Irish Luck",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600424_075_Irish_Luck.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600501 076 Dressed To Kill",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600501_076_Dressed_To_Kill.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600508 077 Pat Murphy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600508_077_Pat_Murphy.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600515 078 Lena Countryman",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600515_078_Lena_Countryman.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600522 079 The Lucky Penny Mine",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600522_079_The_Lucky_Penny_Mine.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600529 080 Dusty And His Uncle Muncie",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600529_080_Dusty_And_His_Uncle_Muncie.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600605 081 Apache Concerto",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600605_081_Apache_Concerto.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600612 082 The Search For Willie Dawson",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600612_082_The_Search_For_Willie_Dawson.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600619 083 Too Too Solid Town",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600619_083_Too_Too_Solid_Town.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600626 084 Doctor From Vienna",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600626_084_Doctor_From_Vienna.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600703 085 Dad Blamed Luck",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600703_085_Dad_Blamed_Luck.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600710 086 Five Days To Yuma",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600710_086_Five_Days_To_Yuma.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600717 087 Little Guns",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600717_087_Little_Guns.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600724 088 Delta Queen",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600724_088_Delta_Queen.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600731 089 My Son Must Die",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600731_089_My_Son_Must_Die.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600807 090 Viva",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600807_090_Viva.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600814 091 Extended Viva",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600814_091_Extended_Viva.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600821 092 The Warrent",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600821_092_The_Warrent.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600828 093 For The Birds",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600828_093_For_The_Birds.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600904 094 Eat Crow",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600904_094_Eat_Crow.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600911 095 Deadline",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600911_095_Deadline.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600918 096 Nellie Watsons Boy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600918_096_Nellie_Watsons_Boy.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 600925 097 Bringing Up Ollie",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_600925_097_Bringing_Up_Ollie.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601002 098 Talika",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601002_098_Talika.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601009 099 Sam Crow",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601009_099_Sam_Crow.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601016 100 Stardust",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601016_100_Stardust.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601023 101 Hell Knows No Fury",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601023_101_Hell_Knows_No_Fury.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601030 102 Oil",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601030_102_Oil.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601106 103 The Odds",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601106_103_The_Odds.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601113 104 The Map",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601113_104_The_Map.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601120 105 Martha Nell",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601120_105_Martha_Nell.mp3"
+  },
+  {
+    "title": "HaveGunWillTravel 601127 106 From Here To Boston",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/HaveGunWillTravel_601127_106_From_Here_To_Boston.mp3"
+  }
 ]
