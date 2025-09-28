@@ -75,22 +75,25 @@ function renderShows(shows) {
       });
     }
   });
-  // Indicator arrow
+}
+
+// ADDED: Missing renderShowBox function
+function renderShowBox(showName, description, episodes) {
+  const showList = document.getElementById('showList');
   const indicator = document.createElement('span');
   indicator.textContent = '\u25b6'; // Closed by default
-  indicator.setAttribute('aria-label', 'Expand/collapse show'); // Accessibility label
+  indicator.setAttribute('aria-label', 'Expand/collapse show');
   indicator.style.marginRight = '8px';
   indicator.style.transition = 'transform 0.2s';
+
   const showBox = document.createElement('div');
   showBox.className = 'show-box';
 
-  // Header (collapsible control)
   const header = document.createElement('h2');
   header.className = 'show-title';
   header.tabIndex = 0;
   header.style.cursor = 'pointer';
 
-  // Subtle instruction
   const instruction = document.createElement('span');
   instruction.textContent = ' (click to expand)';
   instruction.style.fontSize = '0.85em';
@@ -190,7 +193,7 @@ function renderShows(shows) {
 
 // Surprise Me button (only one surprise block at a time)
 document.getElementById('surpriseBtn').addEventListener('click', () => {
-const showList = document.getElementById('showList');
+  const showList = document.getElementById('showList');
   // Remove any previous surprise block
   const previousSurprise = showList.querySelector('.surprise-block');
   if (previousSurprise) previousSurprise.remove();
@@ -223,55 +226,55 @@ const showList = document.getElementById('showList');
     });
     surpriseBlock.appendChild(dismissBtn);
 
-if (random.url) {
-  const audioPlayer = document.createElement('audio');
-  audioPlayer.controls = true;
-  audioPlayer.src = random.url;
+    if (random.url) {
+      const audioPlayer = document.createElement('audio');
+      audioPlayer.controls = true;
+      audioPlayer.src = random.url;
 
-  audioPlayer.addEventListener('play', () => {
-    document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
-    if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
-    surpriseBlock.classList.add('playing-now');
-    lastPlayingBlock = surpriseBlock;
-  });
-  audioPlayer.addEventListener('pause', () => {
-    document.getElementById('marqueeText').textContent = '';
-    if (surpriseBlock.classList.contains('playing-now')) {
-      surpriseBlock.classList.remove('playing-now');
-      lastPlayingBlock = null;
+      audioPlayer.addEventListener('play', () => {
+        document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
+        if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
+        surpriseBlock.classList.add('playing-now');
+        lastPlayingBlock = surpriseBlock;
+      });
+      audioPlayer.addEventListener('pause', () => {
+        document.getElementById('marqueeText').textContent = '';
+        if (surpriseBlock.classList.contains('playing-now')) {
+          surpriseBlock.classList.remove('playing-now');
+          lastPlayingBlock = null;
+        }
+      });
+      audioPlayer.addEventListener('ended', () => {
+        document.getElementById('marqueeText').textContent = '';
+        if (surpriseBlock.classList.contains('playing-now')) {
+          surpriseBlock.classList.remove('playing-now');
+          lastPlayingBlock = null;
+        }
+      });
+
+      surpriseBlock.appendChild(audioPlayer);
+
+      // Attempt to play audio after user interaction
+      setTimeout(() => {
+        audioPlayer.play().catch(() => {
+          // Playback failed due to browser policy; user must manually press play
+          const warning = document.createElement('div');
+          warning.textContent = '🔈 Click play to listen (autoplay blocked by browser)';
+          warning.className = 'autoplay-warning';
+          warning.style.color = '#d9534f';
+          warning.style.fontSize = '0.95em';
+          warning.style.marginTop = '0.5em';
+          surpriseBlock.appendChild(warning);
+        });
+      }, 200);
+    } else {
+      const noAudio = document.createElement('span');
+      noAudio.textContent = 'Audio unavailable';
+      noAudio.className = 'no-audio';
+      surpriseBlock.appendChild(noAudio);
     }
-  });
-  audioPlayer.addEventListener('ended', () => {
-    document.getElementById('marqueeText').textContent = '';
-    if (surpriseBlock.classList.contains('playing-now')) {
-      surpriseBlock.classList.remove('playing-now');
-      lastPlayingBlock = null;
-    }
-  });
 
-  surpriseBlock.appendChild(audioPlayer);
-
-  // Attempt to play audio after user interaction
-  setTimeout(() => {
-    audioPlayer.play().catch(() => {
-      // Playback failed due to browser policy; user must manually press play
-      const warning = document.createElement('div');
-      warning.textContent = '🔈 Click play to listen (autoplay blocked by browser)';
-      warning.className = 'autoplay-warning';
-      warning.style.color = '#d9534f';
-      warning.style.fontSize = '0.95em';
-      warning.style.marginTop = '0.5em';
-      surpriseBlock.appendChild(warning);
-    });
-  }, 200);
-} else {
-  const noAudio = document.createElement('span');
-  noAudio.textContent = 'Audio unavailable';
-  noAudio.className = 'no-audio';
-  surpriseBlock.appendChild(noAudio);
-}
-
-showList.prepend(surpriseBlock);
+    showList.prepend(surpriseBlock);
   }
 });
 
@@ -294,7 +297,7 @@ window.addEventListener('error', function(e) {
     }
   }
 });
-// <-- Add this block after the error handler closes
+
 window.onload = function() {
   loadGenre(currentGenre);
 };
