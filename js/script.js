@@ -3,6 +3,12 @@ let currentGenre = 'westerns';
 let lastPlayingBlock = null;
 let cachedEpisodes = [];
 
+// Helper: Pause all audio and remove .playing-now from all pills
+function pauseAllAudioPlayers() {
+  document.querySelectorAll('audio').forEach(aud => aud.pause());
+  document.querySelectorAll('.playing-now').forEach(box => box.classList.remove('playing-now'));
+}
+
 // Load genre data
 function loadGenre(genreName) {
   if (typeof genreName === 'string' && genreName.trim() !== '') {
@@ -77,7 +83,7 @@ function renderShows(shows) {
   });
 }
 
-// ADDED: Missing renderShowBox function
+// Render a pill-style player for a show/episode
 function renderShowBox(showName, description, episodes) {
   const showList = document.getElementById('showList');
   const indicator = document.createElement('span');
@@ -140,9 +146,10 @@ function renderShowBox(showName, description, episodes) {
       audioPlayer.controls = true;
       audioPlayer.src = episode.url;
 
+      // Pill playbox logic
       audioPlayer.addEventListener('play', () => {
+        pauseAllAudioPlayers();
         document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
-        if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
         epDiv.classList.add('playing-now');
         lastPlayingBlock = epDiv;
       });
@@ -161,15 +168,30 @@ function renderShowBox(showName, description, episodes) {
         }
       });
 
+      // Add X button to pill
+      const dismissBtn = document.createElement('span');
+      dismissBtn.textContent = '\u2716';
+      dismissBtn.className = 'dismiss-btn';
+      dismissBtn.title = 'Remove';
+      dismissBtn.style.marginLeft = '8px';
+      dismissBtn.addEventListener('click', () => {
+        epDiv.classList.remove('playing-now');
+        audioPlayer.pause();
+        document.getElementById('marqueeText').textContent = '';
+        lastPlayingBlock = null;
+      });
+
+      epDiv.appendChild(epTitle);
+      epDiv.appendChild(dismissBtn);
       epDiv.appendChild(audioPlayer);
     } else {
       const noAudio = document.createElement('span');
       noAudio.textContent = 'Audio unavailable';
       noAudio.className = 'no-audio';
       epDiv.appendChild(noAudio);
+      epDiv.appendChild(epTitle);
     }
 
-    epDiv.appendChild(epTitle);
     content.appendChild(epDiv);
   });
 
@@ -217,12 +239,10 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     dismissBtn.title = 'Remove';
     dismissBtn.style.marginLeft = '8px';
     dismissBtn.addEventListener('click', () => {
-      surpriseBlock.remove();
+      surpriseBlock.classList.remove('playing-now');
       document.getElementById('marqueeText').textContent = '';
-      if (surpriseBlock.classList.contains('playing-now')) {
-        surpriseBlock.classList.remove('playing-now');
-        lastPlayingBlock = null;
-      }
+      audioPlayer.pause();
+      lastPlayingBlock = null;
     });
     surpriseBlock.appendChild(dismissBtn);
 
@@ -232,8 +252,8 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
       audioPlayer.src = random.url;
 
       audioPlayer.addEventListener('play', () => {
+        pauseAllAudioPlayers();
         document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
-        if (lastPlayingBlock) lastPlayingBlock.classList.remove('playing-now');
         surpriseBlock.classList.add('playing-now');
         lastPlayingBlock = surpriseBlock;
       });
@@ -301,3 +321,8 @@ window.addEventListener('error', function(e) {
 window.onload = function() {
   loadGenre(currentGenre);
 };
+
+// Enable dropdown genre selection!
+document.getElementById('genreSelect').addEventListener('change', function() {
+  loadGenre(this.value);
+});
