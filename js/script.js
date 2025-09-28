@@ -294,3 +294,7 @@ window.addEventListener('error', function(e) {
     }
   }
 });
+// <-- Add this block after the error handler closes
+window.onload = function() {
+  loadGenre(currentGenre);
+};
