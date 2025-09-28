@@ -3,6 +3,16 @@ let currentGenre = 'westerns';
 let lastPlayingBlock = null;
 let cachedEpisodes = [];
 
+// Archive.org media sometimes blocks cross-origin loads;
+// use their CORS mirror for reliable playback.
+function normalizeAudioUrl(url) {
+  if (typeof url !== 'string') return url;
+  const from = 'https://archive.org/download/';
+  const to = 'https://archive.org/cors/download/';
+  if (url.startsWith(from)) return url.replace(from, to);
+  return url;
+}
+
 // Pause all audio except the one passed in, and clear playing-now on others
 function pauseAllAudioPlayers(except = null) {
   document.querySelectorAll('audio').forEach(aud => {
@@ -25,7 +35,7 @@ function loadGenre(genreName) {
     fetch(`data/${genreName}.json`)
       .then(res => res.json())
       .then(data => {
-        // Set background if provided
+        // Set background only if provided and non-empty
         if (data.background) {
           document.body.style.backgroundImage = `url('${data.background}')`;
         }
@@ -37,7 +47,6 @@ function loadGenre(genreName) {
       });
   } else {
     console.warn('Invalid genreName provided:', genreName);
-    document.body.style.backgroundImage = "url('images/loading-bg.jpg')";
     return;
   }
 }
@@ -82,7 +91,6 @@ function renderShows(shows) {
     } else if (show.episodes) {
       currentShows[showName] = show;
       renderShowBox(showName, show.description, show.episodes);
-      // Cache episodes for surprise button
       show.episodes.forEach(ep => {
         cachedEpisodes.push({ ...ep, showName });
       });
@@ -112,9 +120,8 @@ function renderShowBox(showName, description, episodes) {
   instruction.style.fontSize = '0.85em';
   instruction.style.color = '#888';
 
-  // Accessibility: update instruction text based on focus method
   header.addEventListener('focus', (e) => {
-    if (e.detail === 0) { // Keyboard focus
+    if (e.detail === 0) {
       instruction.textContent = ' (press Enter or Space to expand)';
     }
   });
@@ -129,7 +136,7 @@ function renderShowBox(showName, description, episodes) {
   // Collapsible content container
   const content = document.createElement('div');
   content.className = 'episode-list';
-  content.style.display = 'none'; // Closed by default
+  content.style.display = 'none';
 
   // Optional description
   if (description) {
@@ -149,13 +156,11 @@ function renderShowBox(showName, description, episodes) {
     epTitle.textContent = episode.title;
     epTitle.title = episode.title;
 
-    // Check if episode has a URL for audio
     if (episode.url) {
       const audioPlayer = document.createElement('audio');
       audioPlayer.controls = true;
-      audioPlayer.src = episode.url;
+      audioPlayer.src = normalizeAudioUrl(episode.url);
 
-      // Pill playbox logic
       audioPlayer.addEventListener('play', () => {
         pauseAllAudioPlayers(audioPlayer); // exclude this player
         document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
@@ -177,7 +182,6 @@ function renderShowBox(showName, description, episodes) {
         }
       });
 
-      // Add X button to pill
       const dismissBtn = document.createElement('span');
       dismissBtn.textContent = '\u2716';
       dismissBtn.className = 'dismiss-btn';
@@ -229,7 +233,6 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
   const previousSurprise = showList.querySelector('.surprise-block');
   if (previousSurprise) previousSurprise.remove();
 
-  // Use cached episodes for surprise button
   if (cachedEpisodes.length > 0) {
     const random = cachedEpisodes[Math.floor(Math.random() * cachedEpisodes.length)];
     document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
@@ -243,9 +246,8 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     epTitle.title = random.title;
     surpriseBlock.appendChild(epTitle);
 
-    let audioPlayer; // Declare in parent scope for dismissBtn access
+    let audioPlayer;
 
-    // Dismiss (X) with full close behavior
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
     dismissBtn.className = 'dismiss-btn';
@@ -256,9 +258,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 
     const closeSurprise = () => {
       if (audioPlayer && !audioPlayer.paused) audioPlayer.pause();
-      // Remove the pill from the DOM
       surpriseBlock.remove();
-      // Clear marquee only if it was showing Surprise text
       const marquee = document.getElementById('marqueeText');
       if (marquee && marquee.textContent.startsWith('🎧 Surprise:')) {
         marquee.textContent = '';
@@ -282,7 +282,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     if (random.url) {
       audioPlayer = document.createElement('audio');
       audioPlayer.controls = true;
-      audioPlayer.src = random.url;
+      audioPlayer.src = normalizeAudioUrl(random.url);
 
       audioPlayer.addEventListener('play', () => {
         pauseAllAudioPlayers(audioPlayer); // exclude this player
@@ -313,10 +313,8 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
 
       surpriseBlock.appendChild(audioPlayer);
 
-      // Attempt to play audio after user interaction
       setTimeout(() => {
         audioPlayer.play().catch(() => {
-          // Playback failed due to browser policy; user must manually press play
           const warning = document.createElement('div');
           warning.textContent = '🔈 Click play to listen (autoplay blocked by browser)';
           warning.className = 'autoplay-warning';
@@ -361,7 +359,6 @@ window.onload = function() {
   loadGenre(currentGenre);
 };
 
-// Enable dropdown genre selection!
 document.getElementById('genreSelect').addEventListener('change', function() {
   loadGenre(this.value);
 });
