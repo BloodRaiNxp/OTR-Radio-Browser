@@ -1,10 +1,3 @@
-<!--
-  Golden Age Radio Lounge
-  Copyright (c) 2025 BloodRaiNxp
-  Version: 1.0.0
-  Created: September 23, 2025
-  Description: A nostalgic gift streaming public domain classic radio shows.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +7,16 @@
   <title>Golden Age Radio Lounge</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Rock+Salt&family=Ewert&display=swap" rel="stylesheet">
+  <!-- Favicon must be in the head -->
+  <link rel="icon" href="/OTR-Radio-Browser/images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <h1>🎙️ Golden Age Radio Lounge</h1>
     <p class="subtitle">A nostalgic gift streaming public domain classics</p>
   </header>
+
   <!-- Single styled marqueeText div (no duplicate id, no <marquee> tag) -->
   <div id="marqueeBanner">
     <div id="marqueeText">🎧 Choose a category or roll random</div>
@@ -31,7 +26,7 @@
   <section id="controls">
     <label for="genreSelect">👉 Choose a Genre:</label>
     <select id="genreSelect">
-       <option value="westerns">Westerns</option>
+      <option value="westerns">Westerns</option>
       <option value="sci-fi">Sci-Fi</option>
       <option value="detectives">Detectives</option>
       <option value="comedies">Comedies</option>
@@ -50,15 +45,17 @@
     -->
     <a class="weatherwidget-io" href="https://forecast7.com/en/30d68n94d41/ivanhoe/?unit=us" data-label_1="Ivanhoe" data-label_2="Weather" data-font="Arial Black" data-theme="random_grey">Ivanhoe Weather</a>
     <script>
-    !function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0];
-      if(!d.getElementById(id)){
-        js=d.createElement(s);js.id=id;
-        js.src='https://weatherwidget.io/js/widget.min.js';
-        fjs.parentNode.insertBefore(js,fjs);
-      }
-    }(document,'script','weatherwidget-io-js');
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js=d.createElement(s);js.id=id;
+          js.src='https://weatherwidget.io/js/widget.min.js';
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }(document,'script','weatherwidget-io-js');
     </script>
+  </section> <!-- Close the weather section -->
+
   <!-- Episode Loader -->
   <p class="show-instruction">Click a show title to expand and view episodes.</p>
   <section id="radioContent">
@@ -70,6 +67,7 @@
     <p>All content streamed from public archives. No hosting, no monetization, no copyright infringement.</p>
   </footer>
 
-  <script src="js/script.js" defer></script>
+  <!-- Cache-buster helps ensure the latest JS loads -->
+  <script src="js/script.js?v=20250928" defer></script>
 </body>
 </html>
