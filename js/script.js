@@ -3,10 +3,14 @@ let currentGenre = 'westerns';
 let lastPlayingBlock = null;
 let cachedEpisodes = [];
 
-// Pause any currently playing audio and clear playing-now state
-function pauseAllAudioPlayers() {
-  document.querySelectorAll('audio').forEach(aud => aud.pause());
-  document.querySelectorAll('.playing-now').forEach(box => box.classList.remove('playing-now'));
+// Pause all audio except the one passed in, and clear playing-now on others
+function pauseAllAudioPlayers(except = null) {
+  document.querySelectorAll('audio').forEach(aud => {
+    if (aud !== except) aud.pause();
+  });
+  document.querySelectorAll('.playing-now').forEach(box => {
+    if (!except || !box.contains(except)) box.classList.remove('playing-now');
+  });
 }
 
 // Load genre data
@@ -21,7 +25,10 @@ function loadGenre(genreName) {
     fetch(`data/${genreName}.json`)
       .then(res => res.json())
       .then(data => {
-        document.body.style.backgroundImage = `url('${data.background}')`;
+        // Set background if provided
+        if (data.background) {
+          document.body.style.backgroundImage = `url('${data.background}')`;
+        }
         renderShows(data.shows);
       })
       .catch(error => {
@@ -67,9 +74,9 @@ function renderShows(shows) {
         })
         .catch(err => {
           console.error(`Error loading ${showName}:`, err);
-          const errorContainer2 = document.getElementById('errorContainer');
-          if (errorContainer2) {
-            errorContainer2.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
+          const errorContainer = document.getElementById('errorContainer');
+          if (errorContainer) {
+            errorContainer.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
           }
         });
     } else if (show.episodes) {
@@ -83,11 +90,11 @@ function renderShows(shows) {
   });
 }
 
-// Render a show block with collapsible episode list
+// Render a pill-style player for a show/episode
 function renderShowBox(showName, description, episodes) {
   const showList = document.getElementById('showList');
   const indicator = document.createElement('span');
-  indicator.textContent = '\u25b6'; // closed ►
+  indicator.textContent = '\u25b6'; // Closed by default
   indicator.setAttribute('aria-label', 'Expand/collapse show');
   indicator.style.marginRight = '8px';
   indicator.style.transition = 'transform 0.2s';
@@ -105,9 +112,9 @@ function renderShowBox(showName, description, episodes) {
   instruction.style.fontSize = '0.85em';
   instruction.style.color = '#888';
 
-  // Accessibility hint
+  // Accessibility: update instruction text based on focus method
   header.addEventListener('focus', (e) => {
-    if (e.detail === 0) {
+    if (e.detail === 0) { // Keyboard focus
       instruction.textContent = ' (press Enter or Space to expand)';
     }
   });
@@ -119,11 +126,12 @@ function renderShowBox(showName, description, episodes) {
   header.appendChild(document.createTextNode(showName));
   header.appendChild(instruction);
 
-  // Collapsible content
+  // Collapsible content container
   const content = document.createElement('div');
   content.className = 'episode-list';
-  content.style.display = 'none';
+  content.style.display = 'none'; // Closed by default
 
+  // Optional description
   if (description) {
     const showDesc = document.createElement('p');
     showDesc.textContent = description;
@@ -131,23 +139,25 @@ function renderShowBox(showName, description, episodes) {
     content.appendChild(showDesc);
   }
 
-  // Episodes
+  // Add episodes
   episodes.forEach(episode => {
     const epDiv = document.createElement('div');
     epDiv.className = 'episode';
 
     const epTitle = document.createElement('div');
-    epTitle.className = 'episode-title'; // ensure truncation styles apply
+    epTitle.className = 'episode-title';
     epTitle.textContent = episode.title;
     epTitle.title = episode.title;
 
+    // Check if episode has a URL for audio
     if (episode.url) {
       const audioPlayer = document.createElement('audio');
       audioPlayer.controls = true;
       audioPlayer.src = episode.url;
 
+      // Pill playbox logic
       audioPlayer.addEventListener('play', () => {
-        pauseAllAudioPlayers();
+        pauseAllAudioPlayers(audioPlayer); // exclude this player
         document.getElementById('marqueeText').textContent = `🎧 Now Playing: ${episode.title} from ${showName}`;
         epDiv.classList.add('playing-now');
         lastPlayingBlock = epDiv;
@@ -167,7 +177,7 @@ function renderShowBox(showName, description, episodes) {
         }
       });
 
-      // Dismiss button for the row
+      // Add X button to pill
       const dismissBtn = document.createElement('span');
       dismissBtn.textContent = '\u2716';
       dismissBtn.className = 'dismiss-btn';
@@ -194,12 +204,12 @@ function renderShowBox(showName, description, episodes) {
     content.appendChild(epDiv);
   });
 
-  // Collapsible toggle
+  // Collapsible logic
   let expanded = false;
   header.addEventListener('click', () => {
     expanded = !expanded;
     content.style.display = expanded ? 'block' : 'none';
-    indicator.textContent = expanded ? '\u25bc' : '\u25b6'; // ▼ or ►
+    indicator.textContent = expanded ? '\u25bc' : '\u25b6';
   });
   header.addEventListener('keydown', (e) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -228,12 +238,12 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     surpriseBlock.className = 'episode surprise-block';
 
     const epTitle = document.createElement('div');
-    epTitle.className = 'episode-title'; // ensure truncation styles apply
+    epTitle.className = 'episode-title';
     epTitle.textContent = random.title;
     epTitle.title = random.title;
     surpriseBlock.appendChild(epTitle);
 
-    let audioPlayer; // parent scope for dismiss handler
+    let audioPlayer; // Fix: Declare in parent scope for dismissBtn access
 
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
@@ -243,7 +253,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     dismissBtn.addEventListener('click', () => {
       surpriseBlock.classList.remove('playing-now');
       document.getElementById('marqueeText').textContent = '';
-      if (audioPlayer) audioPlayer.pause(); // guard in case url missing
+      if (audioPlayer) audioPlayer.pause(); // Only pause if audioPlayer exists
       lastPlayingBlock = null;
     });
     surpriseBlock.appendChild(dismissBtn);
@@ -254,7 +264,7 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
       audioPlayer.src = random.url;
 
       audioPlayer.addEventListener('play', () => {
-        pauseAllAudioPlayers();
+        pauseAllAudioPlayers(audioPlayer); // exclude this player
         document.getElementById('marqueeText').textContent = `🎧 Surprise: ${random.title} from ${random.showName}`;
         surpriseBlock.classList.add('playing-now');
         lastPlayingBlock = surpriseBlock;
@@ -324,7 +334,7 @@ window.onload = function() {
   loadGenre(currentGenre);
 };
 
-// Enable dropdown genre selection
+// Enable dropdown genre selection!
 document.getElementById('genreSelect').addEventListener('change', function() {
   loadGenre(this.value);
 });
