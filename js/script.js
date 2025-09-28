@@ -74,9 +74,9 @@ function renderShows(shows) {
         })
         .catch(err => {
           console.error(`Error loading ${showName}:`, err);
-          const errorContainer = document.getElementById('errorContainer');
-          if (errorContainer) {
-            errorContainer.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
+          const errorContainer2 = document.getElementById('errorContainer');
+          if (errorContainer2) {
+            errorContainer2.innerHTML += `<p>⚠️ Could not load episodes for ${showName}</p>`;
           }
         });
     } else if (show.episodes) {
@@ -243,19 +243,40 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
     epTitle.title = random.title;
     surpriseBlock.appendChild(epTitle);
 
-    let audioPlayer; // Fix: Declare in parent scope for dismissBtn access
+    let audioPlayer; // Declare in parent scope for dismissBtn access
 
+    // Dismiss (X) with full close behavior
     const dismissBtn = document.createElement('span');
     dismissBtn.textContent = '\u2716';
     dismissBtn.className = 'dismiss-btn';
     dismissBtn.title = 'Remove';
+    dismissBtn.setAttribute('role', 'button');
+    dismissBtn.tabIndex = 0;
     dismissBtn.style.marginLeft = '8px';
-    dismissBtn.addEventListener('click', () => {
-      surpriseBlock.classList.remove('playing-now');
-      document.getElementById('marqueeText').textContent = '';
-      if (audioPlayer) audioPlayer.pause(); // Only pause if audioPlayer exists
-      lastPlayingBlock = null;
+
+    const closeSurprise = () => {
+      if (audioPlayer && !audioPlayer.paused) audioPlayer.pause();
+      // Remove the pill from the DOM
+      surpriseBlock.remove();
+      // Clear marquee only if it was showing Surprise text
+      const marquee = document.getElementById('marqueeText');
+      if (marquee && marquee.textContent.startsWith('🎧 Surprise:')) {
+        marquee.textContent = '';
+      }
+      if (lastPlayingBlock === surpriseBlock) lastPlayingBlock = null;
+    };
+
+    dismissBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeSurprise();
     });
+    dismissBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeSurprise();
+      }
+    });
+
     surpriseBlock.appendChild(dismissBtn);
 
     if (random.url) {
@@ -270,14 +291,20 @@ document.getElementById('surpriseBtn').addEventListener('click', () => {
         lastPlayingBlock = surpriseBlock;
       });
       audioPlayer.addEventListener('pause', () => {
-        document.getElementById('marqueeText').textContent = '';
+        const marquee = document.getElementById('marqueeText');
+        if (marquee && marquee.textContent.startsWith('🎧 Surprise:')) {
+          marquee.textContent = '';
+        }
         if (surpriseBlock.classList.contains('playing-now')) {
           surpriseBlock.classList.remove('playing-now');
           lastPlayingBlock = null;
         }
       });
       audioPlayer.addEventListener('ended', () => {
-        document.getElementById('marqueeText').textContent = '';
+        const marquee = document.getElementById('marqueeText');
+        if (marquee && marquee.textContent.startsWith('🎧 Surprise:')) {
+          marquee.textContent = '';
+        }
         if (surpriseBlock.classList.contains('playing-now')) {
           surpriseBlock.classList.remove('playing-now');
           lastPlayingBlock = null;
