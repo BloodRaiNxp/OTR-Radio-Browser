@@ -38,7 +38,6 @@ body {
 }
 
 .show-title[title]:hover::after {
-  /* Show full name on hover */
   content: attr(title);
   position: absolute;
   left: 100%;
@@ -194,12 +193,19 @@ header h1 {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
 #marqueeText {
   font-size: 1.2em;
   font-weight: bold;
   font-family: 'Orbitron', sans-serif;
   color: #222;
   white-space: nowrap;
+  display: inline-block; /* Needed for transform to work! */
   animation: marquee 15s linear infinite;
 }
 
