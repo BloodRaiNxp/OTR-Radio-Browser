@@ -1,1 +1,77 @@
-{"background": "images/scifi-bg.jpg","shows": {"Dimension X": {"description": "Early science fiction stories.","source": "data/sci-fi/dimension-x.json"},"X Minus One": {"description": "Futuristic adventures.","source": "data/sci-fi/x-minus-one.json"}}}
+{
+  "background": "",
+  "shows": {
+    "X Minus One": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/x-minus-one.json"
+    },
+    "World In Peril​": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/world-in-peril.json"
+    },
+    "Sci-Fi Radio": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/sci-fi-radio.json"
+    },
+    "Dimension X": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/dimension-x.json"
+    },
+    "Exploring Tomorrow": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/exploring-tomorrow.json"
+    },
+    "Escape": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/escape.json"
+    },
+    "2000 Plus": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/2000-plus.json"
+    },
+    "Crisis": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/crisis.json"
+    },
+    "Operation Luna​": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/operation-luna.json"
+    },
+    "Mindwebs": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/mindwebs.json"
+    },
+    "Potpourri": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/potpourri.json"
+    },
+    "Theater Five": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/theater-five.json"
+    },
+    "​The Red Planet​​​​​​​​​​": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/the-red-planet.json"
+    },
+    "SF 68": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/sf-68.json"
+    },
+    "Mystery Theater": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/mystery-theater.json"
+    },
+    "Suspence": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/suspence.json"
+    },
+    "Alien Worlds": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/alien-worlds.json"
+    },
+    "​https://static.secure.website/wscfus/8274769/1567075/alien-worlds-790325isa-conspiracy-part-2.mp3": {
+      "description": "Add a short description here.",
+      "source": "data/sci-fi/https-static-secure-website-wscfus-8274769-1567075-alien-worlds-790325isa-conspiracy-part-2-mp3.json"
+    }
+  }
+}
