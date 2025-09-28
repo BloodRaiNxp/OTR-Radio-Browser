@@ -1,100 +1,394 @@
 [
-  { "title": "Skid Row", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-04-09_Skid_Row.mp3" },
-  { "title": "Bloody Hands", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-04-02_Bloody_Hands.mp3" },
-  { "title": "Horse Deal", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-03-26_Horse_Deal.mp3" },
-  { "title": "The Mistake", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-03-19_The_Mistake.mp3" },
-  { "title": "The Trial", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-03-12_The_Trial.mp3" },
-  { "title": "Crack-Up", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-26_Crack-Up.mp3" },
-  { "title": "Poor Pearl", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-19_Poor_Pearl.mp3" },
-  { "title": "Chester's Hanging", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-12_Chester_s_Hanging.mp3" },
-  { "title": "Cheyennes", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-05_Cheyennes.mp3" },
-  { "title": "Young Love", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-29_Young_Love.mp3" },
-  { "title": "Sins Of The Fathers", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-22_Sins_Of_The_Fathers.mp3" },
-  { "title": "Chester's Murder", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-15_Chester_s_Murder.mp3" },
-  { "title": "Robin Hood", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-08_Robin_Hood.mp3" },
-  { "title": "The Bottle Man", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-01_The_Bottle_Man.mp3" },
-  { "title": "Kitty Lost", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-12-25_Kitty_Lost.mp3" },
-  { "title": "Bone Hunters", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-12-11_Bone_Hunters.mp3" },
-  { "title": "Cholera", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-12-04_Cholera.mp3" },
-  { "title": "Cooter", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-27_Cooter.mp3" },
-  { "title": "How to Kill a Woman", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-20_How_to_Kill_a_Woman.mp3" },
-  { "title": "Wrong Man", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-13_Wrong_Man.mp3" },
-  { "title": "Smoking out the Beedles", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-06_Smoking_out_the_Beedles.mp3" },
-  { "title": "The Patsy", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-30_The_Patsy.mp3" },
-  { "title": "Kitty Caught", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-16__Kitty_Caught.mp3" },
-  { "title": "Love of a Good Woman", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-09_Love_of_a_Good_Woman.mp3" },
-  { "title": "Matt Gets It", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-02_Matt_Gets_It.mp3" },
-  { "title": "Helping Hand", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-27_Helping_Hand.mp3" },
-  { "title": "The F__U_", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-20_The_F__U_.mp3" },
-  { "title": "Dooley Surrenders", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-13_Dooley_Surrenders.mp3" },
-  { "title": "The Promise aka The Handcuffs", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-06_The_Promise_aka_The_Handcuffs.mp3" },
-  { "title": "Obie Tater", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-30_Obie_Tater.mp3" },
-  { "title": "Young Man with a Gun", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-23_Young_Man_with_a_Gun.mp3" },
-  { "title": "Mavis McCloud", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-16_Mavis_McCloud.mp3" },
-  { "title": "Joe Phy", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-09_Joe_Phy.mp3" },
-  { "title": "No Indians", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-02_No_Indians.mp3" },
-  { "title": "Matt for Murder", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-26_Matt_for_Murder.mp3" },
-  { "title": "The Queue", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-19_The_Queue.mp3" },
-  { "title": "Texas Cowboys", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-12_Texas_Cowboys.mp3" },
-  { "title": "Hack Prine", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-05_Hack_Prine.mp3" },
-  { "title": "Word of Honor", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-03_Word_of_Honor.mp3" },
-  { "title": "Claustrophobia", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-06-26_Claustrophobia.mp3" },
-  { "title": "Going Bad", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-06-19_Going_Bad.mp3" },
-  { "title": "Blacksmith", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-06-05_Blacksmith.mp3" },
-  { "title": "Feud", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-29_Feud.mp3" },
-  { "title": "Monopoly", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-22_Monopoly.mp3" },
-  { "title": "The Indian Horse", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-15_The_Indian_Horse.mp3" },
-  { "title": "The Constable", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-08_The_Constable.mp3" },
-  { "title": "Cara", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-01_Cara.mp3" },
-  { "title": "Murder Warrant", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-24_Murder_Warrant.mp3" },
-  { "title": "What the Whisky Drummer Heard", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-17_What_the_Whisky_Drummer_Heard.mp3" },
-  { "title": "Greater Love", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-10_Greater_Love.mp3" },
-  { "title": "Mr and Mrs Amber", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-03_Mr_and_Mrs__Amber.mp3" },
-  { "title": "Blood Money", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-27_Blood_Money.mp3" },
-  { "title": "Old Friend", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-20_Old_Friend.mp3" },
-  { "title": "Confederate Money", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-13_Confederate_Money.mp3" },
-  { "title": "The Gentleman", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-06_The_Gentleman.mp3" },
-  { "title": "Bad Boy", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-27_Bad_Boy.mp3" },
-  { "title": "Last Fling", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-20_Last_Fling.mp3" },
-  { "title": "The Killer", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-13_The_Killer.mp3" },
-  { "title": "Big Broad", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-06_Big_Broad.mp3" },
-  { "title": "Gunsmugler", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-30_Gunsmugler.mp3" },
-  { "title": "Nina", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-23_Nina.mp3" },
-  { "title": "Joke's on Us", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-09_Joke_s_on_Us.mp3" },
-  { "title": "Stage Holdup", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-02_Stage_Holdup.mp3" },
-  { "title": "The Guitar", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-26_The_Guitar.mp3" },
-  { "title": "Big Girl Lost", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-19_Big_Girl_Lost.mp3" },
-  { "title": "The Cast", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-12_The_Cast.mp3" },
-  { "title": "The Lamb", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-05_The_Lamb.mp3" },
-  { "title": "Kick Me", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-28_Kick_Me.mp3" },
-  { "title": "Custer", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-21_Custer.mp3" },
-  { "title": "Professor Lute Bone", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-14_Professor_Lute_Bone.mp3" },
-  { "title": "Stolen Horses", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-07_Stolen_Horses.mp3" },
-  { "title": "How to Kill a Woman", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-31_How_to_Kill_a_Woman.mp3" },
-  { "title": "The Buffalo Hunter", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-24_The_Buffalo_Hunter.mp3" },
-  { "title": "Yorky", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-17_Yorky.mp3" },
-  { "title": "How to Die for Nothing", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-10_How_to_Die_for_Nothing.mp3" },
-  { "title": "How to Kill a Friend", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-03_How_to_Kill_a_Friend.mp3" },
-  { "title": "Fawn", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-26_Fawn.mp3" },
-  { "title": "There Was Never a Horse", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-19_There_Was_Never_a_Horse.mp3" },
-  { "title": "Prairie Happy", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-12_Prairie_Happy.mp3" },
-  { "title": "The Sutler", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-05_The_Sutler.mp3" },
-  { "title": "Jesse", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-29_Jesse.mp3" },
-  { "title": "Gone Straight", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-22_Gone_Straight.mp3" },
-  { "title": "Moon", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-15_Moon.mp3" },
-  { "title": "Boy", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-01_Boy.mp3" },
-  { "title": "Hickock", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-25_Hickock.mp3" },
-  { "title": "Wild West", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-18_Wild_West.mp3" },
-  { "title": "Grass", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-11_Grass.mp3" },
-  { "title": "Dirt", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-04_Dirt.mp3" },
-  { "title": "Flashback", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-27_Flashback.mp3" },
-  { "title": "Wind", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-20_Wind.mp3" },
-  { "title": "Spring Term", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-13_Spring_Term.mp3" },
-  { "title": "Sundown", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-06_Sundown.mp3" },
-  { "title": "Fall Semester", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-30_Fall_Semester.mp3" },
-  { "title": "Print Asper", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-23_Print_Asper.mp3" },
-  { "title": "The Big Con", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-16_The_Big_Con.mp3" },
-  { "title": "The Buffalo Hunter", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-09_The_Buffalo_Hunter.mp3" },
-  { "title": "Tacetta", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-02_Tacetta.mp3" },
-  { "title": "The Soldier", "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-04-25_The_Soldier.mp3" }
+  {
+    "title": "Gunsmoke 55 04 09 Skid Row",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-04-09_Skid_Row.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 04 02 Bloody Hands",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-04-02_Bloody_Hands.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 03 26 Horse Deal",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-03-26_Horse_Deal.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 03 19 The Mistake",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-03-19_The_Mistake.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 03 12 The Trial",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-03-12_The_Trial.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 02 26 Crack Up",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-26_Crack-Up.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 02 19 Poor Pearl",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-19_Poor_Pearl.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 02 12 Chester s Hanging",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-12_Chester_s_Hanging.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 02 05 Cheyennes",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-02-05_Cheyennes.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 01 29 Young Love",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-29_Young_Love.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 01 22 Sins Of The Fathers",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-22_Sins_Of_The_Fathers.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 01 15 Chester s Murder",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-15_Chester_s_Murder.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 01 08 Robin Hood",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-08_Robin_Hood.mp3"
+  },
+  {
+    "title": "Gunsmoke 55 01 01 The Bottle Man",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_55-01-01_The_Bottle_Man.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 12 25 Kitty Lost",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-12-25_Kitty_Lost.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 12 11 Bone Hunters",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-12-11_Bone_Hunters.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 12 04 Cholera",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-12-04_Cholera.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 11 27 Cooter",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-27_Cooter.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 11 20 How to Kill a Woman",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-20_How_to_Kill_a_Woman.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 11 13 Wrong Man",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-13_Wrong_Man.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 11 06 Smoking out the Beedles",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-11-06_Smoking_out_the_Beedles.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 10 30 The Patsy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-30_The_Patsy.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 10 16 Kitty Caught",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-16__Kitty_Caught.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 10 09 Love of a Good Woman",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-09_Love_of_a_Good_Woman.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 10 02 Matt Gets It",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-10-02_Matt_Gets_It.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 09 27 Helping Hand",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-27_Helping_Hand.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 09 20 The F U",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-20_The_F__U_.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 09 13 Dooley Surrenders",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-13_Dooley_Surrenders.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 09 06 The Promise aka The Handcuffs",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-09-06_The_Promise_aka_The_Handcuffs.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 08 30 Obie Tater",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-30_Obie_Tater.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 08 23 Young Man with a Gun",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-23_Young_Man_with_a_Gun.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 08 16 Mavis McCloud",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-16_Mavis_McCloud.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 08 09 Joe Phy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-09_Joe_Phy.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 08 02 No Indians",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-08-02_No_Indians.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 07 26 Matt for Murder",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-26_Matt_for_Murder.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 07 19 The Queue",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-19_The_Queue.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 07 12 Texas Cowboys",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-12_Texas_Cowboys.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 07 05 Hack Prine",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-05_Hack_Prine.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 07 03 Word of Honor",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-07-03_Word_of_Honor.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 06 26 Claustrophobia",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-06-26_Claustrophobia.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 06 19 Going Bad",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-06-19_Going_Bad.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 06 05 Blacksmith",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-06-05_Blacksmith.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 05 29 Feud",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-29_Feud.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 05 22 Monopoly",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-22_Monopoly.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 05 15 The Indian Horse",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-15_The_Indian_Horse.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 05 08 The Constable",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-08_The_Constable.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 05 01 Cara",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-05-01_Cara.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 04 24 Murder Warrant",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-24_Murder_Warrant.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 04 17 What the Whisky Drummer Heard",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-17_What_the_Whisky_Drummer_Heard.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 04 10 Greater Love",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-10_Greater_Love.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 04 03 Mr and Mrs Amber",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-04-03_Mr_and_Mrs__Amber.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 03 27 Blood Money",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-27_Blood_Money.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 03 20 Old Friend",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-20_Old_Friend.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 03 13 Confederate Money",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-13_Confederate_Money.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 03 06 The Gentleman",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-03-06_The_Gentleman.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 02 27 Bad Boy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-27_Bad_Boy.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 02 20 Last Fling",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-20_Last_Fling.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 02 13 The Killer",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-13_The_Killer.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 02 06 Big Broad",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-02-06_Big_Broad.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 01 30 Gunsmugler",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-30_Gunsmugler.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 01 23 Nina",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-23_Nina.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 01 09 Joke s on Us",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-09_Joke_s_on_Us.mp3"
+  },
+  {
+    "title": "Gunsmoke 54 01 02 Stage Holdup",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_54-01-02_Stage_Holdup.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 12 26 The Guitar",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-26_The_Guitar.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 12 19 Big Girl Lost",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-19_Big_Girl_Lost.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 12 12 The Cast",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-12_The_Cast.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 12 05 The Lamb",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-12-05_The_Lamb.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 11 28 Kick Me",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-28_Kick_Me.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 11 21 Custer",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-21_Custer.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 11 14 Professor Lute Bone",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-14_Professor_Lute_Bone.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 11 07 Stolen Horses",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-11-07_Stolen_Horses.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 10 31 How to Kill a Woman",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-31_How_to_Kill_a_Woman.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 10 24 The Buffalo Hunter",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-24_The_Buffalo_Hunter.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 10 17 Yorky",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-17_Yorky.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 10 10 How to Die for Nothing",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-10_How_to_Die_for_Nothing.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 10 03 How to Kill a Friend",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-10-03_How_to_Kill_a_Friend.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 09 26 Fawn",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-26_Fawn.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 09 19 There Was Never a Horse",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-19_There_Was_Never_a_Horse.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 09 12 Prairie Happy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-12_Prairie_Happy.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 09 05 The Sutler",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-09-05_The_Sutler.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 08 29 Jesse",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-29_Jesse.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 08 22 Gone Straight",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-22_Gone_Straight.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 08 15 Moon",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-15_Moon.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 08 01 Boy",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-08-01_Boy.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 07 25 Hickock",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-25_Hickock.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 07 18 Wild West",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-18_Wild_West.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 07 11 Grass",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-11_Grass.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 07 04 Dirt",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-07-04_Dirt.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 06 27 Flashback",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-27_Flashback.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 06 20 Wind",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-20_Wind.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 06 13 Spring Term",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-13_Spring_Term.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 06 06 Sundown",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-06-06_Sundown.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 05 30 Fall Semester",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-30_Fall_Semester.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 05 23 Print Asper",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-23_Print_Asper.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 05 16 The Big Con",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-16_The_Big_Con.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 05 09 The Buffalo Hunter",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-09_The_Buffalo_Hunter.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 05 02 Tacetta",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-05-02_Tacetta.mp3"
+  },
+  {
+    "title": "Gunsmoke 53 04 25 The Soldier",
+    "url": "https://files.secure.website/wscfus/8274769/uploads/Gunsmoke_53-04-25_The_Soldier.mp3"
+  }
 ]
