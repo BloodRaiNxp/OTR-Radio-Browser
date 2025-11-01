@@ -150,7 +150,8 @@ function loadGenre(genre) {
       console.error('Error loading genre:', err);
       const grid = qs('#show-grid');
       if (grid) {
-        grid.innerHTML = `<p class="text-red-400 col-span-full text-center py-12">Error loading shows: ${err.message}</p>`;
+        const safeErrorMsg = escapeHtml(err.message || 'Unknown error');
+        grid.innerHTML = `<p class="text-red-400 col-span-full text-center py-12">Error loading shows: ${safeErrorMsg}</p>`;
       }
     });
 }
