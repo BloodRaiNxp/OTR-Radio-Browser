@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classic Radio Theater</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+          --category-color: #1e40af;}
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e40af",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0d1117",
+                        "surface-dark": "#161b22",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .icon-filled {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-300">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-5xl flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 sm:px-6 md:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-[var(--category-color)]">
+<span class="material-symbols-outlined !text-4xl">podcasts</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] hidden sm:block">Classic Radio Theater</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 sm:gap-8">
+<label class="flex flex-col min-w-32 sm:min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-400 flex bg-surface-dark items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-surface-dark focus:border-none h-full placeholder:text-gray-500 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+</header>
+<main class="flex-1 px-4 py-8 sm:px-6 md:px-10">
+<div class="mb-8 bg-surface-dark rounded-xl p-2 flex justify-center">
+<nav class="flex items-center gap-2">
+<a class="text-white hover:bg-white/20 bg-white/10 px-4 py-2 rounded-lg text-sm font-bold leading-normal transition-colors" href="#">Home</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm font-medium leading-normal transition-colors" href="#">Comedies</a>
+<a class="text-white bg-[var(--category-color)] px-4 py-2 rounded-lg text-sm font-bold leading-normal" href="#">Detectives</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm font-medium leading-normal transition-colors" href="#">Sci-Fi</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm font-medium leading-normal transition-colors" href="#">Suspense-and-Horror</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-lg text-sm font-medium leading-normal transition-colors" href="#">Westerns</a>
+</nav>
+</div>
+<div class="relative w-full h-80 rounded-xl overflow-hidden mb-12">
+<div class="absolute inset-0 bg-gradient-to-br from-background-dark via-background-dark to-[var(--category-color)] opacity-40"></div>
+<svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="pattern-1" patternTransform="rotate(45)" patternUnits="userSpaceOnUse" width="40">
+<path d="M 10,0 L 10,40 M 30,0 L 30,40" fill="none" opacity="0.3" stroke="var(--category-color)" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#pattern-1)" height="100%" width="100%"></rect>
+</svg>
+<div class="relative h-full flex flex-col justify-center items-center p-8 sm:p-12 text-center">
+<h1 class="text-5xl md:text-6xl font-black text-white mb-4 tracking-tighter">Detectives</h1>
+<p class="text-gray-300 text-lg font-normal leading-normal max-w-2xl">A collection of classic detective and mystery radio shows, from hardboiled PIs to clever sleuths.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<details class="flex flex-col group bg-surface-dark rounded-xl" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-4 px-6 list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[var(--category-color)] text-2xl">fingerprint</span>
+<p class="text-white text-lg font-medium leading-normal">Dragnet <span class="text-gray-400 font-normal text-base">(124 Episodes)</span></p>
+</div>
+<div class="text-gray-400 group-open:rotate-180 transition-transform">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="pl-8 pr-6 pt-2 pb-4">
+<div class="max-h-72 overflow-y-auto space-y-1 pr-2 border-l border-white/10">
+<div class="flex items-center gap-4 bg-[var(--category-color)]/20 px-4 min-h-14 justify-between rounded-lg ml-6">
+<div class="flex items-center gap-4 min-w-0">
+<button class="text-white flex items-center justify-center rounded-lg bg-[var(--category-color)] shrink-0 size-10">
+<span class="material-symbols-outlined icon-filled">pause_circle</span>
+</button>
+<p class="text-[var(--category-color)] dark:text-white text-base font-medium leading-normal flex-1 truncate">The Big Kill</p>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-white/5 px-4 min-h-14 justify-between rounded-lg ml-6">
+<div class="flex items-center gap-4 min-w-0">
+<button class="text-white flex items-center justify-center rounded-lg bg-white/10 shrink-0 size-10">
+<span class="material-symbols-outlined icon-filled">play_circle</span>
+</button>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">The Big Actor</p>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-white/5 px-4 min-h-14 justify-between rounded-lg ml-6">
+<div class="flex items-center gap-4 min-w-0">
+<button class="text-white flex items-center justify-center rounded-lg bg-white/10 shrink-0 size-10">
+<span class="material-symbols-outlined icon-filled">play_circle</span>
+</button>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">The Big Phone Call</p>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-white/5 px-4 min-h-14 justify-between rounded-lg ml-6">
+<div class="flex items-center gap-4 min-w-0">
+<button class="text-white flex items-center justify-center rounded-lg bg-white/10 shrink-0 size-10">
+<span class="material-symbols-outlined icon-filled">play_circle</span>
+</button>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">The Big September Man</p>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-white/5 px-4 min-h-14 justify-between rounded-lg ml-6">
+<div class="flex items-center gap-4 min-w-0">
+<button class="text-white flex items-center justify-center rounded-lg bg-white/10 shrink-0 size-10">
+<span class="material-symbols-outlined icon-filled">play_circle</span>
+</button>
+<p class="text-white text-base font-normal leading-normal flex-1 truncate">The Big Press</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details class="flex flex-col group bg-surface-dark rounded-xl">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-4 px-6 list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[var(--category-color)] text-2xl">search</span>
+<p class="text-white text-lg font-medium leading-normal">Sherlock Holmes <span class="text-gray-400 font-normal text-base">(88 Episodes)</span></p>
+</div>
+<div class="text-gray-400 group-open:rotate-180 transition-transform">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="pl-8 pr-6 pt-2 pb-4">
+<p class="text-gray-400 text-sm font-normal leading-normal py-2 px-4 ml-6 border-l border-white/10">Episode list for Sherlock Holmes would appear here.</p>
+</div>
+</details>
+<details class="flex flex-col group bg-surface-dark rounded-xl">
+<summary class="flex cursor-pointer items-center justify-between gap-6 py-4 px-6 list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[var(--category-color)] text-2xl">visibility_off</span>
+<p class="text-white text-lg font-medium leading-normal">The Shadow <span class="text-gray-400 font-normal text-base">(210 Episodes)</span></p>
+</div>
+<div class="text-gray-400 group-open:rotate-180 transition-transform">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</summary>
+<div class="pl-8 pr-6 pt-2 pb-4">
+<p class="text-gray-400 text-sm font-normal leading-normal py-2 px-4 ml-6 border-l border-white/10">Episode list for The Shadow would appear here.</p>
+</div>
+</details>
+</div>
+</main>
+</div>
+</div>
+<footer class="sticky bottom-0 z-10 w-full bg-background-dark/80 backdrop-blur-md border-t border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 size-12 rounded-md bg-gray-800 flex items-center justify-center text-[var(--category-color)]">
+<span class="material-symbols-outlined !text-3xl">headphones</span>
+</div>
+<div>
+<p class="text-white font-semibold">The Big Kill</p>
+<p class="text-gray-400 text-sm">Dragnet</p>
+</div>
+</div>
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined !text-3xl">skip_previous</span>
+</button>
+<button class="text-white bg-[var(--category-color)] rounded-full p-3">
+<span class="material-symbols-outlined !text-4xl">pause</span>
+</button>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined !text-3xl">skip_next</span>
+</button>
+<div class="flex items-center gap-2 flex-1">
+<span class="text-gray-400 text-sm">10:32</span>
+<div class="w-full bg-gray-700 rounded-full h-1.5">
+<div class="bg-[var(--category-color)] h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+<span class="text-gray-400 text-sm">29:15</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">playlist_play</span>
+</button>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">repeat</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>
