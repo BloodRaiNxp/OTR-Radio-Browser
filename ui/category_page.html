@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Classic Radio Theater</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+<link rel="manifest" href="/favicon_io/site.webmanifest">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <style type="text/tailwindcss">
         :root {
-          --category-color: #D4AF37;}
+          --category-color: #1e40af;}
     </style>
 <script>
         tailwind.config = {
@@ -19,7 +22,7 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#D4AF37",
+                        "primary": "#1e40af",
                         "background-light": "#f6f6f8",
                         "background-dark": "#0d1117",
                         "surface-dark": "#161b22",
@@ -87,11 +90,43 @@
 <footer class="sticky bottom-0 z-10 w-full bg-background-dark/80 backdrop-blur-md border-t border-white/10">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between h-20">
-<!-- Footer content as in your design -->
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0 size-12 rounded-md bg-gray-800 flex items-center justify-center text-[var(--category-color)]">
+<span class="material-symbols-outlined !text-3xl">headphones</span>
+</div>
+<div>
+<p class="text-white font-semibold">The Big Kill</p>
+<p class="text-gray-400 text-sm">Dragnet</p>
 </div>
 </div>
-</footer>
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined !text-3xl">skip_previous</span>
+</button>
+<button class="text-white bg-[var(--category-color)] rounded-full p-3">
+<span class="material-symbols-outlined !text-4xl">pause</span>
+</button>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined !text-3xl">skip_next</span>
+</button>
+<div class="flex items-center gap-2 flex-1">
+<span class="text-gray-400 text-sm">10:32</span>
+<div class="w-full bg-gray-700 rounded-full h-1.5">
+<div class="bg-[var(--category-color)] h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+<span class="text-gray-400 text-sm">29:15</span>
 </div>
 </div>
-<script src="main.js"></script>
-</body></html>
+<div class="flex items-center gap-3">
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">playlist_play</span>
+</button>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">repeat</span>
+</button>
+</div>
+</div>
+</div>

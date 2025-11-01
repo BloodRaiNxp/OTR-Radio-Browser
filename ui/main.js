@@ -139,6 +139,11 @@ function setupCategoryPage() {
         pill.style.width = rect.width + 'px';
         pill.style.left = (rect.left - navRect.left) + 'px';
       });
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = link.getAttribute('data-category');
+        window.location.href = `category_page.html?category=${cat}`;
+      });
     });
   }
 
