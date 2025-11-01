@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classic Radio Theater</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#daa520",
+            "background-light": "#f5f5f5",
+            "background-dark": "#1a1a1a",
+          },
+          fontFamily: {
+            "display": ["Noto Serif", "serif"],
+            "sans": ["Noto Sans", "sans-serif"],
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+        font-family: 'Noto Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-10 py-4">
+<div class="flex items-center gap-4 text-white">
+<div class="size-4 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-[#F5F5F5] text-lg font-bold leading-tight tracking-[-0.015em] font-display">Classic Radio Theater</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-[#F5F5F5] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Info</a>
+</div>
+</div>
+</header>
+<main>
+<div class="@container py-10 md:py-20">
+<div class="p-4">
+<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 rounded-xl items-center justify-center p-4 text-center" data-alt="A vintage radio microphone in a dimly lit, atmospheric setting." style='background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAtnucNq9E6sypAqq3nn0GnIRY_kO6WJLCfThwUH4P6r-VSELLvp8yQWS2psQ0Bk1SOoNe6G2UsQYdIhSu7YQvTM-9I1rQ-DLd2SmeAbaHyhrBoyHrMl8tWpzkqDkA9DXcSqf37VqpKdBtdie8AwbZPsCt2pmfzvKYKMS8js56hlMevbrSKwvnAxM_OTG7gykZQbKxf0zasKd3PjqUYcEwoNZH2yHZhrytPKHab9IeBZOkbGYloRoqOovkzHpNnHwfYvxFntTt_LA");'>
+<div class="flex flex-col gap-2">
+<h1 class="text-[#F5F5F5] text-4xl font-black leading-tight tracking-tight @[480px]:text-5xl font-display">Preserving the Golden Age of Radio</h1>
+<h2 class="text-[#F5F5F5]/80 text-sm font-normal leading-normal @[480px]:text-base max-w-2xl mx-auto">Sharing and keeping classic American radio shows alive, sourced from American classic archives.</h2>
+</div>
+</div>
+</div>
+</div>
+<section class="px-4 sm:px-10 py-10">
+<h2 class="text-primary text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 font-display">Our Mission</h2>
+<p class="text-[#F5F5F5]/90 text-base font-normal leading-normal">Our core purpose is to keep classic American radio shows alive for future generations. We believe these timeless stories are a vital part of our cultural heritage, and we are dedicated to preserving and sharing them with the world.</p>
+</section>
+<section class="px-4 sm:px-10 py-10">
+<div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+<div class="w-full md:w-1/3 flex-shrink-0">
+<img alt="A portrait of the site creator, C. Youngblood." class="rounded-xl object-cover w-full h-auto aspect-[4/5]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjMgqC3aFmZ4sBNyWWqBV57yfNtzzeb6x-Ygu0kVMCEiBRCHt6LX5tNkEOtbcjvcz7coNJ_IAyAImJrhwgPoOLEgkQ4xzSLyJjOfLAzOMEj-pEB-t6kr1j9n9txSEe7Ma0ha5BV_cfdHX7gROKZXe3T2LrswkJRd2RCY5Sc9Ml7PuU0aizPQTTb-PG0q7ViQs4w5aaqI4oFRS-uGgjGkauMxRKmtPP4tcj3wRI3lrKOnkbnFJbRuWzgCjQGJlyfz2XRCRmxSxkvg"/>
+</div>
+<div class="flex flex-col gap-4">
+<h1 class="text-[#F5F5F5] tracking-tight text-[32px] font-bold leading-tight font-display">The Story Behind the Collection</h1>
+<p class="text-[#F5F5F5]/90 text-base font-normal leading-normal">
+                          A personal narrative from the creator, C. Youngblood, explaining their passion for these stories and the motivation for creating the website. This project is a labor of love, driven by a deep appreciation for the art of radio storytelling and a desire to ensure these auditory treasures aren't lost to time.
+                        </p>
+<p class="text-[#F5F5F5]/90 text-base font-normal leading-normal">
+                            This archive is a tribute to the writers, actors, and technicians who crafted worlds with only sound. Join me in celebrating their legacy.
+                        </p>
+</div>
+</div>
+</section>
+<section class="px-4 sm:px-10 py-10">
+<div class="flex flex-col gap-10 py-10 @container">
+<div class="flex flex-col gap-4 text-center">
+<h1 class="text-primary tracking-tight text-[32px] font-bold leading-tight font-display">About the Archive</h1>
+<p class="text-[#F5F5F5]/90 text-base font-normal leading-normal max-w-[720px] mx-auto">This collection is built on principles of authenticity and community. We are dedicated to providing a high-quality listening experience while fostering a space for appreciation and discussion.</p>
+</div>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-0">
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-6 flex-col">
+<div class="text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">verified_user</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-[#F5F5F5] text-base font-bold leading-tight font-display">Preservation</h2>
+<p class="text-[#F5F5F5]/70 text-sm font-normal leading-normal">We are committed to preserving the rich history of radio drama and comedy for new audiences.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-6 flex-col">
+<div class="text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">archive</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-[#F5F5F5] text-base font-bold leading-tight font-display">Authentic Sources</h2>
+<p class="text-[#F5F5F5]/70 text-sm font-normal leading-normal">Our collection is sourced from authentic American classic archives, ensuring historical accuracy.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 rounded-xl border border-white/10 bg-white/5 p-6 flex-col">
+<div class="text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">groups</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-[#F5F5F5] text-base font-bold leading-tight font-display">Community</h2>
+<p class="text-[#F5F5F5]/70 text-sm font-normal leading-normal">Join us in celebrating these timeless performances.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 sm:px-10 py-20 text-center">
+<div class="flex flex-col items-center gap-4">
+<h2 class="text-[#F5F5F5] text-[22px] font-bold leading-tight tracking-[-0.015em] font-display">Explore the Classics</h2>
+<p class="text-[#F5F5F5]/90 text-base font-normal leading-normal max-w-xl">The theater of the mind awaits. Dive into our curated collection of radio shows and rediscover the magic of auditory storytelling.</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-black text-base font-bold leading-normal tracking-[0.015em] mt-4 hover:bg-primary/90 transition-colors">
+<span class="truncate">Explore Collection</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="px-4 sm:px-10 py-6 border-t border-solid border-white/10 mt-10">
+<div class="flex justify-between items-center text-sm text-[#F5F5F5]/60">
+<p>© 2024 Classic Radio Theater. All Rights Reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>

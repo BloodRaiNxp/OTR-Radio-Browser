@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classic Radio Theater - Player</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+body {font-family: 'Be Vietnam Pro', sans-serif;}
+.material-symbols-outlined {font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;}
+.progress-bar-thumb {transform: scale(0);transition: transform 0.2s ease-in-out;}
+.progress-bar:hover .progress-bar-thumb {transform: scale(1);}
+.waveform > div {animation: waveform-animation 1.5s infinite ease-in-out;animation-play-state: running;}
+.waveform > div:nth-child(1) { animation-delay: 0.1s; }
+.waveform > div:nth-child(2) { animation-delay: 0.3s; }
+.waveform > div:nth-child(3) { animation-delay: 0.2s; }
+.waveform > div:nth-child(4) { animation-delay: 0.5s; }
+.waveform > div:nth-child(5) { animation-delay: 0.4s; }
+.waveform > div:nth-child(6) { animation-delay: 0.1s; }
+.waveform > div:nth-child(7) { animation-delay: 0.3s; }
+.waveform > div:nth-child(8) { animation-delay: 0.6s; }
+.waveform > div:nth-child(9) { animation-delay: 0.2s; }
+.waveform > div:nth-child(10) { animation-delay: 0.4s; }
+</style>
+</head>
+<body class="bg-background-dark font-display text-white antialiased">
+<div id="player-root"></div>
+<script src="main.js"></script>
+</body></html>
