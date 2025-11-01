@@ -3,49 +3,106 @@ const genres = [
   { name: 'Comedies', value: 'comedies' },
   { name: 'Detectives', value: 'detectives' },
   { name: 'Sci-Fi', value: 'sci-fi' },
-  { name: 'Suspense-and-Horror', value: 'suspense-and-horror' },
+  { name: 'Suspense & Horror', value: 'suspense-and-horror' },
   { name: 'Westerns', value: 'westerns' }
 ];
 const DEFAULT_GENRE = 'comedies';
+
+// --- STATE ---
+let currentGenre = DEFAULT_GENRE;
 
 // --- DOM HELPERS ---
 function qs(sel) { return document.querySelector(sel); }
 function qsa(sel) { return document.querySelectorAll(sel); }
 
-// --- CATEGORY NAV WIRE-UP (STATIC) ---
-function setupCategoryNav() {
-  // Finds nav with category buttons, wires up clicks.
-  const nav = document.querySelector('nav.flex.items-center, nav.rounded-full, nav.bg-surface-dark');
+// --- SANITIZATION HELPERS ---
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function sanitizeUrl(url) {
+  // Only allow http, https, and data URLs
+  if (!url) return '';
+  const trimmed = url.trim();
+  if (trimmed.match(/^(https?:|data:image\/)/i)) {
+    return trimmed;
+  }
+  return '';
+}
+
+// --- CATEGORY NAV CREATION ---
+function createCategoryNav() {
+  const nav = qs('#category-nav');
   if (!nav) return;
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', (e) => {
+  
+  // Create nav buttons (genres are from config, but we'll sanitize for safety)
+  nav.innerHTML = genres.map(genre => {
+    const safeName = escapeHtml(genre.name);
+    const safeValue = escapeHtml(genre.value);
+    const isActive = safeValue === currentGenre;
+    const activeClass = isActive ? 'bg-primary text-background-dark' : 'text-white/70 hover:text-white hover:bg-white/10';
+    
+    return `
+      <a href="#" 
+         class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 text-sm font-bold leading-normal tracking-[0.015em] transition-all duration-300 ${activeClass}"
+         data-genre="${safeValue}">
+        <span class="truncate">${safeName}</span>
+      </a>
+    `;
+  }).join('');
+  
+  // Wire up click handlers
+  nav.querySelectorAll('a[data-genre]').forEach(link => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
-      const label = (a.textContent || a.innerText).trim();
-      const genre = genres.find(g => label.includes(g.name))?.value;
-      if (genre) loadGenre(genre);
-      // Update active highlight
-      nav.querySelectorAll('a').forEach(x => x.classList.remove('text-background-dark', 'bg-primary', 'font-semibold', 'text-white', 'bg-[var(--category-color)]'));
+      const genre = link.getAttribute('data-genre');
       if (genre) {
-        a.classList.add('text-background-dark', 'bg-primary', 'font-semibold');
-        // Special style for Detectives page
-        if (genre === 'detectives') a.classList.add('bg-[var(--category-color)]', 'text-white');
+        currentGenre = genre;
+        loadGenre(genre);
+        updateActiveNav(genre);
       }
     });
   });
 }
 
+// --- UPDATE ACTIVE NAV HIGHLIGHT ---
+function updateActiveNav(genre) {
+  const nav = qs('#category-nav');
+  if (!nav) return;
+  
+  nav.querySelectorAll('a[data-genre]').forEach(link => {
+    const linkGenre = link.getAttribute('data-genre');
+    if (linkGenre === genre) {
+      link.className = 'flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 text-sm font-bold leading-normal tracking-[0.015em] transition-all duration-300 bg-primary text-background-dark';
+    } else {
+      link.className = 'flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 text-sm font-bold leading-normal tracking-[0.015em] transition-all duration-300 text-white/70 hover:text-white hover:bg-white/10';
+    }
+  });
+}
+
 // --- SHOW CARD RENDERING ---
-function cardHtml(title, show) {
-  // Handles missing fields gracefully
+function createShowCard(title, show) {
+  // Sanitize inputs
+  const safeName = escapeHtml(title);
+  const safeDescription = escapeHtml(show.description || 'Classic radio show');
+  const safeSource = show.source ? escapeHtml(show.source) : '';
+  
+  // Use placeholder image if not provided, with sanitized URL
+  const imageUrl = sanitizeUrl(show.image) || `https://via.placeholder.com/400x225/1E1E1E/D4AF37?text=${encodeURIComponent(title)}`;
+  
   return `
     <div class="flex flex-col gap-4 rounded-xl bg-surface-dark/50 hover:bg-surface-dark transition-colors duration-300 group overflow-hidden">
-      <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl" style='background-image: url("${show.image || ''}")'></div>
+      <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl" style='background-image: url("${imageUrl}")'></div>
       <div class="flex flex-col flex-1 p-6 pt-0">
-        <p class="text-white text-xl font-display font-bold">${title}</p>
-        <p class="text-white/70 text-sm font-normal leading-normal mt-1">${show.description || ''}</p>
-        ${show.audio ? `<button class="mt-4 flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 text-primary text-sm font-bold leading-normal tracking-[0.015em] group-hover:bg-primary group-hover:text-background-dark transition-all duration-300" data-audio="${show.audio}">
-          <span class="truncate">Listen Now</span>
-        </button>` : ""}
+        <p class="text-white text-xl font-display font-bold">${safeName}</p>
+        <p class="text-white/70 text-sm font-normal leading-normal mt-1">${safeDescription}</p>
+        ${safeSource ? `
+          <button class="mt-4 flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 text-primary text-sm font-bold leading-normal tracking-[0.015em] group-hover:bg-primary group-hover:text-background-dark transition-all duration-300" data-source="${safeSource}">
+            <span class="truncate">View Episodes</span>
+          </button>
+        ` : ''}
       </div>
     </div>
   `;
@@ -53,24 +110,26 @@ function cardHtml(title, show) {
 
 // --- GRID RENDERING ---
 function renderGrid(showsObj) {
-  // Find the grid container (your static grid in homepage is .grid)
-  const grid = document.querySelector('.grid');
+  const grid = qs('#show-grid');
   if (!grid) return;
-  grid.innerHTML = Object.entries(showsObj).map(([title, show]) => cardHtml(title, show)).join('');
-  // Wire up Listen Now buttons
-  grid.querySelectorAll('button[data-audio]').forEach(btn => {
+  
+  if (!showsObj || Object.keys(showsObj).length === 0) {
+    grid.innerHTML = '<p class="text-white/60 col-span-full text-center py-12">No shows available in this category.</p>';
+    return;
+  }
+  
+  grid.innerHTML = Object.entries(showsObj).map(([title, show]) => 
+    createShowCard(title, show)
+  ).join('');
+  
+  // Wire up View Episodes buttons
+  grid.querySelectorAll('button[data-source]').forEach(btn => {
     btn.onclick = function() {
-      const url = btn.getAttribute('data-audio');
-      if (url) {
-        let audio = document.getElementById('main-audio');
-        if (!audio) {
-          audio = document.createElement('audio');
-          audio.id = 'main-audio';
-          audio.style.display = 'none';
-          document.body.appendChild(audio);
-        }
-        audio.src = url;
-        audio.play();
+      const source = btn.getAttribute('data-source');
+      if (source) {
+        // Navigate to episode list (placeholder for now)
+        console.log('Navigate to:', source);
+        alert('Episode list functionality coming soon!\nSource: ' + source);
       }
     }
   });
@@ -78,16 +137,27 @@ function renderGrid(showsObj) {
 
 // --- LOAD DATA AND RENDER ---
 function loadGenre(genre) {
+  // Adjust path - from ui/index.html, data is at ../data/
   fetch(`../data/${genre}.json`)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error(`Failed to load ${genre}.json`);
+      return res.json();
+    })
     .then(data => {
       renderGrid(data.shows || {});
-      // Optionally update category nav highlight, if dynamic
+    })
+    .catch(err => {
+      console.error('Error loading genre:', err);
+      const grid = qs('#show-grid');
+      if (grid) {
+        const safeErrorMsg = escapeHtml(err.message || 'Unknown error');
+        grid.innerHTML = `<p class="text-red-400 col-span-full text-center py-12">Error loading shows: ${safeErrorMsg}</p>`;
+      }
     });
 }
 
 // --- INITIALIZE ---
 document.addEventListener('DOMContentLoaded', () => {
-  setupCategoryNav();
+  createCategoryNav();
   loadGenre(DEFAULT_GENRE);
 });
