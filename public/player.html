@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classic Radio Theater - Player</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#C1A575",
+              "background-light": "#F5F5DC",
+              "background-dark": "#121212",
+              "surface-dark": "#1A1A1A",
+              "text-light": "#1A1A1A",
+              "text-dark": "#F5F5DC",
+              "muted-light": "#6b7280",
+              "muted-dark": "#9ca3af"
+            },
+            fontFamily: {
+              "display": ["Be Vietnam Pro", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .progress-bar-thumb {
+            transform: scale(0);
+            transition: transform 0.2s ease-in-out;
+        }
+        .progress-bar:hover .progress-bar-thumb {
+            transform: scale(1);
+        }
+        .waveform > div {
+            animation: waveform-animation 1.5s infinite ease-in-out;
+            animation-play-state: running;}
+        .waveform > div:nth-child(1) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(2) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(3) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(4) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(5) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(6) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(7) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(8) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(9) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(10) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(11) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(12) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(13) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(14) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(15) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(16) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(17) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(18) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(19) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(20) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(21) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(22) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(23) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(24) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(25) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(26) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(27) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(28) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(29) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(30) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(31) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(32) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(33) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(34) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(35) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(36) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(37) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(38) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(39) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(40) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(41) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(42) { animation-delay: 0.3s; }
+        .waveform > div:nth-child(43) { animation-delay: 0.1s; }
+        .waveform > div:nth-child(44) { animation-delay: 0.6s; }
+        .waveform > div:nth-child(45) { animation-delay: 0.4s; }
+        .waveform > div:nth-child(46) { animation-delay: 0.2s; }
+        .waveform > div:nth-child(47) { animation-delay: 0.5s; }
+        .waveform > div:nth-child(48) { animation-delay: 0.3s; }
+        @keyframes waveform-animation {
+            0% { transform: scaleY(0.1); }
+            50% { transform: scaleY(1); }
+            100% { transform: scaleY(0.1); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col items-center">
+<header class="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200/20 dark:border-white/10 py-4">
+<div class="flex items-center gap-4">
+<div class="h-6 w-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_535">
+<rect fill="white" height="48" width="48"></rect>
+</clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Classic Radio Theater</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Browse Shows</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About</a>
+</nav>
+</div>
+</header>
+<main class="flex flex-1 items-center justify-center w-full px-4 py-8 sm:py-16">
+<div class="w-full max-w-4xl @container">
+<div class="flex flex-col @[768px]:flex-row items-center gap-8 @[768px]:gap-12 bg-background-light/5 dark:bg-surface-dark p-6 sm:p-10 rounded-xl shadow-2xl shadow-black/30 backdrop-blur-sm border border-gray-200/10 dark:border-white/10">
+<div class="w-full @[768px]:w-1/3 flex-shrink-0">
+<div class="aspect-square w-full bg-center bg-no-repeat bg-cover rounded-lg shadow-lg" data-alt="Vintage radio microphone from the 1940s against a dark, moody background." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbuCOHriqgvzENoD9tOP5vjWTCIHpPPCd9TtASB-zO9O386jEazjpidyCDz9IX268ZV2i_kuOepYMH_lkChmkSSAbAYUF6ENb8umQilrKCuueKwhPsE3ErxRC4vu9WSKPTAnrTF_UKtGt97zvh3Ko18gjkxmpY6SukC_uI2s6qKBlqMm3l_diaRr3dzvpxw7Ji9wPrmzCtuGML5mN3hQSTaxgTe8CFzlzznZr2HpSYyTMffbnOQBu5zDB86x4Eig54kUnr3x-WVw");'></div>
+</div>
+<div class="flex flex-col w-full @[768px]:w-2/3">
+<div class="flex justify-between items-start">
+<div class="text-left">
+<h1 class="text-2xl sm:text-3xl font-bold leading-tight tracking-tight">The Shadow Knows</h1>
+<h2 class="text-base text-muted-light dark:text-muted-dark mt-1">From the series: Detective Story Magazine</h2>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 ml-4">
+<button aria-label="Share episode" class="flex items-center justify-center p-2 rounded-full hover:bg-gray-500/10 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl text-muted-light dark:text-muted-dark hover:text-primary">share</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-center gap-1 h-20 my-6 waveform">
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+<div class="w-1.5 h-full rounded-full bg-primary/70"></div>
+</div>
+<div class="flex flex-col gap-1 w-full mt-2">
+<div class="h-1.5 w-full rounded-full bg-gray-500/20 dark:bg-white/10 cursor-pointer group progress-bar">
+<div class="h-1.5 rounded-full bg-primary relative" style="width: 25%;">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white dark:bg-text-dark rounded-full progress-bar-thumb ring-2 ring-primary/50"></div>
+</div>
+</div>
+<div class="flex justify-between text-xs font-medium text-muted-light dark:text-muted-dark mt-1">
+<p>12:30</p>
+<p>48:00</p>
+</div>
+</div>
+<div class="flex items-center justify-between w-full mt-4">
+<div class="flex items-center gap-4 w-1/3 justify-start">
+<div class="flex items-center gap-3 group">
+<button aria-label="Mute volume" class="flex items-center justify-center">
+<span class="material-symbols-outlined text-xl text-muted-light dark:text-muted-dark group-hover:text-text-dark transition-colors">volume_up</span>
+</button>
+<div class="w-24 h-1 rounded-full bg-gray-500/20 dark:bg-white/10 cursor-pointer relative">
+<div class="h-1 rounded-full bg-primary" style="width: 70%;"></div>
+<div class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity" style="left: 70%; margin-left: -6px;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 justify-center">
+<button aria-label="Rewind 15 seconds" class="flex items-center justify-center p-3 rounded-full hover:bg-gray-500/10 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl">replay_10</span>
+</button>
+<button aria-label="Play" class="flex items-center justify-center h-20 w-20 rounded-full bg-primary text-background-dark hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-6xl !leading-none">play_arrow</span>
+</button>
+<button aria-label="Fast-forward 15 seconds" class="flex items-center justify-center p-3 rounded-full hover:bg-gray-500/10 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl">forward_10</span>
+</button>
+</div>
+<div class="w-1/3"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
